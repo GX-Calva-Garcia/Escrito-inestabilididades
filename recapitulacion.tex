@@ -198,12 +198,22 @@ La relación de dispersión para este caso es muy similar a la ecuación \ref{di
 \label{eq:misma_omega_reposo}
 1 = \frac{1}{z^2} + \frac{1}{(z-\lambda)^2}
 \end{equation}
-Al igual que el caso de dos especies con misma $\omega_{p\sigma}^2$ pero con velocidades de signo contrario, la raíz que nos es de interes es la raíz cuya parte imaginaria sea positiva, es decir en donde la perturbación crece exponencialmente con el tiempo. Para este caso, la raíz con la que se trabaja resulta ser de la forma: 
+Al igual que el caso de dos especies con misma $\omega_{p\sigma}^2$ pero con velocidades de signo contrario, la raíz que nos es de interes es la raíz cuya parte imaginaria sea positiva, es decir en donde la perturbación crece exponencialmente con el tiempo. Para resolver la raíz se emplea el cambio de variable $z=x+\frac{\lambda}{2}$ lo que resulta en la siguiente expresión:
+\begin{equation}
+\label{eq:reducida_misma_reposo}
+x^4 - \frac{1}{2}(4 + \lambda^2)x^2 + \frac{1}{16}\lambda^2 (\lambda^2 -8)=0
+\end{equation}
+La cuál es una ecuación bicuadrática de $x$ que permite entonces escribir:
+\begin{equation}
+\label{eq:bicuad_misma_reposo}
+x^2 = \frac{1}{4}(4 + \lambda^2 \pm 4\sqrt{ \lambda^2 +1})
+\end{equation}
+De la cual se calcula la raíz para $x$ y se realiza el cambio de variable correspondiente para recuperar una solución en $z$.
 \begin{equation}
 \label{eq:solucion_misma_reposo}
 z = \frac{1}{2}\left(\lambda + \sqrt{4 + \lambda ^2 - 4 \sqrt{1 + \lambda ^2}} \right)
 \end{equation}
-Para más detalle sobre la obtención de la raíz y la elección del signo véase el apéndice \ref{Ap:raices}.
+Los signos de la raíz se escogen para que la parte imaginaria de $z$ sea positiva. Para más detalle sobre la obtención de la raíz véase el apéndice \ref{Ap:raices}.
 El siguiente paso es buscar el umbral en donde sucede la inestabilidad y para ello se estudia el lado derecho de la ecuación \ref{eq:misma_omega_reposo} y se observa que tiene dos singularidades $z=0,\lambda$. Aquí, el valor de $\lambda$ determinará el mínimo del lado derecho de \ref{eq:misma_omega_reposo} en el intervalo $(0,\lambda)$, al cual llamaremos $f(z,\lambda)$ por simplicidad. La figura \ref{fig:fz_reposo} ilustra el caso para una cierta $\lambda$, en donde se puede apreciar como el valor de $\lambda$ puede afectar el mínimo en el intervalo $(0,\lambda)$. El mínimo que nos interesa es el de valor $1$ pues ese índica cuando las raíces de ecuación \ref{eq:misma_omega_reposo} empizan a ser imaginarias. Estrictamente hablando, cuando el mínimo es uno quiere decir que dos de sus raíces reales se vuelven una y es cuando el mínimo es mayor que uno que aparecen raíces imaginarias.
 \begin{figure}
 \includegraphics[height=0.3\paperheight]{f_z_reposo.png}
@@ -367,6 +377,65 @@ Y finalmente la expresión para la frecuencia cuando ésta ocurre. La figura \re
 \caption{$Im(z)$ en función de $\lambda$, con $\epsilon = 2.72 \times 10^{-4}$ para el caso de un haz de deuterio-electrén incidiendo con un plasma estacionario deuterio-electrón.}
 \label{fig:d-d}
 \end{figure}
+\subsection*{Caso para iones estacionarios y electrones incidentes*}
+La relación de dispersión para este caso es la siguiente:
+\begin{equation}
+\label{eq:disp_ion_electron}
+\frac{\epsilon}{z^2}+\frac{1}{(z-\lambda)^2}=1
+\end{equation}
+Donde $z$ y $\lambda$ son las constantes normalizadas de los casos anteriores, mientras que $\epsilon = m_e/m_i$.
+Siguiendo el proceso que se ha estado haciendo, lo primero que se busca es el umbral de inestabilidad. Es decir para que valores de $\lambda$ dos raíces reales colapsan a una sola o aparecen raíces complejas. Como ya se había mencionado, esto sucede cuando el mínimo del lado izquierdo de la ecuación \ref{eq:disp_ion_electron} es mayor o igual a la unidad. Si se toma al lado izqueirdo de \ref{eq:disp_ion_electron} como una función $f(z,\lambda)$ y se minimiza se llega a una expresión:
+\begin{equation}
+\frac{\epsilon}{z^3}+\frac{1}{(z-\lambda)^3}=0
+\end{equation}
+De donde se busca tener exponentes positivos para $z$ por lo que se manipula para obtener:
+\begin{equation}
+\frac{z^3}{\epsilon}=-(z-\lambda)^3
+\end{equation}
+De donde se pueden obtener raíces cúbicas de cada término:
+\begin{equation}
+\frac{z}{\epsilon ^{1/3}}=-(z-\lambda)
+\end{equation}
+De la cual se despeja $z$
+\begin{equation}
+z_{min}=\frac{\epsilon ^{1/3}\lambda}{(1- \epsilon^{1/3})}
+\end{equation}
+Que es el valor que la variable $z$ debe tener para que el mínimo sea uno. Está $z_{min}$ se puede substituir en la relación de dispersión para llegar al valor de $\lambda$ que buscamos:
+\begin{equation}
+1=f(z_{min},\lambda)=\frac{(1+\epsilon^{1/3})^3}{\lambda^2}
+\end{equation}
+Entonces, para que el mímimo sea mayor o igual a uno el valor de $\lambda$ debe ser:
+\begin{equation}
+\label{eq:umbral_ion_electron}
+\lambda \geq (1+\epsilon^{1/3})^{3/2}
+\end{equation}
+El cual es nuestro umbral de inestabilidad.
+El siguiente paso es entonces buscar una raíz para $z$ en la expresión \ref{eq:disp_ion_electron} que describa el crecimiento de una inestabilidad. Sin embargo, a diferencia de los casos anteriores la ecuación \ref{eq:disp_ion_electron} no se reduce a una ecuación bicuadrática y el proceso se compplica. Para solventar este problema se hara uso de una expansión de Taylor alrededor de $(z_{min},\lambda)$ es decir:
+\begin{equation}
+\label{eq:expansion_ion_electron}
+f(z,\lambda)=f(z_{min},\lambda) + f_z(z_{min},\lambda)(z-z_{min}) + f_{\lambda}(z_{min},\lambda)(\lambda-\lambda)+ \frac{1}{2}f_{zz}(z_{min},\lambda)(z-z_{min})^2
+\end{equation}
+Donde $f_z(z_{min},\lambda)=0$ y la derivada con respecto a $\lambda$ se cancela porque está siendo multiplicada por un cero. La ecuación \ref{eq:expansion_ion_electron} se reduce a:
+\begin{equation}
+\label{eq:reduc_ion_electron}
+1=f(z,\lambda)=f(z_{min},\lambda)+ \frac{1}{2}f_{zz}(z_{min},\lambda)(z-z_{min})^2
+\end{equation}
+El siguiente paso es entonces despejar $z$. Simple manipulación algebraica nos lleva a:
+\begin{equation}
+(z-z_{min})^2 =\frac{2(1-f(z_{min},\lambda))}{f_{zz}(z_{min},\lambda)}
+\end{equation}
+Ahora bien, si se asume $f(z_{min},\lambda)) > 1$ entonces al sacar raíz cuadrada se tiene:
+\begin{equation}
+z=z_{min} \pm \sqrt{2}i\left(\frac{f(z_{min},\lambda)-1}{f_{zz}(z_{min},\lambda)} \right)^{1/2}
+\end{equation}
+Donde:
+\begin{equation}
+f_{zz}(z_{min},\lambda)=\frac{-3(\epsilon^{1/3} -1)^4}{\lambda^4}\left(\frac{\epsilon^{1/3}+(1-2\epsilon^{1/3})^4}{\epsilon^{1/3}(1-2\epsilon^{1/3})^4}\right)
+\end{equation}
+Sustituyendo entonces se obtiene:
+\begin{equation}
+z=\frac{\epsilon ^{1/3}\lambda}{(1- \epsilon^{1/3})} + \frac{i}{\sqrt{3}}\left(\frac{\lambda \epsilon^{1/6}(2\epsilon^{1/3}-1)^2((1-\epsilon^{1/3})^3-\lambda^2)^{1/2}}{(\epsilon^{1/3}-1)^2(\epsilon^{1/3}+(2\epsilon^{1/3}-1)^4)^{1/2}}\right)
+\end{equation}
 \appendix
 \numberwithin{equation}{section}
 \section{Cálculo de raices}\label{Ap:raices}
