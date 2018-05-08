@@ -438,7 +438,7 @@ Se empieza con proponer un potencial de onda unidimensional.
 \end{equation}
 Esto corresponde a una partícula sobre la cual está actuando una onda que se mueve en la dirección positiva de x con velocidad de fase $\omega /k$. Si se asume que no hay campo magnético, la ecuación de movimento es de la forma:
 \begin{equation}
-\label{eq:mov_sin_particula}
+\label{eq:mov_sen_particula}
 \frac{dv}{dt}=\frac{qk\Phi_0}{m}sen(kx-\omega t)
 \end{equation}
 Se tiene que en el sistema de referencia de la onda, la energía es una constante de movimiento por lo que resultaria conveniente trabajar sobre este. Para ello se introduce la variable $\psi= kx - \omega t$, que viene siendo la fase de la onda en la posición de la partícula. La razón para introducir esta variable es debido a que al hacer $\psi$ la variable dependiente es equivalente a realizar una transformación al sistema de la onda. Por último, resulta más conveniente trabajar con la variable de fase modificada $\theta = kx -\omega t -\pi$, pues evitara lidiar con algunos signos negativos. De esta manera la primera y segunda derivadas de $\theta$ son:
@@ -450,6 +450,22 @@ Se tiene que en el sistema de referencia de la onda, la energía es una constant
 \label{eq:segunda_deriv_theta}
 \frac{d^2\theta}{dt^2}=k \frac{dv}{dt}
 \end{equation}
+Sustituyendo entonces la ecuación \ref{eq:mov_sen_particula} en la segunda derivada de $\theta$ se obtiene:
+\begin{equation}
+\label{eq:seg_deriv_theta_sustitucion}
+\frac{d^2\theta}{dt^2}=\frac{qk^2\Phi_0}{m}sen(\theta + \pi)
+\end{equation}
+O bien:
+\begin{equation}
+\label{eq:seg_deriv_th_simple}
+\frac{d^2\theta}{dt^2}+\omega_b sen(\theta)=0
+\end{equation}
+Donde se ha definido a $\omega_b = qk^2\Phi_0/m$ como la frecuencia de rebote. Si además se define una variable adimensional $\tau = \omega_b t$ como el tiempo normalizado de rebote, la ecuación \ref{eq:seg_deriv_th_simple} se puede escribir como:
+\begin{equation}
+\label{eq:mov_theta_tau}
+\frac{d^2\theta}{d\tau^2}+sen(\theta)=0
+\end{equation}
+Al estar en el marco de referencia de la onda sería conveniente encontrar una expresión para el hecho de que la energía es una constante de movimiento en el sistema de la onda. Dicha expresón se puede encontrar si se multiplica la ecuación \ref{eq:mov_theta_tau} por el factor integrante $2d\theta/d\tau$
 %y el proceso se complica. Para solventar este problema se hara uso de una expansión de Taylor alrededor de $(z_{min},\lambda)$ es decir:
 %\begin{equation}
 %\label{eq:expansion_ion_electron}
