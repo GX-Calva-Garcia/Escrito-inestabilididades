@@ -441,7 +441,8 @@ Esto corresponde a una partícula sobre la cual está actuando una onda que se m
 \label{eq:mov_sen_particula}
 \frac{dv}{dt}=\frac{qk\Phi_0}{m}sen(kx-\omega t)
 \end{equation}
-Se tiene que en el sistema de referencia de la onda, la energía es una constante de movimiento por lo que resultaria conveniente trabajar sobre este. Para ello se introduce la variable $\psi= kx - \omega t$, que viene siendo la fase de la onda en la posición de la partícula. La razón para introducir esta variable es debido a que al hacer $\psi$ la variable dependiente es equivalente a realizar una transformación al sistema de la onda. Por último, resulta más conveniente trabajar con la variable de fase modificada $\theta = kx -\omega t -\pi$, pues evitara lidiar con algunos signos negativos. De esta manera la primera y segunda derivadas de $\theta$ son:
+Cuyas condiciones iniciales para un tiempo $t=0$ son $x_0$ y $v_0$. En este caso la $v_0$ se refiere a la velocidad de inyección de la partícula.\\
+Se tiene que en el sistema de referencia de la onda, la energía es una constante de movimiento ya que el hamiltoniano es independiente del tiempo en el sistema de referencia de la onda por lo que resultaria conveniente trabajar sobre este. Para ello se introduce la variable $\psi= kx - \omega t$, que viene siendo la fase de la onda en la posición de la partícula. La razón para introducir esta variable es debido a que al hacer $\psi$ la variable dependiente es equivalente a realizar una transformación al sistema de la onda. Por último, resulta más conveniente trabajar con la variable de fase modificada $\theta = kx -\omega t -\pi$, pues evitara lidiar con algunos signos negativos. De esta manera la primera y segunda derivadas de $\theta$ son:
 \begin{equation}
 \label{eq:deriv_theta}
 \frac{d\theta}{dt}=kv -\omega
@@ -465,7 +466,66 @@ Donde se ha definido a $\omega_b = qk^2\Phi_0/m$ como la frecuencia de rebote. S
 \label{eq:mov_theta_tau}
 \frac{d^2\theta}{d\tau^2}+sen(\theta)=0
 \end{equation}
-Al estar en el marco de referencia de la onda sería conveniente encontrar una expresión para el hecho de que la energía es una constante de movimiento en el sistema de la onda. Dicha expresón se puede encontrar si se multiplica la ecuación \ref{eq:mov_theta_tau} por el factor integrante $2d\theta/d\tau$
+Al estar en el marco de referencia de la onda sería conveniente encontrar una expresión para el hecho de que la energía es una constante de movimiento en el sistema de la onda. Dicha expresión se puede encontrar si se multiplica la ecuación \ref{eq:mov_theta_tau} por el factor integrante $2d\theta/d\tau$.
+\begin{equation}
+2\frac{d\theta}{d\tau}\frac{d}{d\tau}\left(\frac{d\theta}{d\tau}\right) + 2\frac{d\theta}{d\tau}sen(\theta)=0
+\end{equation}
+La cual se puede escribir como
+\begin{equation}
+\label{eq:energia_constante_1}
+\frac{d}{d\tau}\left[\left(\frac{d\theta}{d\tau}\right)^2 -2cos(\theta)\right]=0
+\end{equation}
+Que al integrar da:
+\begin{equation}
+\label{eq:energia_const_onda}
+\left(\frac{d\theta}{d\tau}\right)^2 -2cos(\theta)=\eta=cte
+\end{equation}
+La ecuación \ref{eq:energia_const_onda} es la expresión para la conservación de la energía que se estaba buscando salvo un factor constante.\\
+El término $\eta$ se determina a partir de las condiciones iniciales del sistema las cuales son: la velocidad de inyección en el sistema de referencia de la onda
+\begin{equation}
+\label{eq:wave_frame_injection_velocity}
+\left(\frac{d\theta}{d\tau}\right)_{\tau =0}=\frac{1}{\omega_b}\left(\frac{d\theta}{dt}\right)_{t=0}=\frac{1}{\omega_b}(kv_0-\omega)=\alpha
+\end{equation}
+Y la fase de inyección en el sistema de referencia de la onda
+\begin{equation}
+\label{eq:wave_frame_injection_phase}
+\theta_{\tau=0}=kx_0-\pi=\theta_0
+\end{equation}
+Por lo que $\eta$ se puede expresar como
+\begin{equation}
+\label{eq:expresion_eta_wave_frame}
+\eta = \alpha^2 -2cos(\theta_0)
+\end{equation}
+Como ya se habia mencionado, $\eta$,$\alpha^2$ y $-2cos(\theta_0)$ son términos para la energía total, cinética y potencial respectivamente salvo un factor constante en el sistema de la onda.\\
+Al ser términos referentes a la energía, $\alpha^2$ y $-2cos(\theta_0)$, o mejor dicho la relación entre esos términos, dan información acerca del comportamiento de la partícula sujeta al potencial que se definió al principio. En particular se hablará se cuando una partícula está atrapada en alguna región del potencial, lo cual corresponderá al caso cuando la energía cinética de la partícula es menor que la energía potencial, y el caso en el que la partícula no se encuentra atrapada por el potencial, es decir que su energía cinética es mayor que la energía potencial.\\
+De la ecuación \ref{eq:expresion_eta_wave_frame} se tiene entonces
+\begin{itemize}
+\item Si $\alpha^2 < |2cos(\theta_0)| \Rightarrow -2<\eta<2$ y se habla de una partícula atrapada.
+\item Si $\alpha^2 > |2cos(\theta_0)| \Rightarrow \eta>2$ y se habla de una partícula no atrapada y que se me mueve continuamente en una dirección pero cuya velocidad se verá afectada dependiendo de en que parte del potencial se encuentre.
+\end{itemize}
+Por el momento se considera solamente el caso donde la energía cinética de la partícula es mucho mayor que la energía potencial, es decir cuando $\alpha^2 \gg 2$ y se buscará determinar la manera en la que estas partículas no atrapadas intercambian energía con la onda. Cabe mencionar, que dadas las definiciones de $\alpha$, ecuación \ref{eq:wave_frame_injection_velocity}, y de $\omega_b$, se tiene $\alpha^2 \sim \Phi_0^{-1}$ por lo que un valor de $\alpha^2 \gg 2$ implica un valor para $\Phi_0 \ll 2$. Donde $\Phi_0$ viene siendo la amplitud de la onda. Por lo que el caso que se va a estudiar corresponde a ondas con amplitudes pequeñas.\\
+Para poder determinar la energía transferida entre la onda y la partícula se debe poder expresar la energía cinética de la partícula en términos de cantidades del sistema de la onda. Para ello se utiliza la ecuación \ref{eq:deriv_theta} y la definición de $\tau$ para primero despejar la velocidad en el sistema del laboratorio y luego expresarla en términos de cantidades encontradas en el sistema de la onda.
+\begin{equation}
+\label{eq:velocidad_lab_transferencia}
+v =\frac{1}{k}\left(\omega +\frac{d\theta}{dt}\right)= \frac{\omega_b}{k}\left(\frac{\omega}{\omega_b} +\frac{d\theta}{d\tau}\right)
+\end{equation}
+Entonces, la energía cinética se puede expresar como
+\begin{equation}
+\label{eq:energia_cintetica_1}
+W = \frac{1}{2}mv^2=\frac{m\omega_b^2}{2k^2}\left[\frac{\omega^2}{\omega_b^2}+2\frac{\omega}{\omega_b}\frac{d\theta}{d\tau}+\left(\frac{d\theta}{d\tau}\right)^2\right]
+\end{equation}
+El término cuadrático de la derivada se puede sustitur utilizando la ecuación \ref{eq:energia_const_onda} y entonces la energía cinética de la partícula está dada por:
+\begin{equation}
+\label{eq:energia_cinetica_2}
+W = \frac{m\omega_b^2}{2k^2}\left[\frac{\omega^2}{\omega_b^2}+2\frac{\omega}{\omega_b}\frac{d\theta}{d\tau}+\eta+ 2cos(\theta)\right]
+\end{equation}
+El siguiente paso es entonces determinar como va variando $W$ con respecto del tiempo
+\begin{equation}
+\label{eq:derivada_temp_W_1}
+\frac{dW}{dt}=\frac{m\omega_b^3}{k^2}\left[\frac{\omega}{\omega_b}\frac{d^2\theta}{d\tau^2}-2\frac{d\theta}{d\tau}sen(\theta)\right]=-\frac{m\omega_b^3}{k^2}sen(\theta)\left[\frac{\omega}{\omega_b}+\frac{d\theta}{d\tau}\right]
+\end{equation}
+Donde se ha vuelto a utlizar la definición de $\tau$, junto con la regla de la cadena y la ecuación \ref{eq:mov_theta_tau}.\\
+Lo que prosigue es encontrar la dependencia temporal de 
 %y el proceso se complica. Para solventar este problema se hara uso de una expansión de Taylor alrededor de $(z_{min},\lambda)$ es decir:
 %\begin{equation}
 %\label{eq:expansion_ion_electron}
