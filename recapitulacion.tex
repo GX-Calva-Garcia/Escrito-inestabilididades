@@ -433,10 +433,23 @@ z= \frac{1}{2} \left( \lambda + \sqrt{2\alpha_0} + \sqrt{2\alpha_0 -4 \left(-\fr
 \subsection*{Transferencia de energía}
 Se empieza con proponer un potencial de onda unidimensional.
 \begin{equation}
+\label{eq:potencial_sinosoidal}
 \Phi(x,t) = \Phi_0 cos(kx-\omega t)
 \end{equation}
 Esto corresponde a una partícula sobre la cual está actuando una onda que se mueve en la dirección positiva de x con velocidad de fase $\omega /k$. Si se asume que no hay campo magnético, la ecuación de movimento es de la forma:
-
+\begin{equation}
+\label{eq:mov_sin_particula}
+\frac{dv}{dt}=\frac{qk\Phi_0}{m}sen(kx-\omega t)
+\end{equation}
+Se tiene que en el sistema de referencia de la onda, la energía es una constante de movimiento por lo que resultaria conveniente trabajar sobre este. Para ello se introduce la variable $\psi= kx - \omega t$, que viene siendo la fase de la onda en la posición de la partícula. La razón para introducir esta variable es debido a que al hacer $\psi$ la variable dependiente es equivalente a realizar una transformación al sistema de la onda. Por último, resulta más conveniente trabajar con la variable de fase modificada $\theta = kx -\omega t -\pi$, pues evitara lidiar con algunos signos negativos. De esta manera la primera y segunda derivadas de $\theta$ son:
+\begin{equation}
+\label{eq:deriv_theta}
+\frac{d\theta}{dt}=kv -\omega
+\end{equation}
+\begin{equation}
+\label{eq:segunda_deriv_theta}
+\frac{d^2\theta}{dt^2}=k \frac{dv}{dt}
+\end{equation}
 %y el proceso se complica. Para solventar este problema se hara uso de una expansión de Taylor alrededor de $(z_{min},\lambda)$ es decir:
 %\begin{equation}
 %\label{eq:expansion_ion_electron}
