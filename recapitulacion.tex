@@ -323,7 +323,7 @@ Que resulta ser
 \end{equation}
 %\subsection*{Caso con $\omega_{p\sigma}$ diferentes y una especie estacionaria.}
 %
-\subsection*{Caso D+e - D+e (estacionario e incidente)}
+\subsection*{Caso para un plasma estacionario y uno incidente (D+e)}
 Este caso consiste en núcleos de deuterio y electrones moviendose a una velocidad $\overrightarrow{\textbf{u}}_{\sigma 0}$ incidiendo con un plasma estacionario compuesto de deuterio y electrones. Se trata entonces de un caso de cuatro especies. Cuya relación de dispersión normalizada es de la forma:
 \begin{equation}
 \label{eq:disp_d-d}
@@ -571,6 +571,71 @@ De está manera se puede escribir una expresión de la dependencia temporal de $
 \label{eq:sen_approximation_with_correction}
 sen(\theta(\tau))=sen[\theta_0 + \alpha\tau + \Delta(\tau)]
 \end{equation}
+Ahora bien, si se hace la restricción para el caso donde los tiempos son lo suficientemente pequeños tales que $\tau \ll |\alpha|$, entonces la corrección de fase $\Delta(\tau)$ será pequeña. La restricción a este caso corresponde a 
+\begin{equation}
+\label{eq:restriccion_timepos_transferencia_ener}
+(\omega_b t)^2 \ll |kv_0-\omega|t
+\end{equation}
+Que es el caso donde el número de crestas de onda por los que la partícula pasa son mayores que el número de rebotes.\\
+Haciendo uso de $\Delta(\tau) \ll 1$ la ecuación \ref{eq:sen_approximation_with_correction} se puede expandir de la siguiente manera.
+\begin{equation}
+\label{eq:sen_correcion_expansion}
+sen(\theta(\tau))=sen(\theta_0 + \alpha\tau)cos(\Delta(\tau))+sen(\Delta(\tau))cos(\theta_0 + \alpha\tau)\simeq sen(\theta_0 +\alpha\tau)+\Delta(\tau)cos(\theta_0 + \alpha\tau)
+\end{equation}
+Sustituyendo en la ecuación \ref{eq:deriv_w_approximation_lowest} se tiene:
+\begin{equation}
+\label{eq:deriv_w_t_correction_approximation}
+\frac{dW}{dt}= -\frac{m\omega_b^2v_0}{m}[sen(\theta_0 +\alpha\tau)+\Delta(\tau)cos(\theta_0 + \alpha\tau)]
+\end{equation}
+La cual es una expresión para la transferencia de energía entre la partícula y la onda dependiente no solo del tiempo pero también de la posición inicial. Sin embargo, esta expresión solo describe a una partícula. Si se tuvieran por ejemplo un conjunto de partículas cuyas posiciones iniciales son equidistantes las unas de las otras sería necesario promediar sobre esas posiciones iniciales. Dicha operación da 
+\begin{equation}
+\label{eq:promedio_w_primer}
+\left\langle \frac{dW}{dt}\right\rangle= -\frac{m\omega_b^2v_0}{k}\langle\Delta(\tau)cos(\theta_0 + \alpha\tau)\rangle
+\end{equation}
+Debido a la definición de $\Delta(\tau)$ se tiene un producto de funciones triginométricas dentro del promedio. Para simplificar la expresión se hace uso de la ssiguientes identidades
+\begin{equation}
+\langle sen(\theta_0 +\alpha\tau)cos(\theta_0 +\alpha\tau)\rangle=0
+\end{equation}
+\begin{equation}
+\langle sen(\theta_0)cos(\theta_0 +\alpha\tau)\rangle =-\frac{1}{2}sen(\alpha\tau)
+\end{equation}
+\begin{equation}
+\langle cos(\theta_0)cos(\theta_0 +\alpha\tau)\rangle =\frac{1}{2}cos(\alpha\tau)
+\end{equation}
+Por lo que la ecuación \ref{eq:promedio_w_primer} se reescribe como:
+\begin{equation}
+\label{eq:promedio_w_segunda}
+\left\langle \frac{dW}{dt}\right\rangle= -\frac{m\omega_b^2v_0}{k}\left(\frac{sen(\alpha\tau)}{\alpha^2}-\frac{\tau}{\alpha}cos(\alpha\tau)\right)= \frac{m\omega_b^2v_0}{2k}\frac{d}{d\alpha}\left(\frac{sen(\alpha\tau)}{\alpha}\right)
+\end{equation}
+Puede que la razón de reescribir el último término como una derivada no resulte del todo claro. Pero resulta que esa es una forma conveniente de escribir la expresión, pues si se recuerda la definición de una función delta.
+\begin{equation}
+\label{eq:delta_function_definition}
+\delta (z) =\lim_{N\to\infty}\frac{sen(Nz)}{\pi z}
+\end{equation}
+Por lo tanto para $|\alpha\tau| \gg 1$ se tiene
+\begin{equation}
+\label{eq:promedio_w_tercera}
+\left\langle \frac{dW}{dt}\right\rangle=\frac{\pi m\omega_b^2v_0}{2k}\frac{d}{d\alpha}\delta(\alpha)
+\end{equation}
+Esta función delta tiene una pendiente infinitamente postiva a la derecha de $\alpha=0$ e infinitamente negativa a la izquierda de $\alpha=0$, por lo que su derivada determina el signo del promedio de la energía cinética. En otras palabras, el promedio es positivo para partículas que se mueven ligeramente más lento que la onda y negativo para partículas que se mueven ligeramente más despacio que la onda. Se tiene entonces que si el número de partículas más rápidas que la onda difiere con el número de partículas más lentas entonces habrá una transferencia neta de energía ya sea de las partículas a la onda o viceversa.\\
+Por último, consideramos que las partículas tienen una función de distribución unidimensional $f(v_0)$ por lo que calcular el promedio total de la energía cinética de todas las partículas conlleva resolver:
+\begin{align}
+\left\langle \frac{dW_{total}}{dt}\right\rangle &=  \frac{\pi m\omega_b^3}{2k^2}\int f(v_0)v_0\frac{d}{d\alpha}\left[\delta\left(\frac{kv_0-\omega}{\omega_b}\right)\right]dv_0\\
+&=\frac{\pi m\omega_b^4}{2k^3}\int f(v_0)v_0\frac{d}{d\alpha}\delta \left(v_0 -\frac{\omega}{k}\right)dv_0\\
+&=-\frac{\pi m\omega_b^4}{2k^3}\left[\frac{d}{dv_0}f(v_0)v_0\right]_{v_0=\omega /k}
+\end{align}
+Si ahora se supone que $f(v_0)$ tiene forma maxweliana es decir $f(v_0)\sim exp(-v_0^2/v_t^2)$ donde $v_T$ es la velocidad térmica ya demaás la velocidad de fase $\omega /k$ es mucho mayor que la velocidad térmica, se tiene
+\begin{align}
+\left[\frac{d}{dv_0}f(v_0)v_0\right]_{v_0=\omega /k} &= \left[v_0 \frac{d}{dv_0}(f(v_0))+f(v_0)\right]_{v_0=\omega /k}\\
+&=\left[-2 \frac{v_0^2}{v_T^2}(f(v_0))+f(v_0)\right]_{v_0=\omega /k}
+\end{align}
+Queda entonces que el término de la derivada en $v_0$ es el término dominante por que el promedio se reescribe como:
+\begin{equation}
+\label{eq:promedio_w_total_f_maxweliana}
+\left\langle \frac{dW_{total}}{dt}\right\rangle=-\frac{\pi m}{2k^3}\left(\frac{qk\Phi_0}{m}\right)^2\left[\frac{d}{dv_0}(f(v_0))\right]_{v_0=\omega /k}
+\end{equation}
+La interpretación de la ecuación \ref{eq:promedio_w_total_f_maxweliana} es que si la pendiente de la función de distribución es negativa cuando $v\sim \omega /k$ entonces las partículas ganan energía la cual proviene de la onda, en cambio si la pendiente es positiva son las partículas las que pierden energía.\\
+Queda entonces que para partículas no atrapadas la dirección en la que se transfiere la energía depende de la velocidad inicial de las partículas , resultando en que si hay más partículas cuya velocidad sea mayor a la velocidad de fase que partículas más lentas que la velocidad de fase entonces habrá uns transferencia neta de energía promedio de las partículas a la onda.
 %y el proceso se complica. Para solventar este problema se hara uso de una expansión de Taylor alrededor de $(z_{min},\lambda)$ es decir:
 %\begin{equation}
 %\label{eq:expansion_ion_electron}
