@@ -459,9 +459,9 @@ Sustituyendo entonces la ecuación \ref{eq:mov_sen_particula} en la segunda deri
 O bien:
 \begin{equation}
 \label{eq:seg_deriv_th_simple}
-\frac{d^2\theta}{dt^2}+\omega_b sen(\theta)=0
+\frac{d^2\theta}{dt^2}+\omega_b^2 sen(\theta)=0
 \end{equation}
-Donde se ha definido a $\omega_b = qk^2\Phi_0/m$ como la frecuencia de rebote. Si además se define una variable adimensional $\tau = \omega_b t$ como el tiempo normalizado de rebote, la ecuación \ref{eq:seg_deriv_th_simple} se puede escribir como:
+Donde se ha definido a $\omega_b^2 = qk^2\Phi_0/m$ como la frecuencia de rebote. Si además se define una variable adimensional $\tau = \omega_b t$ como el tiempo normalizado de rebote, la ecuación \ref{eq:seg_deriv_th_simple} se puede escribir como:
 \begin{equation}
 \label{eq:mov_theta_tau}
 \frac{d^2\theta}{d\tau^2}+sen(\theta)=0
@@ -525,7 +525,52 @@ El siguiente paso es entonces determinar como va variando $W$ con respecto del t
 \frac{dW}{dt}=\frac{m\omega_b^3}{k^2}\left[\frac{\omega}{\omega_b}\frac{d^2\theta}{d\tau^2}-2\frac{d\theta}{d\tau}sen(\theta)\right]=-\frac{m\omega_b^3}{k^2}sen(\theta)\left[\frac{\omega}{\omega_b}+\frac{d\theta}{d\tau}\right]
 \end{equation}
 Donde se ha vuelto a utlizar la definición de $\tau$, junto con la regla de la cadena y la ecuación \ref{eq:mov_theta_tau}.\\
-Lo que prosigue es encontrar la dependencia temporal de 
+Lo que prosigue es encontrar la dependencia temporal de los términos $sen(\theta)$ y $d\theta /d\tau$. Se empieza entonces por despejar la derivada de la ecuación \ref{eq:energia_const_onda} y sustituyendo \ref{eq:expresion_eta_wave_frame} en ella.
+\begin{equation}
+\label{eq:despeje_deriv_theta_tau}
+\frac{d\theta}{d\tau}=\pm \sqrt{\eta + 2cos(\theta)}=\pm \sqrt{\alpha^2+2cos(\theta)-2cos(\theta_0)}=\alpha \left(1 + \frac{2(cos(\theta)-cos(\theta_0))}{\alpha^2}\right)^{1/2}
+\end{equation}
+Donde al usar el hecho de que se está estudiando el caso de amplitudes pequeñas $\alpha \gg 1$ se llega a la aproximación.
+\begin{equation}
+\label{eq:aproximation_deriv_theta_tau}
+\frac{d\theta}{d\tau}\simeq \alpha + \frac{cos(\theta)-cos(\theta_0)}{\alpha}
+\end{equation}
+De la ecuación \ref{eq:aproximation_deriv_theta_tau} el primer término corresponde a la velocidad de la partícula cuando no está sufriendo perturbación alguna, mientras que el segundo término es la perturbación debida a una onda de amplitud pequeña.\\
+Lo que prosigue es hacer una aproximación mediante la cual se pueda encontrar una expresión para $\theta(\tau)$. Se empieza por el orden más bajo donde la velocidad de la partícula es entonces:
+\begin{equation}
+\label{eq:deriv_theta_tau_approximation_lowest}
+\frac{d\theta}{d\tau}=\alpha
+\end{equation}
+Sustituyendo esta velocidad en la ecuación \ref{eq:derivada_temp_W_1} se obtiene:
+\begin{equation}
+\label{eq:deriv_w_approximation_lowest}
+\frac{dW}{dt}=-\frac{m\omega_b^3}{k^2}sen(\theta)\left[\frac{\omega}{\omega_b}+\frac{kv_0-\omega}{\omega_b}\right]=-\frac{m\omega_b^2v_0}{k}sen(\theta)
+\end{equation}
+Integrando la ecuación \ref{eq:deriv_theta_tau_approximation_lowest} se obtiene:
+\begin{equation}
+\label{eq:theta_tau_lowest_approximation}
+\theta(\tau)=\theta_0 +\alpha \tau
+\end{equation}
+La ecuación \ref{eq:theta_tau_lowest_approximation} es la solución para la órbita no perturbada. Si se sustituye en la ecuación \ref{eq:aproximation_deriv_theta_tau} se tiene entonces
+\begin{equation}
+\label{eq:sust_deriv_theta_tau_approximation}
+\frac{d\theta}{d\tau}=\alpha \frac{cos(\theta_0+\alpha \tau)-cos(\theta_0)}{\alpha}
+\end{equation}
+Que al integrarse da la solución no perturbada más la corrección de fase
+\begin{equation}
+\label{eq:theta_tau_first_correction}
+\theta(\tau)=\theta_0 +\alpha\tau +\frac{sen(\theta_0 + \alpha\tau)-sen(\theta_0)}{\alpha^2}-\frac{\tau}{\alpha}cos(\theta_0)
+\end{equation}
+Se puede definir entonces un término, dígase $\Delta$, como la corrección de fase de la órbita perturbada de la siguiente manera.
+\begin{equation}
+\label{eq:perturbed_orbit_correction_phase}
+\Delta (\tau)=\frac{sen(\theta_0 + \alpha\tau)-sen(\theta_0)}{\alpha^2}-\frac{\tau}{\alpha}cos(\theta_0)
+\end{equation}
+De está manera se puede escribir una expresión de la dependencia temporal de $sen(\theta)$.
+\begin{equation}
+\label{eq:sen_approximation_with_correction}
+sen(\theta(\tau))=sen[\theta_0 + \alpha\tau + \Delta(\tau)]
+\end{equation}
 %y el proceso se complica. Para solventar este problema se hara uso de una expansión de Taylor alrededor de $(z_{min},\lambda)$ es decir:
 %\begin{equation}
 %\label{eq:expansion_ion_electron}
