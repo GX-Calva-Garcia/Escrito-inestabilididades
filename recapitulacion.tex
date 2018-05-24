@@ -12,6 +12,7 @@
 \usepackage{subcaption}
 \usepackage[margin=2cm]{geometry}
 \usepackage{multirow}
+\usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
 %\usepackage{breqn}
 \graphicspath{ {figuras/} }
@@ -636,6 +637,34 @@ Queda entonces que el término de la derivada en $v_0$ es el término dominante 
 \end{equation}
 La interpretación de la ecuación \ref{eq:promedio_w_total_f_maxweliana} es que si la pendiente de la función de distribución es negativa cuando $v\sim \omega /k$ entonces las partículas ganan energía la cual proviene de la onda, en cambio si la pendiente es positiva son las partículas las que pierden energía.\\
 Queda entonces que para partículas no atrapadas la dirección en la que se transfiere la energía depende de la velocidad inicial de las partículas , resultando en que si hay más partículas cuya velocidad sea mayor a la velocidad de fase que partículas más lentas que la velocidad de fase entonces habrá uns transferencia neta de energía promedio de las partículas a la onda.
+\subsection*{Energía del campo eléctrico}
+Considerese un plasma homogéneo, sin campo y con iones inmóviles (o equivalentemente $m_i \rightarrow \infty$) cuyo movimiento puede considerarse en una dimensión con dirección arbitraria y velocidad constante, sea por ejemplo esa dirección $z$, se tiene entonces que su relación de dispersión es:
+\begin{equation}
+\label{eq:dispersion_1d_energia}
+(\omega - ku_{0e})^2 = \omega_{pe}^2
+\end{equation}
+Si se realiza una transformación de coordenadas de la forma $z \rightarrow z'-u_0t'$ y $t' \rightarrow t$ se tiene que la frecuencia y el número de onda cambian a $\omega \rightarrow \omega' + k'u_0$ y $k \rightarrow k'$, por lo que en el nuevo marco de referencia $(\omega')^2=\omega_{pe}^2$. La anterior transformación se refiere al marco en donde los electrones son estacionarios y se puede ver entonces que en ese marco la perturbación se origina en la frecuencia del plasma, que es la oscilación del plasma en un plasma estacionario. Se tiene etonces que las oscilaciones de plasma de un plasma que se está desplazando en una dimensión son las oscilaciones naturales de un plasma que es transportado a la velocidad de desplazamiento.\\
+La ecuación \ref{eq:dispersion_1d_energia} se puede ver como la ecuación de una recta $\omega(k)$ con pendiente $u_0$. Estas oscilaciones son ondas cuya velocidad de grupo es igual a la velocidad de desplazamiento ($\partial \omega /\partial k=u_0$), lo que quiere decir que transportan energía. Las ondas que se propagan con una velocidad mayor a la velocidad promedio de los electrones se les llama ondas \textcolor{red}{espacio-carga} rápidas, y de la misma manera se les denota como ondas \textcolor{red}{espacio-carga} lentas a aquellas cuya velocidad de propagación es menor a la velocidad promedio de los electrones. Estas últimas son ondas de energía negativa.\\
+Energía negativa se refiere a si un sistema está en un estado de energía $W_0$, entonces la energía del sistema $W$ es menor que $W_0$ cuando una onda con energía $W_1$ es liberada. Queda entonces por aclarar de donde surge la energía negativa en una onda.\\
+La energía de una onda está compuesta por su energía electromagnética y su energía de polarización ($W_{onda}=(E^2 +B^2)/8\pi + W_p$). Si $W_p$ es negativa la energía de la onda también puede ser negativa.\\
+Para ilustrar una $W_p$ negativa considerese una pequeña perturbación en la velocidad de un grupo de electrones de la forma:
+\begin{equation}
+\overrightarrow{\textbf{u}_1}=-u_1\widehat{\textbf{z}}
+\end{equation}
+Si los electrones se están desplazando a una velocidad $\overrightarrow{\textbf{u}_0}=u_0\widehat{\textbf{z}}$ el cambio de energía debido a la perturbación sería negativa pues:
+\begin{equation}
+\Delta W \equiv W_p = \frac{1}{2}m_e(u_0-u_1)^2-\frac{1}{2}m_eu_0^2\approx-m_eu_0u_1
+\end{equation}
+Donde la energía negativa surgio del hecho que los electrones tenían una velocidad $u_0$. La existencia de ondas con energía negativa en general implica un desplazamiento o un haz en el plasma.\\
+Se podría conseguir una expresión para la energía de la onda desde las ecuaciones de fluidos pues relacionan $\overrightarrow{\textbf{u}_1}$ con $\overrightarrow{\textbf{E}_1}$. Sin embargo lo que prosigue es encontrar una expresión para el promedio temporal de la energía en términos de la constante dieléctrica.\\
+Partiendo de la densidad de flujo de la energía:
+\begin{equation}
+\overrightarrow{\textbf{S}}= \frac{c}{4 \pi}\overrightarrow{\textbf{E}}\times \overrightarrow{\textbf{H}}
+\end{equation}
+Se tiene que la tasa de cambio de energía en unidades de volumen está dado por $\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}$ la cual al usar las ecuaciones de Maxwell se puede escribir de la forma:
+\begin{equation}
+-\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}= \frac{1}{4 \pi}\left(\overrightarrow{\textbf{E}}\cdot \frac{\partial \overrightarrow{\textbf{D}}}{\partial t} + \overrightarrow{\textbf{H}}\cdot \frac{\partial \overrightarrow{\textbf{B}}}{\partial t}\right)
+\end{equation}
 %y el proceso se complica. Para solventar este problema se hara uso de una expansión de Taylor alrededor de $(z_{min},\lambda)$ es decir:
 %\begin{equation}
 %\label{eq:expansion_ion_electron}
