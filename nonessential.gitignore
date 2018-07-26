@@ -1,0 +1,9 @@
+#Basically the side products from compiling
+*.aux
+*.bbl
+*.blg
+*.lof
+*.log
+*.out
+*.synctex.gz
+*.toc
