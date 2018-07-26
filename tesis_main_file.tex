@@ -1,0 +1,67 @@
+\documentclass[12pt,letterpaper]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{textgreek}
+\usepackage{amssymb}
+\usepackage{supertabular}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{subcaption}
+%\usepackage{kpfonts}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{ {figuras/} }
+\title{
+	{Inestabilidades electrostáticas debidas a haces de partículas.}\\
+	{\large UNAM}\\
+	{\includegraphics{Escudo-UNAM-transparente.png}}
+}
+\author{Guillermo Xchell Calva García}
+\date{}
+
+
+\pagenumbering{roman}
+
+\begin{document}
+\maketitle
+%\addcontentsline{toc}{chapter}{Resumen}
+%\chapter*{Resumen}
+%Abstract goes here
+%
+%\chapter*{Dedication}
+%To mum and dad
+%
+%\chapter*{Declaration}
+%I declare that..
+%
+%\chapter*{Agradecimientos}
+%I want to thank...
+
+\tableofcontents
+\listoffigures
+\pagenumbering{arabic}
+\fontfamily{ptm}\selectfont
+\chapter{Interacción entre partículas y ondas}
+\input{Capitulo1/cap1.tex}
+\chapter{Inestabilidad de dos corrientes}
+\input{Capitulo2/cap2.tex}
+%\pagenumbering{arabic}
+
+\appendix
+%\numberwithin{equation}{section}
+\chapter{Cálculo de raices}
+\input{Apendice1/ap1.tex}\label{Ap:raices}
+
+\cleardoublepage\phantomsection
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliographystyle{unsrt}
+\bibliography{referencias}
+
+
+\end{document}

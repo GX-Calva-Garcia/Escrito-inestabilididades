@@ -1,0 +1,241 @@
+\section{Introducción}
+Este capítulo habla de las interacciones entre un conjunto de partículas y una onda. En partícular, el intercambio de energía que ocurre durante la interacción.
+\section{Transferencia de energía}
+Se empieza con proponer un potencial de onda unidimensional.
+\begin{equation}
+\label{eq:potencial_sinosoidal}
+\Phi(x,t) = \Phi_0 cos(kx-\omega t)
+\end{equation}
+Esto corresponde a una partícula sobre la cual está actuando una onda que se mueve en la dirección positiva de x con velocidad de fase $\omega /k$. Si se asume que no hay campo magnético, la ecuación de movimento es de la forma:
+\begin{equation}
+\label{eq:mov_sen_particula}
+\frac{dv}{dt}=\frac{qk\Phi_0}{m}sen(kx-\omega t)
+\end{equation}
+Cuyas condiciones iniciales para un tiempo $t=0$ son $x_0$ y $v_0$. En este caso la $v_0$ se refiere a la velocidad de inyección de la partícula.\\
+Se tiene que en el sistema de referencia de la onda, la energía es una constante de movimiento ya que el hamiltoniano es independiente del tiempo en el sistema de referencia de la onda por lo que resultaria conveniente trabajar sobre este. Para ello se introduce la variable $\psi= kx - \omega t$, que viene siendo la fase de la onda en la posición de la partícula. La razón para introducir esta variable es debido a que al hacer $\psi$ la variable dependiente es equivalente a realizar una transformación al sistema de la onda. Por último, resulta más conveniente trabajar con la variable de fase modificada $\theta = kx -\omega t -\pi$, pues evitara lidiar con algunos signos negativos. De esta manera la primera y segunda derivadas de $\theta$ son:
+\begin{equation}
+\label{eq:deriv_theta}
+\frac{d\theta}{dt}=kv -\omega
+\end{equation}
+\begin{equation}
+\label{eq:segunda_deriv_theta}
+\frac{d^2\theta}{dt^2}=k \frac{dv}{dt}
+\end{equation}
+Sustituyendo entonces la ecuación \ref{eq:mov_sen_particula} en la segunda derivada de $\theta$ se obtiene:
+\begin{equation}
+\label{eq:seg_deriv_theta_sustitucion}
+\frac{d^2\theta}{dt^2}=\frac{qk^2\Phi_0}{m}sen(\theta + \pi)
+\end{equation}
+O bien:
+\begin{equation}
+\label{eq:seg_deriv_th_simple}
+\frac{d^2\theta}{dt^2}+\omega_b^2 sen(\theta)=0
+\end{equation}
+Donde se ha definido a $\omega_b^2 = qk^2\Phi_0/m$ como la frecuencia de rebote. Si además se define una variable adimensional $\tau = \omega_b t$ como el tiempo normalizado de rebote, la ecuación \ref{eq:seg_deriv_th_simple} se puede escribir como:
+\begin{equation}
+\label{eq:mov_theta_tau}
+\frac{d^2\theta}{d\tau^2}+sen(\theta)=0
+\end{equation}
+Al estar en el marco de referencia de la onda sería conveniente encontrar una expresión para el hecho de que la energía es una constante de movimiento en el sistema de la onda. Dicha expresión se puede encontrar si se multiplica la ecuación \ref{eq:mov_theta_tau} por el factor integrante $2d\theta/d\tau$.
+\begin{equation}
+2\frac{d\theta}{d\tau}\frac{d}{d\tau}\left(\frac{d\theta}{d\tau}\right) + 2\frac{d\theta}{d\tau}sen(\theta)=0
+\end{equation}
+La cual se puede escribir como
+\begin{equation}
+\label{eq:energia_constante_1}
+\frac{d}{d\tau}\left[\left(\frac{d\theta}{d\tau}\right)^2 -2cos(\theta)\right]=0
+\end{equation}
+Que al integrar da:
+\begin{equation}
+\label{eq:energia_const_onda}
+\left(\frac{d\theta}{d\tau}\right)^2 -2cos(\theta)=\eta=cte
+\end{equation}
+La ecuación \ref{eq:energia_const_onda} es la expresión para la conservación de la energía que se estaba buscando salvo un factor constante.\\
+El término $\eta$ se determina a partir de las condiciones iniciales del sistema las cuales son: la velocidad de inyección en el sistema de referencia de la onda
+\begin{equation}
+\label{eq:wave_frame_injection_velocity}
+\left(\frac{d\theta}{d\tau}\right)_{\tau =0}=\frac{1}{\omega_b}\left(\frac{d\theta}{dt}\right)_{t=0}=\frac{1}{\omega_b}(kv_0-\omega)=\alpha
+\end{equation}
+Y la fase de inyección en el sistema de referencia de la onda
+\begin{equation}
+\label{eq:wave_frame_injection_phase}
+\theta_{\tau=0}=kx_0-\pi=\theta_0
+\end{equation}
+Por lo que $\eta$ se puede expresar como
+\begin{equation}
+\label{eq:expresion_eta_wave_frame}
+\eta = \alpha^2 -2cos(\theta_0)
+\end{equation}
+Como ya se habia mencionado, $\eta$,$\alpha^2$ y $-2cos(\theta_0)$ son términos para la energía total, cinética y potencial respectivamente salvo un factor constante en el sistema de la onda.\\
+Al ser términos referentes a la energía, $\alpha^2$ y $-2cos(\theta_0)$, o mejor dicho la relación entre esos términos, dan información acerca del comportamiento de la partícula sujeta al potencial que se definió al principio. En particular se hablará se cuando una partícula está atrapada en alguna región del potencial, lo cual corresponderá al caso cuando la energía cinética de la partícula es menor que la energía potencial, y el caso en el que la partícula no se encuentra atrapada por el potencial, es decir que su energía cinética es mayor que la energía potencial.\\
+De la ecuación \ref{eq:expresion_eta_wave_frame} se tiene entonces
+\begin{itemize}
+\item Si $\alpha^2 < |2cos(\theta_0)| \Rightarrow -2<\eta<2$ y se habla de una partícula atrapada.
+\item Si $\alpha^2 > |2cos(\theta_0)| \Rightarrow \eta>2$ y se habla de una partícula no atrapada y que se me mueve continuamente en una dirección pero cuya velocidad se verá afectada dependiendo de en que parte del potencial se encuentre.
+\end{itemize}
+Por el momento se considera solamente el caso donde la energía cinética de la partícula es mucho mayor que la energía potencial, es decir cuando $\alpha^2 \gg 2$ y se buscará determinar la manera en la que estas partículas no atrapadas intercambian energía con la onda. Cabe mencionar, que dadas las definiciones de $\alpha$, ecuación \ref{eq:wave_frame_injection_velocity}, y de $\omega_b$, se tiene $\alpha^2 \sim \Phi_0^{-1}$ por lo que un valor de $\alpha^2 \gg 2$ implica un valor para $\Phi_0 \ll 2$. Donde $\Phi_0$ viene siendo la amplitud de la onda. Por lo que el caso que se va a estudiar corresponde a ondas con amplitudes pequeñas.\\
+Para poder determinar la energía transferida entre la onda y la partícula se debe poder expresar la energía cinética de la partícula en términos de cantidades del sistema de la onda. Para ello se utiliza la ecuación \ref{eq:deriv_theta} y la definición de $\tau$ para primero despejar la velocidad en el sistema del laboratorio y luego expresarla en términos de cantidades encontradas en el sistema de la onda.
+\begin{equation}
+\label{eq:velocidad_lab_transferencia}
+v =\frac{1}{k}\left(\omega +\frac{d\theta}{dt}\right)= \frac{\omega_b}{k}\left(\frac{\omega}{\omega_b} +\frac{d\theta}{d\tau}\right)
+\end{equation}
+Entonces, la energía cinética se puede expresar como
+\begin{equation}
+\label{eq:energia_cintetica_1}
+W = \frac{1}{2}mv^2=\frac{m\omega_b^2}{2k^2}\left[\frac{\omega^2}{\omega_b^2}+2\frac{\omega}{\omega_b}\frac{d\theta}{d\tau}+\left(\frac{d\theta}{d\tau}\right)^2\right]
+\end{equation}
+El término cuadrático de la derivada se puede sustitur utilizando la ecuación \ref{eq:energia_const_onda} y entonces la energía cinética de la partícula está dada por:
+\begin{equation}
+\label{eq:energia_cinetica_2}
+W = \frac{m\omega_b^2}{2k^2}\left[\frac{\omega^2}{\omega_b^2}+2\frac{\omega}{\omega_b}\frac{d\theta}{d\tau}+\eta+ 2cos(\theta)\right]
+\end{equation}
+El siguiente paso es entonces determinar como va variando $W$ con respecto del tiempo
+\begin{equation}
+\label{eq:derivada_temp_W_1}
+\frac{dW}{dt}=\frac{m\omega_b^3}{k^2}\left[\frac{\omega}{\omega_b}\frac{d^2\theta}{d\tau^2}-2\frac{d\theta}{d\tau}sen(\theta)\right]=-\frac{m\omega_b^3}{k^2}sen(\theta)\left[\frac{\omega}{\omega_b}+\frac{d\theta}{d\tau}\right]
+\end{equation}
+Donde se ha vuelto a utlizar la definición de $\tau$, junto con la regla de la cadena y la ecuación \ref{eq:mov_theta_tau}.\\
+Lo que prosigue es encontrar la dependencia temporal de los términos $sen(\theta)$ y $d\theta /d\tau$. Se empieza entonces por despejar la derivada de la ecuación \ref{eq:energia_const_onda} y sustituyendo \ref{eq:expresion_eta_wave_frame} en ella.
+\begin{equation}
+\label{eq:despeje_deriv_theta_tau}
+\frac{d\theta}{d\tau}=\pm \sqrt{\eta + 2cos(\theta)}=\pm \sqrt{\alpha^2+2cos(\theta)-2cos(\theta_0)}=\alpha \left(1 + \frac{2(cos(\theta)-cos(\theta_0))}{\alpha^2}\right)^{1/2}
+\end{equation}
+Donde al usar el hecho de que se está estudiando el caso de amplitudes pequeñas $\alpha \gg 1$ se llega a la aproximación.
+\begin{equation}
+\label{eq:aproximation_deriv_theta_tau}
+\frac{d\theta}{d\tau}\simeq \alpha + \frac{cos(\theta)-cos(\theta_0)}{\alpha}
+\end{equation}
+De la ecuación \ref{eq:aproximation_deriv_theta_tau} el primer término corresponde a la velocidad de la partícula cuando no está sufriendo perturbación alguna, mientras que el segundo término es la perturbación debida a una onda de amplitud pequeña.\\
+Lo que prosigue es hacer una aproximación mediante la cual se pueda encontrar una expresión para $\theta(\tau)$. Se empieza por el orden más bajo donde la velocidad de la partícula es entonces:
+\begin{equation}
+\label{eq:deriv_theta_tau_approximation_lowest}
+\frac{d\theta}{d\tau}=\alpha
+\end{equation}
+Sustituyendo esta velocidad en la ecuación \ref{eq:derivada_temp_W_1} se obtiene:
+\begin{equation}
+\label{eq:deriv_w_approximation_lowest}
+\frac{dW}{dt}=-\frac{m\omega_b^3}{k^2}sen(\theta)\left[\frac{\omega}{\omega_b}+\frac{kv_0-\omega}{\omega_b}\right]=-\frac{m\omega_b^2v_0}{k}sen(\theta)
+\end{equation}
+Integrando la ecuación \ref{eq:deriv_theta_tau_approximation_lowest} se obtiene:
+\begin{equation}
+\label{eq:theta_tau_lowest_approximation}
+\theta(\tau)=\theta_0 +\alpha \tau
+\end{equation}
+La ecuación \ref{eq:theta_tau_lowest_approximation} es la solución para la órbita no perturbada. Si se sustituye en la ecuación \ref{eq:aproximation_deriv_theta_tau} se tiene entonces
+\begin{equation}
+\label{eq:sust_deriv_theta_tau_approximation}
+\frac{d\theta}{d\tau}=\alpha \frac{cos(\theta_0+\alpha \tau)-cos(\theta_0)}{\alpha}
+\end{equation}
+Que al integrarse da la solución no perturbada más la corrección de fase
+\begin{equation}
+\label{eq:theta_tau_first_correction}
+\theta(\tau)=\theta_0 +\alpha\tau +\frac{sen(\theta_0 + \alpha\tau)-sen(\theta_0)}{\alpha^2}-\frac{\tau}{\alpha}cos(\theta_0)
+\end{equation}
+Se puede definir entonces un término, dígase $\Delta$, como la corrección de fase de la órbita perturbada de la siguiente manera.
+\begin{equation}
+\label{eq:perturbed_orbit_correction_phase}
+\Delta (\tau)=\frac{sen(\theta_0 + \alpha\tau)-sen(\theta_0)}{\alpha^2}-\frac{\tau}{\alpha}cos(\theta_0)
+\end{equation}
+De está manera se puede escribir una expresión de la dependencia temporal de $sen(\theta)$.
+\begin{equation}
+\label{eq:sen_approximation_with_correction}
+sen(\theta(\tau))=sen[\theta_0 + \alpha\tau + \Delta(\tau)]
+\end{equation}
+Ahora bien, si se hace la restricción para el caso donde los tiempos son lo suficientemente pequeños tales que $\tau \ll |\alpha|$, entonces la corrección de fase $\Delta(\tau)$ será pequeña. La restricción a este caso corresponde a 
+\begin{equation}
+\label{eq:restriccion_timepos_transferencia_ener}
+(\omega_b t)^2 \ll |kv_0-\omega|t
+\end{equation}
+Que es el caso donde el número de crestas de onda por los que la partícula pasa son mayores que el número de rebotes.\\
+Haciendo uso de $\Delta(\tau) \ll 1$ la ecuación \ref{eq:sen_approximation_with_correction} se puede expandir de la siguiente manera.
+\begin{equation}
+\label{eq:sen_correcion_expansion}
+sen(\theta(\tau))=sen(\theta_0 + \alpha\tau)cos(\Delta(\tau))+sen(\Delta(\tau))cos(\theta_0 + \alpha\tau)\simeq sen(\theta_0 +\alpha\tau)+\Delta(\tau)cos(\theta_0 + \alpha\tau)
+\end{equation}
+Sustituyendo en la ecuación \ref{eq:deriv_w_approximation_lowest} se tiene:
+\begin{equation}
+\label{eq:deriv_w_t_correction_approximation}
+\frac{dW}{dt}= -\frac{m\omega_b^2v_0}{m}[sen(\theta_0 +\alpha\tau)+\Delta(\tau)cos(\theta_0 + \alpha\tau)]
+\end{equation}
+La cual es una expresión para la transferencia de energía entre la partícula y la onda dependiente no solo del tiempo pero también de la posición inicial. Sin embargo, esta expresión solo describe a una partícula. Si se tuvieran por ejemplo un conjunto de partículas cuyas posiciones iniciales son equidistantes las unas de las otras sería necesario promediar sobre esas posiciones iniciales. Dicha operación da 
+\begin{equation}
+\label{eq:promedio_w_primer}
+\left\langle \frac{dW}{dt}\right\rangle= -\frac{m\omega_b^2v_0}{k}\langle\Delta(\tau)cos(\theta_0 + \alpha\tau)\rangle
+\end{equation}
+Debido a la definición de $\Delta(\tau)$ se tiene un producto de funciones triginométricas dentro del promedio. Para simplificar la expresión se hace uso de la ssiguientes identidades
+\begin{equation}
+\langle sen(\theta_0 +\alpha\tau)cos(\theta_0 +\alpha\tau)\rangle=0
+\end{equation}
+\begin{equation}
+\langle sen(\theta_0)cos(\theta_0 +\alpha\tau)\rangle =-\frac{1}{2}sen(\alpha\tau)
+\end{equation}
+\begin{equation}
+\langle cos(\theta_0)cos(\theta_0 +\alpha\tau)\rangle =\frac{1}{2}cos(\alpha\tau)
+\end{equation}
+Por lo que la ecuación \ref{eq:promedio_w_primer} se reescribe como:
+\begin{equation}
+\label{eq:promedio_w_segunda}
+\left\langle \frac{dW}{dt}\right\rangle= -\frac{m\omega_b^2v_0}{k}\left(\frac{sen(\alpha\tau)}{\alpha^2}-\frac{\tau}{\alpha}cos(\alpha\tau)\right)= \frac{m\omega_b^2v_0}{2k}\frac{d}{d\alpha}\left(\frac{sen(\alpha\tau)}{\alpha}\right)
+\end{equation}
+Puede que la razón de reescribir el último término como una derivada no resulte del todo claro. Pero resulta que esa es una forma conveniente de escribir la expresión, pues si se recuerda la definición de una función delta.
+\begin{equation}
+\label{eq:delta_function_definition}
+\delta (z) =\lim_{N\to\infty}\frac{sen(Nz)}{\pi z}
+\end{equation}
+Por lo tanto para $|\alpha\tau| \gg 1$ se tiene
+\begin{equation}
+\label{eq:promedio_w_tercera}
+\left\langle \frac{dW}{dt}\right\rangle=\frac{\pi m\omega_b^2v_0}{2k}\frac{d}{d\alpha}\delta(\alpha)
+\end{equation}
+Esta función delta tiene una pendiente infinitamente postiva a la derecha de $\alpha=0$ e infinitamente negativa a la izquierda de $\alpha=0$, por lo que su derivada determina el signo del promedio de la energía cinética. En otras palabras, el promedio es positivo para partículas que se mueven ligeramente más lento que la onda y negativo para partículas que se mueven ligeramente más despacio que la onda. Se tiene entonces que si el número de partículas más rápidas que la onda difiere con el número de partículas más lentas entonces habrá una transferencia neta de energía ya sea de las partículas a la onda o viceversa.\\
+Por último, consideramos que las partículas tienen una función de distribución unidimensional $f(v_0)$ por lo que calcular el promedio total de la energía cinética de todas las partículas conlleva resolver:
+\begin{align}
+\left\langle \frac{dW_{total}}{dt}\right\rangle &=  \frac{\pi m\omega_b^3}{2k^2}\int f(v_0)v_0\frac{d}{d\alpha}\left[\delta\left(\frac{kv_0-\omega}{\omega_b}\right)\right]dv_0\\
+&=\frac{\pi m\omega_b^4}{2k^3}\int f(v_0)v_0\frac{d}{d\alpha}\delta \left(v_0 -\frac{\omega}{k}\right)dv_0\\
+&=-\frac{\pi m\omega_b^4}{2k^3}\left[\frac{d}{dv_0}f(v_0)v_0\right]_{v_0=\omega /k}
+\end{align}
+Si ahora se supone que $f(v_0)$ tiene forma maxweliana es decir $f(v_0)\sim exp(-v_0^2/v_t^2)$ donde $v_T$ es la velocidad térmica ya demaás la velocidad de fase $\omega /k$ es mucho mayor que la velocidad térmica, se tiene
+\begin{align}
+\left[\frac{d}{dv_0}f(v_0)v_0\right]_{v_0=\omega /k} &= \left[v_0 \frac{d}{dv_0}(f(v_0))+f(v_0)\right]_{v_0=\omega /k}\\
+&=\left[-2 \frac{v_0^2}{v_T^2}(f(v_0))+f(v_0)\right]_{v_0=\omega /k}
+\end{align}
+Queda entonces que el término de la derivada en $v_0$ es el término dominante por que el promedio se reescribe como:
+\begin{equation}
+\label{eq:promedio_w_total_f_maxweliana}
+\left\langle \frac{dW_{total}}{dt}\right\rangle=-\frac{\pi m}{2k^3}\left(\frac{qk\Phi_0}{m}\right)^2\left[\frac{d}{dv_0}(f(v_0))\right]_{v_0=\omega /k}
+\end{equation}
+La interpretación de la ecuación \ref{eq:promedio_w_total_f_maxweliana} es que si la pendiente de la función de distribución es negativa cuando $v\sim \omega /k$ entonces las partículas ganan energía la cual proviene de la onda, en cambio si la pendiente es positiva son las partículas las que pierden energía.\\
+Queda entonces que para partículas no atrapadas la dirección en la que se transfiere la energía depende de la velocidad inicial de las partículas , resultando en que si hay más partículas cuya velocidad sea mayor a la velocidad de fase que partículas más lentas que la velocidad de fase entonces habrá uns transferencia neta de energía promedio de las partículas a la onda.
+\section{Energía del campo eléctrico}
+Considerese un plasma homogéneo, sin campo y con iones inmóviles (o equivalentemente $m_i \rightarrow \infty$) cuyo movimiento puede considerarse en una dimensión con dirección arbitraria y velocidad constante, sea por ejemplo esa dirección $z$, se tiene entonces que su relación de dispersión es:
+\begin{equation}
+\label{eq:dispersion_1d_energia}
+(\omega - ku_{0e})^2 = \omega_{pe}^2
+\end{equation}
+Si se realiza una transformación de coordenadas de la forma $z \rightarrow z'-u_0t'$ y $t' \rightarrow t$ se tiene que la frecuencia y el número de onda cambian a $\omega \rightarrow \omega' + k'u_0$ y $k \rightarrow k'$, por lo que en el nuevo marco de referencia $(\omega')^2=\omega_{pe}^2$. La anterior transformación se refiere al marco en donde los electrones son estacionarios y se puede ver entonces que en ese marco la perturbación se origina en la frecuencia del plasma, que es la oscilación del plasma en un plasma estacionario. Se tiene etonces que las oscilaciones de plasma de un plasma que se está desplazando en una dimensión son las oscilaciones naturales de un plasma que es transportado a la velocidad de desplazamiento. \cite{krall1973principles}\\
+La ecuación \ref{eq:dispersion_1d_energia} se puede ver como la ecuación de una recta $\omega(k)$ con pendiente $u_0$. Estas oscilaciones son ondas cuya velocidad de grupo es igual a la velocidad de desplazamiento ($\partial \omega /\partial k=u_0$), lo que quiere decir que transportan energía. Las ondas que se propagan con una velocidad mayor a la velocidad promedio de los electrones se les llama ondas \textcolor{red}{espacio-carga} rápidas, y de la misma manera se les denota como ondas \textcolor{red}{espacio-carga} lentas a aquellas cuya velocidad de propagación es menor a la velocidad promedio de los electrones. Estas últimas son ondas de energía negativa.\\
+Energía negativa se refiere a si un sistema está en un estado de energía $W_0$, entonces la energía del sistema $W$ es menor que $W_0$ cuando una onda con energía $W_1$ es liberada. Queda entonces por aclarar de donde surge la energía negativa en una onda.\\
+La energía de una onda está compuesta por su energía electromagnética y su energía de polarización ($W_{onda}=(E^2 +B^2)/8\pi + W_p$). Si $W_p$ es negativa la energía de la onda también puede ser negativa.\\
+Para ilustrar una $W_p$ negativa considerese una pequeña perturbación en la velocidad de un grupo de electrones de la forma:
+\begin{equation}
+\overrightarrow{\textbf{u}_1}=-u_1\widehat{\textbf{z}}
+\end{equation}
+Si los electrones se están desplazando a una velocidad $\overrightarrow{\textbf{u}_0}=u_0\widehat{\textbf{z}}$ el cambio de energía debido a la perturbación sería negativa pues:
+\begin{equation}
+\Delta W \equiv W_p = \frac{1}{2}m_e(u_0-u_1)^2-\frac{1}{2}m_eu_0^2\approx-m_eu_0u_1
+\end{equation}
+Donde la energía negativa surgio del hecho que los electrones tenían una velocidad $u_0$. La existencia de ondas con energía negativa en general implica un desplazamiento o un haz en el plasma.\\
+Se podría conseguir una expresión para la energía de la onda desde las ecuaciones de fluidos pues relacionan $\overrightarrow{\textbf{u}_1}$ con $\overrightarrow{\textbf{E}_1}$. Sin embargo lo que prosigue es encontrar una expresión para el promedio temporal de la energía en términos de la constante dieléctrica.\\
+Partiendo de la densidad de flujo de la energía:
+\begin{equation}
+\overrightarrow{\textbf{S}}= \frac{c}{4 \pi}\overrightarrow{\textbf{E}}\times \overrightarrow{\textbf{H}}
+\end{equation}
+Se tiene que la tasa de cambio de energía en unidades de volumen está dado por $\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}$ la cual al usar las ecuaciones de Maxwell se puede escribir de la forma:
+\begin{equation}
+-\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}= \frac{1}{4 \pi}\left(\overrightarrow{\textbf{E}}\cdot \frac{\partial \overrightarrow{\textbf{D}}}{\partial t} + \overrightarrow{\textbf{H}}\cdot \frac{\partial \overrightarrow{\textbf{B}}}{\partial t} + \overrightarrow{\textbf{E}}\cdot \overrightarrow{\textbf{J}} \right)
+\end{equation}
+O alternativamente:
+\begin{equation}
+-\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}= \frac{1}{4 \pi}\left(\frac{\partial}{\partial t}\left(\frac{E^2}{2} + \frac{B^2}{2}\right) + \overrightarrow{\textbf{E}}\cdot \overrightarrow{\textbf{J}} \right)
+\end{equation}
+Se definen entonces las cantidades $W_E=E^2/2$ y $W_M=B^2/2$ como las densidades de energía eléctrica y magnética respectivamente.
