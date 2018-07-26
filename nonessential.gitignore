@@ -1,5 +1,5 @@
 #Basically the side products from compiling
-*.aux
+tesis_main_file.aux
 *.bbl
 *.blg
 *.lof
