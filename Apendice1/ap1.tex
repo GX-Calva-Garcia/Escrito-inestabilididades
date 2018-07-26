@@ -1,3 +1,8 @@
+\documentclass[../tesis_main_file.tex]{subfiles}
+\begin{document}
+\onlyinsubfile{\appendix}
+\onlyinsubfile{\pagenumbering{arabic}}
+\onlyinsubfile{\chapter{Cálculo de raices}}
 %\section{Cálculo de raices}\label{Ap:raices}
 \subsection*{Resolviendo ecuaciones cuárticas.}
 Un método para resolver ecuaciones cuárticas es el llamado método de Ferrari \cite{higheralgebra} y prosigue de la siguiente manera. Si se parte de la forma general de la ecuación cuártica, es decir:
@@ -213,3 +218,6 @@ Recordando entonces que la raíz de interes es aquella cuya parte imaginaria sea
 z= \frac{1}{2} \left( \lambda + \sqrt{2\alpha_0} + \sqrt{2\alpha_0 -4 \left(-\frac{1}{2}(\frac{\lambda^2}{2}+\epsilon+1)+\alpha_0 +\frac{\epsilon \lambda - \lambda}{2\sqrt{2\alpha_0}}\right)}\right)
 \end{equation}
 Donde $\alpha_0$ no se sustituye por simplicidad.
+\onlyinsubfile{\bibliographystyle{unsrt}}
+\onlyinsubfile{\bibliography{../referencias}}
+\end{document}

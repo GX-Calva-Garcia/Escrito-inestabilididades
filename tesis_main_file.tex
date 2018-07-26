@@ -10,6 +10,7 @@
 \usepackage{supertabular}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{subfiles}
 \usepackage{subcaption}
 %\usepackage{kpfonts}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
@@ -27,8 +28,9 @@
 
 
 \pagenumbering{roman}
-
+\newcommand{\onlyinsubfile}[1]{#1}
 \begin{document}
+\renewcommand{\onlyinsubfile}[1]{}
 \maketitle
 %\addcontentsline{toc}{chapter}{Resumen}
 %\chapter*{Resumen}
@@ -48,15 +50,15 @@
 \pagenumbering{arabic}
 \fontfamily{ptm}\selectfont
 \chapter{Interacción entre partículas y ondas}
-\input{Capitulo1/cap1.tex}
+\subfile{Capitulo1/cap1.tex}
 \chapter{Inestabilidad de dos corrientes}
-\input{Capitulo2/cap2.tex}
+\subfile{Capitulo2/cap2.tex}
 %\pagenumbering{arabic}
 
 \appendix
 %\numberwithin{equation}{section}
 \chapter{Cálculo de raices}
-\input{Apendice1/ap1.tex}\label{Ap:raices}
+\subfile{Apendice1/ap1.tex}\label{Ap:raices}
 
 \cleardoublepage\phantomsection
 \addcontentsline{toc}{chapter}{Bibliografía}

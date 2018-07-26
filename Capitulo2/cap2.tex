@@ -1,3 +1,9 @@
+\documentclass[../tesis_main_file.tex]{subfiles}
+\begin{document}
+\onlyinsubfile{\graphicspath{ {../figuras/} }}
+\onlyinsubfile{\pagenumbering{arabic}}
+\onlyinsubfile{\setcounter{chapter}{1}}
+\onlyinsubfile{\chapter{Inestabilidad de dos corrientes}}
 \section{Introducción}
 Para tratar el tema de inestabilidades se mostrará primero que frecuencias complejas pueden aparecer en el plasma si se tiene un arreglo de haces de partículas adecuado \cite{bellan2008fundamentals}.\\
 %The first part of this chapter develops some
@@ -486,3 +492,6 @@ Al realizar una aproximación en series para encontar $\omega_{im}$ se llega a:
 \end{equation}
 Ahora bien si $f(v)$ es una distribución maxwelliana entonces $f(v) \propto exp(-v^2/v^2_T)$, es decir una función decreciente en la velocidad por lo que su derivada evaluada en $\omega/k$ es negativa y entonces $\omega_{im}$ representa un amortiguamiento en la onda.
 A este amortiguamineto se le conoce como amortiguamiento de Landau, cuyo origen resulta evidente si se recuerda que la suposición de una velocidad de fase lo suficientemente grande inplica que las especies se mueven a una velocidad más lenta y por lo tanto la transferencia de energía es desde la onda hacia las partículas.
+\onlyinsubfile{\bibliographystyle{unsrt}}
+\onlyinsubfile{\bibliography{../referencias}}
+\end{document}
