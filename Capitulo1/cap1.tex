@@ -245,7 +245,12 @@ U = \frac{1}{8\pi}\left(\epsilon E^2 +\mu B^2\right)
 \end{equation}
 cuya interpretación termodinámica es la diferencia entre la energía interna por unidad de volumen con y sin el campo, sin cambios en la densidad y la entropía. \cite{Landau1690Electro_media}\\
 En el caso donde hay dispersión, la interpretación anterior no es viable. Sobretodo en el caso de una dispersión arbitraria donde la energía electromagnética no puede ser definida como una cantidad termodinámica debido a que la presencia de una dispersión implica una disipación de energía.\\
-Para determinar esa disipación se considerará un campo electromagnético de una sola frecuencia y la ecuación \ref{eq:tasa_cambio_energia_em_por_volumen} se promedia con respecto del tiempo, encontrando así la variación sistemática de la energía, que es el valor medio de la cantidad de calor $Q$ que se libera en un segundo en un $cm^3$ del medio.
+Para determinar esa disipación se considerará un campo electromagnético de una sola frecuencia y la ecuación \ref{eq:tasa_cambio_energia_em_por_volumen} se promedia con respecto del tiempo, encontrando así la variación sistemática de la energía, que es el valor medio de la cantidad de calor $Q$ que se libera en un segundo en un $cm^3$ del medio.\\
+Como en la expresión \ref{eq:tasa_cambio_energia_em_por_volumen} los términos de los campos son cuadráticos, todas las cantidades deben escribirse en forma real. Si se toman los campos $\overrightarrow{\textbf{E}}$ y $\overrightarrow{\textbf{H}}$ como cantidades complejas entonces la ecuación \ref{eq:tasa_cambio_energia_em_por_volumen} queda
+\begin{equation}
+\label{eq:tasa_energia_em_compleja}
+- \overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}} = \frac{1}{8\pi}\left((\overrightarrow{\textbf{E}} + \overrightarrow{\textbf{E}}^*)\cdot i\omega(-\epsilon \overrightarrow{\textbf{E}}+\epsilon ^* \overrightarrow{\textbf{E}}^*)+ (\overrightarrow{\textbf{H}} + \overrightarrow{\textbf{H}}^*)\cdot i\omega(-\mu \overrightarrow{\textbf{H}}+\mu ^* \overrightarrow{\textbf{H}}^*)\right)
+\end{equation}
 \begin{equation}
 -\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}= \frac{1}{4 \pi}\left(\overrightarrow{\textbf{E}}\cdot \frac{\partial \overrightarrow{\textbf{D}}}{\partial t} + \overrightarrow{\textbf{H}}\cdot \frac{\partial \overrightarrow{\textbf{B}}}{\partial t} + \overrightarrow{\textbf{E}}\cdot \overrightarrow{\textbf{J}} \right)
 \end{equation}
