@@ -265,7 +265,14 @@ Lo que nos dice la ecuación \ref{eq:Q_promedio_temp_dispersion} es que la disip
 \begin{align}
 \epsilon^{''} > 0 & &\mu^{''} > 0
 \end{align}
-
+Los signos de las partes reales de $\epsilon$ y $\mu$ cuando $\omega\neq0$ no están sujetas a ninguna condición física.\\
+Cualquier proceso no estacionario en un cuerpo es ,en mayor o menor grado, termodinamicamente irreversible. Por lo que siempre se tienen perdidas eléctricas y magnéticas aunque estas pueden ser muy pequeñas.\\
+En otras palabras, $\epsilon ^{''}$ y $\mu ^{''}$ las cuales están en función de $\omega$ no siempre se anulan para alguna frecuencia diferente de cero. Sin embargo es posible que se presenten frecuencias para las cuales las perdidas sean lo suficientemente pequeñas como para ser despreciadas. Las regiones de frecuencias para lo que esto sucede son conocidas como \textit{regiones de transparencia}\cite{Landau1690Electro_media}. Al poder despreciarse la absorción en estas regiones se hace posible hablar del concepto de energía interna del cuerpo en un campo electromagnético con el mismo sentido que posee en un campo constante. Debido a que en un campo monocromático la periodicidad de este no permite la acumulación de energía electromagnética consideremos entonces un campo cuyas componentes tienen frecuencias contenidas en un estrecho intervalo en torno a un valor medio $\omega_0$. Las intensidades de esos campos se pueden expresar de la forma
+\begin{align}
+\label{eq:campos_no_monocromaticos}
+\overrightarrow{\textbf{E}} = \overrightarrow{\textbf{E}}_0(t)e^{-i\omega_0 t} & &\overrightarrow{\textbf{H}} = \overrightarrow{\textbf{H}}_0(t)e^{-i\omega_0 t}
+\end{align}
+Donde $\overrightarrow{\textbf{E}}_0(t)$ y $\overrightarrow{\textbf{H}}_0(t)$ son funciones en el tiempo cuya variación es lenta en comparación con el factor $e^{-i\omega_0 t}$. 
 \begin{equation}
 -\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}= \frac{1}{4 \pi}\left(\overrightarrow{\textbf{E}}\cdot \frac{\partial \overrightarrow{\textbf{D}}}{\partial t} + \overrightarrow{\textbf{H}}\cdot \frac{\partial \overrightarrow{\textbf{B}}}{\partial t} + \overrightarrow{\textbf{E}}\cdot \overrightarrow{\textbf{J}} \right)
 \end{equation}
