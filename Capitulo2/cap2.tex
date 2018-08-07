@@ -435,63 +435,108 @@ Si se asume que $f$ se desvanece en el infinito se tiene entonces:
 \begin{equation}
 1=-\frac{\omega^2_{p0}}{k}\int^{\infty}_{-\infty}\frac{df/dv}{\omega -k v}dv
 \end{equation}
-Está forma generalizada presenta un problema ya que hay una singularidad para cuando el valor de $v$ se aproxima al valor de la velocidad de fase de la onda ($\omega/k$).
-Para evaluar la integral se hace uso de la teoría de variable compleja, en particular el teorema del residuo y el valor principal de Cauchy.\\
-Se reescribe la integral en una forma más conveniente.
+Está forma generalizada presenta un problema ya que hay una singularidad para cuando el valor de $v$ se aproxima al valor de la velocidad de fase de la onda ($\omega/k$).\\
+Con tal de lidiar con esa singularidad se recordarán algunos aspectos de las transformadas de Laplace.\\
+La transformada de Laplace de una función $\psi (t)$ se define como:
 \begin{equation}
-\label{eq:disp_general_alt}
-1=\frac{\omega^2_{p0}}{k^2}\int^{\infty}_{-\infty}\frac{df/dv}{v- \omega /k}dv
+\label{eq:def_transformada_Laplace}
+\psi (p) = \int^{\infty}_0 \psi (t) e^{-pt}dt
 \end{equation}
-La manera de resolver el problema de la singularidad es tratar a la integral en la ecuación \ref{eq:disp_general_alt} como un problema de integral de contorno, donde el cotorno con el que se trabajará será sobre el eje real de $v$, pues se está trabajando en el plano complejo de $v$, y un semicírculo que pase por debajo del polo $\omega /k$ \cite{hassani2013mathematical}. Se tiene entonces que:
+Sin embargo al trabajar con esta integral se debe poner especial cuidado en la convergencia de la integral cuando $\psi (t)$ contiene términos exponenciales crecientes.
+Es entonces necesario imponer una restricción que asegure la convergencia. Si $e^{\gamma t}$ es el término que más rápido crece en $\psi (t)$ la restricción resulta ser $Re p > \gamma$ pues es la que asegura que el término decreciente $e ^{-pt}$ siempre se imponga al término creciente, asegurando asi la convergencia. Con esto la transformada de Laplace es entonces:
+\begin{align}
+\label{eq:transformada_Laplace_restriccion}
+\psi (p) = \int^{\infty}_0 \psi (t) e^{-pt}dt && Re (p) > \gamma
+\end{align}
+Al ser $p$ una cantidad compleja se tiene que la integral en la ecuación \ref{eq:transformada_Laplace_restriccion} solo está definida para la parte del p-plano complejo a la derecha de $\gamma$ por lo que al trabajar con esa integral debe procurarse operar en la región para la cual está definida.\\
+La construcción de la transformada inversa se empieza por considerar la integral
 \begin{equation}
-\int_{c}\frac{df/dv}{v- \omega /k}dv= \int^{\omega/k -\epsilon}_{-\infty}\frac{df/dv}{v- \omega /k}dv + \int^{\infty}_{\omega/k +\epsilon}\frac{df/dv}{v- \omega /k}dv + \int_{c_0}\frac{df/dv}{v- \omega /k}dv
+\label{eq:funcion_g_trans_inversa_laplace}
+g(t) = \int _C \psi(p)e^{pt}dp
 \end{equation}
-Al tomar el límite cuando $\epsilon \rightarrow 0$ los dos primeros términos del lado derecho resultan ser el valor princial de la integral en la ecuación \ref{eq:disp_general_alt}. Por otro lado, se tiene que en en el contorno $c_0$ la magnitud de $v-\omega/k$ es constante por lo que se puede expresar como $v-\omega/k =\epsilon e^{i\theta}$ y $dv= i\epsilon e^{i\theta}d\theta$. De manera que se tiene \cite{hassani2013mathematical}:
+Donde el contorno $C$ no está definido pero esta sujeto a la restricción de no salirse de la región para la cual $\psi (p)$ está definida. sustituyendo entonces \ref{eq:transformada_Laplace_restriccion} en \ref{eq:funcion_g_trans_inversa_laplace} se tiene:
+\begin{align}
+\label{eq:funcion_g_sustitucion}
+g(t) = \int ^{\infty}_0dt'\int _C \psi (t')e^{p(t-t')}dp & & Re(p) > \gamma
+\end{align}
+Ahora bien, de la teoría de las transformadas de Fourier se tenía que la delta de dirac se podía expresar como:
 \begin{equation}
-\int_{c_0}\frac{df/dv}{v- \omega /k}dv = i \pi \left(\frac{df}{dv}\right)_{v=\omega/k}
+\label{eq:delta_fourier}
+\delta(t) =\frac{1}{2\pi}\int ^{\infty}_{- \infty} e^{i \omega t} d \omega
 \end{equation}
-Con esto, se reescribe la ecuación \ref{eq:disp_general_alt} como:
+La cual es una integral alrededor del eje real $ \omega$ por lo que $\omega$ siempre es real.\\
+El contorno de integración de la ecuación \ref{eq:funcion_g_sustitucion} será entonces tomado de tal manera que la parte real de $p$ permanezca constante, digase un valor $\beta > \gamma$, y mientras la parte imaginaria vaya de $- \infty$ a $\infty$. A dicho contorno se le conoce como el contorno de Bromwich.\cite{bellan2008fundamentals,arfken2011mathematical} 
+Con lo cual la ecuación \ref{eq:funcion_g_sustitucion} queda como:
 \begin{equation}
-\label{eq:disp_general_residuo}
-1 = \frac{\omega^2_{p0}}{k^2} \left(PV\int^{\infty}_{-\infty}\frac{df/dv}{v- \omega /k}dv + i \pi \left(\frac{df}{dv}\right)_{v=\omega/k}\right)
+g(t) = \int _0^{\infty} dt' \int ^{\beta +i \infty}_{\beta - i\infty}d(p_r + ip_i) \psi (t')e^{(p_r + ip_i)(t-t')}dp = i \int _0^{\infty} dt' e^{\beta (t-t')} \psi(t') \int ^{\infty}_{-\infty}dp_i e^{ip_i(t-t')}
 \end{equation}
-Asumiendo el caso donde la velocidad de fase de la onda es mucho mayor que las velocidades en la distribución el valor principal ($PV$) se puede aproximar expandiendo el denominaodr de la integral alrededor de $v=0$, esto da:
+Donde la última integral es la transformada de Fourier de la $\delta$, salvo una constante, por lo que $g(t)$ queda entonces como:
 \begin{equation}
-PV= \frac{1}{\omega}\int^{\infty}_{-\infty} \left(1+\frac{kv}{\omega}+\frac{k^2v^2}{\omega^2}+...\right)\frac{df}{dv}dv
+g(t)= 2 \pi i \int _0^{\infty} dt' e^{\beta (t-t')} \psi(t') \delta(t-t')=2 \pi i \psi (t)
 \end{equation}
-Y haciendo uso de las propiedades de $f(v)$ como función de distribución \cite{anderson2001tutorial}
-\begin{equation}
-\int^{\infty}_{-\infty}f(v)dv=1
-\end{equation}
-\begin{equation}
-\int^{\infty}_{-\infty}vf(v)dv=0
-\end{equation}
-\begin{equation}
-\int^{\infty}_{-\infty}v^2f(v)dv=\frac{1}{2}v^2_T
-\end{equation}
-Se tiene entonces que el valor princial es:
-\begin{equation}
-PV\int^{\infty}_{-\infty}\frac{df/dv}{v- \omega /k}dv \approx -\frac{k}{\omega^2}\left(1+\frac{3}{2}\frac{k^2v^2_T}{\omega^2}\right)
-\end{equation}
-Por lo que la relación de dispersión se puede expresar como:
-\begin{equation}
-\label{eq:disp_var_compleja}
-1=\frac{\omega^2_{p0}}{\omega^2}\left(1+\frac{3}{2}\frac{k^2v^2_T}{\omega^2}\right) + i\pi \frac{\omega^2_{p0}}{k^2}\left(\frac{df}{dv}\right)_{v=\omega/k}
-\end{equation}
-Adicionalmente, si se aproxima al caso $\omega^2 \approx \omega^2_{p0}$ la ecuación \ref{eq:disp_var_compleja} se cambia a:
-\begin{equation}
-\omega^2=\omega^2_{p0}+\frac{3}{2}k^2v^2_T+i\pi\frac{\omega^4_{p0}}{k^2}\left(\frac{df}{dv}\right)_{v=\omega/k}
-\end{equation}
-Es de interes entonces la parte imaginaria de $\omega$. Para esto, se recuerda que $\omega/k$ es lo suficientemente grande en comparación con las velocidades de la distribución que la derivada de la función de distribución es lo suficientemente pequeña para realizar una aporximación por series. Adicionalmente, se desprecia la corrección térmica de la parte real \cite{chenintroplasmas}, de manera que se tiene
-\begin{equation}
-\omega^2 \approx \omega^2_{p0}\left(1+i\pi\frac{\omega^2_{p0}}{k^2}\left(\frac{df}{dv}\right)_{v=\omega/k}\right)
-\end{equation}
-Al realizar una aproximación en series para encontar $\omega_{im}$ se llega a:
-\begin{equation}
-\omega_{im}\approx \frac{\pi \omega^2_{p0}}{2k^2}\left(\frac{df}{dv}\right)_{v=\omega/k}
-\end{equation}
-Ahora bien si $f(v)$ es una distribución maxwelliana entonces $f(v) \propto exp(-v^2/v^2_T)$, es decir una función decreciente en la velocidad por lo que su derivada evaluada en $\omega/k$ es negativa y entonces $\omega_{im}$ representa un amortiguamiento en la onda.
-A este amortiguamineto se le conoce como amortiguamiento de Landau, cuyo origen resulta evidente si se recuerda que la suposición de una velocidad de fase lo suficientemente grande inplica que las especies se mueven a una velocidad más lenta y por lo tanto la transferencia de energía es desde la onda hacia las partículas.
+Con esto, la transformada inversa queda definida como:
+\begin{align}
+\label{eq:Laplace_inversa}
+\psi (t) = \frac{1}{2\pi i} \int ^{\beta +i \infty}_{\beta - i\infty} \psi (p) e^{pt} dp & & \beta > \gamma
+\end{align}
+%%%%%%%Anderson%%%%%%%%%%%%%%%
+%Para evaluar la integral se hace uso de la teoría de variable compleja, en particular el teorema del residuo y el valor principal de Cauchy.\\
+%Se reescribe la integral en una forma más conveniente.
+%\begin{equation}
+%\label{eq:disp_general_alt}
+%1=\frac{\omega^2_{p0}}{k^2}\int^{\infty}_{-\infty}\frac{df/dv}{v- \omega /k}dv
+%\end{equation}
+%
+%La manera de resolver el problema de la singularidad es tratar a la integral en la ecuación \ref{eq:disp_general_alt} como un problema de integral de contorno, donde el cotorno con el que se trabajará será sobre el eje real de $v$, pues se está trabajando en el plano complejo de $v$, y un semicírculo que pase por debajo del polo $\omega /k$ \cite{hassani2013mathematical}. Se tiene entonces que:
+%\begin{equation}
+%\int_{c}\frac{df/dv}{v- \omega /k}dv= \int^{\omega/k -\epsilon}_{-\infty}\frac{df/dv}{v- \omega /k}dv + \int^{\infty}_{\omega/k +\epsilon}\frac{df/dv}{v- \omega /k}dv + \int_{c_0}\frac{df/dv}{v- \omega /k}dv
+%\end{equation}
+%Al tomar el límite cuando $\epsilon \rightarrow 0$ los dos primeros términos del lado derecho resultan ser el valor princial de la integral en la ecuación \ref{eq:disp_general_alt}. Por otro lado, se tiene que en en el contorno $c_0$ la magnitud de $v-\omega/k$ es constante por lo que se puede expresar como $v-\omega/k =\epsilon e^{i\theta}$ y $dv= i\epsilon e^{i\theta}d\theta$. De manera que se tiene \cite{hassani2013mathematical}:
+%\begin{equation}
+%\int_{c_0}\frac{df/dv}{v- \omega /k}dv = i \pi \left(\frac{df}{dv}\right)_{v=\omega/k}
+%\end{equation}
+%Con esto, se reescribe la ecuación \ref{eq:disp_general_alt} como:
+%\begin{equation}
+%\label{eq:disp_general_residuo}
+%1 = \frac{\omega^2_{p0}}{k^2} \left(PV\int^{\infty}_{-\infty}\frac{df/dv}{v- \omega /k}dv + i \pi \left(\frac{df}{dv}\right)_{v=\omega/k}\right)
+%\end{equation}
+%Asumiendo el caso donde la velocidad de fase de la onda es mucho mayor que las velocidades en la distribución el valor principal ($PV$) se puede aproximar expandiendo el denominaodr de la integral alrededor de $v=0$, esto da:
+%\begin{equation}
+%PV= \frac{1}{\omega}\int^{\infty}_{-\infty} \left(1+\frac{kv}{\omega}+\frac{k^2v^2}{\omega^2}+...\right)\frac{df}{dv}dv
+%\end{equation}
+%Y haciendo uso de las propiedades de $f(v)$ como función de distribución \cite{anderson2001tutorial}
+%\begin{equation}
+%\int^{\infty}_{-\infty}f(v)dv=1
+%\end{equation}
+%\begin{equation}
+%\int^{\infty}_{-\infty}vf(v)dv=0
+%\end{equation}
+%\begin{equation}
+%\int^{\infty}_{-\infty}v^2f(v)dv=\frac{1}{2}v^2_T
+%\end{equation}
+%Se tiene entonces que el valor princial es:
+%\begin{equation}
+%PV\int^{\infty}_{-\infty}\frac{df/dv}{v- \omega /k}dv \approx -\frac{k}{\omega^2}\left(1+\frac{3}{2}\frac{k^2v^2_T}{\omega^2}\right)
+%\end{equation}
+%Por lo que la relación de dispersión se puede expresar como:
+%\begin{equation}
+%\label{eq:disp_var_compleja}
+%1=\frac{\omega^2_{p0}}{\omega^2}\left(1+\frac{3}{2}\frac{k^2v^2_T}{\omega^2}\right) + i\pi \frac{\omega^2_{p0}}{k^2}\left(\frac{df}{dv}\right)_{v=\omega/k}
+%\end{equation}
+%Adicionalmente, si se aproxima al caso $\omega^2 \approx \omega^2_{p0}$ la ecuación \ref{eq:disp_var_compleja} se cambia a:
+%\begin{equation}
+%\omega^2=\omega^2_{p0}+\frac{3}{2}k^2v^2_T+i\pi\frac{\omega^4_{p0}}{k^2}\left(\frac{df}{dv}\right)_{v=\omega/k}
+%\end{equation}
+%Es de interes entonces la parte imaginaria de $\omega$. Para esto, se recuerda que $\omega/k$ es lo suficientemente grande en comparación con las velocidades de la distribución que la derivada de la función de distribución es lo suficientemente pequeña para realizar una aporximación por series. Adicionalmente, se desprecia la corrección térmica de la parte real \cite{chenintroplasmas}, de manera que se tiene
+%\begin{equation}
+%\omega^2 \approx \omega^2_{p0}\left(1+i\pi\frac{\omega^2_{p0}}{k^2}\left(\frac{df}{dv}\right)_{v=\omega/k}\right)
+%\end{equation}
+%Al realizar una aproximación en series para encontar $\omega_{im}$ se llega a:
+%\begin{equation}
+%\omega_{im}\approx \frac{\pi \omega^2_{p0}}{2k^2}\left(\frac{df}{dv}\right)_{v=\omega/k}
+%\end{equation}
+%Ahora bien si $f(v)$ es una distribución maxwelliana entonces $f(v) \propto exp(-v^2/v^2_T)$, es decir una función decreciente en la velocidad por lo que su derivada evaluada en $\omega/k$ es negativa y entonces $\omega_{im}$ representa un amortiguamiento en la onda.
+%A este amortiguamineto se le conoce como amortiguamiento de Landau, cuyo origen resulta evidente si se recuerda que la suposición de una velocidad de fase lo suficientemente grande inplica que las especies se mueven a una velocidad más lenta y por lo tanto la transferencia de energía es desde la onda hacia las partículas.
 \onlyinsubfile{\bibliographystyle{unsrt}}
 \onlyinsubfile{\bibliography{../referencias}}
 \end{document}
