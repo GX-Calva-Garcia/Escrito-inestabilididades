@@ -217,7 +217,7 @@ Considerese un plasma homogéneo, sin campo y con iones inmóviles (o equivalent
 (\omega - ku_{0e})^2 = \omega_{pe}^2
 \end{equation}
 Si se realiza una transformación de coordenadas de la forma $z \rightarrow z'-u_0t'$ y $t' \rightarrow t$ se tiene que la frecuencia y el número de onda cambian a $\omega \rightarrow \omega' + k'u_0$ y $k \rightarrow k'$, por lo que en el nuevo marco de referencia $(\omega')^2=\omega_{pe}^2$. La anterior transformación se refiere al marco en donde los electrones son estacionarios y se puede ver entonces que en ese marco la perturbación se origina en la frecuencia del plasma, que es la oscilación del plasma en un plasma estacionario. Se tiene etonces que las oscilaciones de plasma de un plasma que se está desplazando en una dimensión son las oscilaciones naturales de un plasma que es transportado a la velocidad de desplazamiento. \cite{krall1973principles}\\
-La ecuación \ref{eq:dispersion_1d_energia} se puede ver como la ecuación de una recta $\omega(k)$ con pendiente $u_0$. Estas oscilaciones son ondas cuya velocidad de grupo es igual a la velocidad de desplazamiento ($\partial \omega /\partial k=u_0$), lo que quiere decir que transportan energía. Las ondas que se propagan con una velocidad mayor a la velocidad promedio de los electrones se les llama ondas \textcolor{red}{espacio-carga} rápidas, y de la misma manera se les denota como ondas \textcolor{red}{espacio-carga} lentas a aquellas cuya velocidad de propagación es menor a la velocidad promedio de los electrones. Estas últimas son ondas de energía negativa.\\
+La ecuación \ref{eq:dispersion_1d_energia} se puede ver como la ecuación de una recta $\omega(k)$ con pendiente $u_0$. Estas oscilaciones son ondas cuya velocidad de grupo es igual a la velocidad de desplazamiento ($\partial \omega /\partial k=u_0$), lo que quiere decir que transportan energía. Las ondas que se propagan con una velocidad mayor a la velocidad promedio de los electrones se les llama ondas espacio-carga rápidas, y de la misma manera se les denota como ondas espacio-carga lentas a aquellas cuya velocidad de propagación es menor a la velocidad promedio de los electrones. Estas últimas son ondas de energía negativa.\\
 Energía negativa se refiere a si un sistema está en un estado de energía $W_0$, entonces la energía del sistema $W$ es menor que $W_0$ cuando una onda con energía $W_1$ es liberada. Queda entonces por aclarar de donde surge la energía negativa en una onda.\\
 La energía de una onda está compuesta por su energía electromagnética y su energía de polarización ($W_{onda}=(E^2 +B^2)/8\pi + W_p$). Si $W_p$ es negativa la energía de la onda también puede ser negativa.\\
 Para ilustrar una $W_p$ negativa considerese una pequeña perturbación en la velocidad de un grupo de electrones de la forma:
@@ -258,9 +258,9 @@ Q =\frac{i\omega}{16\pi}\left[(\epsilon ^* -\epsilon)\overrightarrow{\textbf{E}}
 Que a su vez se puede simplificar en:
 \begin{equation}
 \label{eq:Q_promedio_temp_dispersion}
-Q =\frac{\omega}{4\pi}\left(\epsilon ^{''}\overline{\textbf{E}^2} + \mu ^{''} \overline{\textbf{H}^2}\right)
+Q =\frac{\omega}{4\pi}\left(\epsilon ^{''}\langle\textbf{E}^2\rangle + \mu ^{''} \langle\textbf{H}^2\rangle\right)
 \end{equation}
-Siendo $E$ y $H$ los campos reales y la barra denota el promedio temporal.
+Donde $\langle\textbf{E}^2\rangle$ y $\langle\textbf{H}^2\rangle$ denotan los promedios temporales de los campos reales.
 Lo que nos dice la ecuación \ref{eq:Q_promedio_temp_dispersion} es que la disipación de energía está determinada por las partes imaginarias de $\epsilon$ y  $\mu$; los dos términos de la expresión se denominan como las perdidas eléctricas y megnéticas respectivamente. El signo de $Q$ se determina a partir del hecho de que la disipación de energía va acompañada de la liberación de calor por lo que se tiene $Q>0$. Por lo tanto las partes imaginarias de $\epsilon$ y $\mu$ son siempre positivas.
 \begin{align}
 \epsilon^{''} > 0 & &\mu^{''} > 0
@@ -276,7 +276,7 @@ Donde $\overrightarrow{\textbf{E}}_0(t)$ y $\overrightarrow{\textbf{H}}_0(t)$ so
 Al tomar las partes reales de los campos la ecuación \ref{eq:tasa_cambio_energia_em_por_volumen} pasa a una expresión de la misma forma que la expresión \ref{eq:tasa_energia_em_compleja} con la diferencia de que los factores $\epsilon$ y $\mu$ quedaran ímplicitos en los factores $\dot{\overrightarrow{\textbf{D}}}$ y $\dot{\overrightarrow{\textbf{B}}}$ respectivamente, con el punto indicando su derivada temporal. De la misma manera que al hacer el promedio temporal los productos $\overrightarrow{\textbf{E}} \cdot \overrightarrow{\textbf{E}}$ y $\overrightarrow{\textbf{E}}^* \cdot \overrightarrow{\textbf{E}}^*$ se desvanecían, los productos $\overrightarrow{\textbf{E}} \cdot \dot{\overrightarrow{\textbf{D}}}$ y $\overrightarrow{\textbf{E}}^* \cdot \dot{\overrightarrow{\textbf{D}}}^*$ también se desvanecen. La expresión resultante es entonces:
 \begin{equation}
 \label{eq:promedio_temp_div_S_H_y_D}
-\overline{-\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}} = \frac{1}{16\pi}\left(\overrightarrow{\textbf{E}}\cdot\frac{\partial\overrightarrow{\textbf{D}}^*}{\partial t} + \overrightarrow{\textbf{E}}^* \cdot \frac{\partial \overrightarrow{\textbf{D}}}{\partial t} \right) + \frac{1}{16\pi}\left(\overrightarrow{\textbf{H}}\cdot\frac{\partial\overrightarrow{\textbf{B}}^*}{\partial t} + \overrightarrow{\textbf{H}}^* \cdot \frac{\partial \overrightarrow{\textbf{B}}}{\partial t} \right)
+\langle-\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}\rangle = \frac{1}{16\pi}\left(\overrightarrow{\textbf{E}}\cdot\frac{\partial\overrightarrow{\textbf{D}}^*}{\partial t} + \overrightarrow{\textbf{E}}^* \cdot \frac{\partial \overrightarrow{\textbf{D}}}{\partial t} \right) + \frac{1}{16\pi}\left(\overrightarrow{\textbf{H}}\cdot\frac{\partial\overrightarrow{\textbf{B}}^*}{\partial t} + \overrightarrow{\textbf{H}}^* \cdot \frac{\partial \overrightarrow{\textbf{B}}}{\partial t} \right)
 \end{equation}
 Para conseguir información adicional de esta expresión tomaremos al factor $\partial \overrightarrow{\textbf{D}}/\partial t$ como $\widehat{f}\overrightarrow{\textbf{E}}$, siendo $\widehat{f}$ el operador $\partial \widehat{\epsilon} / \partial t$ y veremos como actua sobre una función que tenga la misma forma que la ecuación \ref{eq:campos_no_monocromaticos}.\\
 Si el factor $\overrightarrow{\textbf{E}}_0$ fuera constante se tendría entonces $\widehat{f}\overrightarrow{\textbf{E}}=f(\omega)\overrightarrow{\textbf{E}}$, donde $f(\omega) = -i\omega\epsilon(\omega)$. Para el caso más general, se relizará una expansión de Fourier sobre el término $\overrightarrow{\textbf{E}}_0(t)$ expresandolo como una superposición de componentes $\overrightarrow{\textbf{E}}_{0_\alpha}e^{-i\alpha t}$, con el término $\overrightarrow{\textbf{E}}_{0_\alpha}$ una constante.\\
@@ -304,22 +304,22 @@ Sustituyendo \ref{eq:dev_parcial_D} en  \ref{eq:promedio_temp_div_S_H_y_D} y rec
 \end{equation}
 Ya que $\overrightarrow{\textbf{E}}_0\cdot \overrightarrow{\textbf{E}}_0^* = \overrightarrow{\textbf{E}}\cdot \overrightarrow{\textbf{E}}^*$. Se tiene además que para el campo $\overrightarrow{\textbf{H}}$ le sigue un procedimiento análogo donde se cambia el operador $\widehat{f}$ por un operador $\widehat{g}=\partial \widehat{\mu}/\partial t$ resultando en la expresión: 
 \begin{equation}
-\label{eq:proto_cambio_energia_con_ctes_dielectricas}\overline{-\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}} = \frac{1}{16\pi}\left[\frac{d(\omega_0 \epsilon)}{d\omega_0}\frac{d}{dt}\left(\overrightarrow{\textbf{E}}\cdot \overrightarrow{\textbf{E}}^*\right) + \frac{d(\omega_0 \mu)}{d\omega_0}\frac{d}{dt}\left(\overrightarrow{\textbf{H}}\cdot \overrightarrow{\textbf{H}}^*\right)\right]
+\label{eq:proto_cambio_energia_con_ctes_dielectricas}\langle-\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}\rangle = \frac{1}{16\pi}\left[\frac{d(\omega_0 \epsilon)}{d\omega_0}\frac{d}{dt}\left(\overrightarrow{\textbf{E}}\cdot \overrightarrow{\textbf{E}}^*\right) + \frac{d(\omega_0 \mu)}{d\omega_0}\frac{d}{dt}\left(\overrightarrow{\textbf{H}}\cdot \overrightarrow{\textbf{H}}^*\right)\right]
 \end{equation}
-Como $\omega_0$ se encunetra dentro de la región de transparencia se puede hablar de energía interna de un cuerpo en un campo electromagnético y la ecuación \ref{eq:proto_cambio_energia_con_ctes_dielectricas} se puede ver como la tasa de cambio de la energía por unidad de volumen con respecto del tiempo, es decir $d\overline{W}/dt$, por lo que la energía interna es:
+Como $\omega_0$ se encunetra dentro de la región de transparencia se puede hablar de energía interna de un cuerpo en un campo electromagnético y la ecuación \ref{eq:proto_cambio_energia_con_ctes_dielectricas} se puede ver como la tasa de cambio de la energía por unidad de volumen con respecto del tiempo, es decir $d\langle W \rangle/dt$, por lo que la energía interna es:
 \begin{equation}
 \label{eq:energia_interna_ctes_dielectricas}
-\overline{W}=\frac{1}{16\pi}\left[\frac{d(\omega \epsilon)}{d\omega}\overrightarrow{\textbf{E}}\cdot \overrightarrow{\textbf{E}}^* + \frac{d(\omega \mu )}{d\omega}\overrightarrow{\textbf{H}}\cdot \overrightarrow{\textbf{H}}^*\right]
+\langle W \rangle=\frac{1}{16\pi}\left[\frac{d(\omega \epsilon)}{d\omega}\overrightarrow{\textbf{E}}\cdot \overrightarrow{\textbf{E}}^* + \frac{d(\omega \mu )}{d\omega}\overrightarrow{\textbf{H}}\cdot \overrightarrow{\textbf{H}}^*\right]
 \end{equation}
 Utilizando las expresiones reales para los campos $\overrightarrow{\textbf{E}}$ y $\overrightarrow{\textbf{H}}$ la ecuación \ref{eq:energia_interna_ctes_dielectricas} se puede reescribir como
 \begin{equation}
 \label{eq:energia_interna_electro_promedio_real}
-\overline{W}=\frac{1}{8\pi}\left[\frac{d(\omega \epsilon)}{d\omega}\overline{\textbf{E}^2} + \frac{d(\omega \mu )}{d\omega}\overline{\textbf{H}^2}\right]
+\langle W \rangle=\frac{1}{8\pi}\left[\frac{d(\omega \epsilon)}{d\omega}\langle\textbf{E}^2\rangle + \frac{d(\omega \mu )}{d\omega}\langle\textbf{H}^2\rangle\right]
 \end{equation}
-Se ha encontrado entonces a $\overline{W}$ como el valor medio de la parte electromagnética de la energía interna por unidad de volumen en un medio transparente.\\
+Se ha encontrado entonces a $\langle W \rangle$ como el valor medio de la parte electromagnética de la energía interna por unidad de volumen en un medio transparente.\\
 Una vez que se ha encontrado una expresión para la energía interna se puede emplear entonces para el caso particular de una onda electrostática, es decir cuando
 \begin{equation}
-\overline{W}_{onda}= \frac{1}{8\pi}\frac{d(\omega \epsilon)}{d\omega}\overline{\textbf{E}^2}
+\langle W \rangle_{onda}= \frac{1}{8\pi}\frac{d(\omega \epsilon)}{d\omega}\langle\textbf{E}^2\rangle
 \end{equation}
 De lo anterior queda entonces claro que se pueden identificar las ondas con energías positivas y negativas a partir del factor $\epsilon$, el cual como se verá en el capítulo siguiente puede ser derivado a partir de las ecuaciones de continuidad, movimiento y de Poisson.
 %\subsection{Ondas con energías positivas y negativas en un plasma en desplazamiento}
