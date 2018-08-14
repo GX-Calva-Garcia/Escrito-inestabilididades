@@ -1,0 +1,57 @@
+\documentclass[../tesis_main_file.tex]{subfiles}
+\begin{document}
+\onlyinsubfile{\appendix}
+\onlyinsubfile{\setcounter{chapter}{1}}
+\onlyinsubfile{\pagenumbering{arabic}}
+\onlyinsubfile{\chapter{Transformadas}}
+La transformada de Laplace de una función $\psi (t)$ se define como:
+\begin{equation}
+\label{eq:def_transformada_Laplace}
+\psi (p) = \int^{\infty}_0 \psi (t) e^{-pt}dt
+\end{equation}
+Sin embargo al trabajar con esta integral se debe poner especial cuidado en la convergencia de la integral cuando $\psi (t)$ contiene términos exponenciales crecientes.
+Es entonces necesario imponer una restricción que asegure la convergencia. Si $e^{\gamma t}$ es el término que más rápido crece en $\psi (t)$ la restricción resulta ser $Re p > \gamma$ pues es la que asegura que el término decreciente $e ^{-pt}$ siempre se imponga al término creciente, asegurando asi la convergencia. Con esto la transformada de Laplace es entonces:
+\begin{align}
+\label{eq:transformada_Laplace_restriccion}
+\psi (p) = \int^{\infty}_0 \psi (t) e^{-pt}dt && Re (p) > \gamma
+\end{align}
+Al ser $p$ una cantidad compleja se tiene que la integral en la ecuación \ref{eq:transformada_Laplace_restriccion} solo está definida para la parte del p-plano complejo a la derecha de $\gamma$ por lo que al trabajar con esa integral debe procurarse operar en la región para la cual está definida.\\
+La construcción de la transformada inversa se empieza por considerar la integral
+\begin{equation}
+\label{eq:funcion_g_trans_inversa_laplace}
+g(t) = \int _C \psi(p)e^{pt}dp
+\end{equation}
+Donde el contorno $C$ no está definido pero esta sujeto a la restricción de no salirse de la región para la cual $\psi (p)$ está definida. sustituyendo entonces \ref{eq:transformada_Laplace_restriccion} en \ref{eq:funcion_g_trans_inversa_laplace} se tiene:
+\begin{align}
+\label{eq:funcion_g_sustitucion}
+g(t) = \int ^{\infty}_0dt'\int _C \psi (t')e^{p(t-t')}dp & & Re(p) > \gamma
+\end{align}
+Ahora bien, de la teoría de las transformadas de Fourier se tenía que la delta de dirac se podía expresar como:
+\begin{equation}
+\label{eq:delta_fourier}
+\delta(t) =\frac{1}{2\pi}\int ^{\infty}_{- \infty} e^{i \omega t} d \omega
+\end{equation}
+La cual es una integral alrededor del eje real $ \omega$ por lo que $\omega$ siempre es real.\\
+El contorno de integración de la ecuación \ref{eq:funcion_g_sustitucion} será entonces tomado de tal manera que la parte real de $p$ permanezca constante, digase un valor $\beta > \gamma$, y mientras la parte imaginaria vaya de $- \infty$ a $\infty$. A dicho contorno se le conoce como el contorno de Bromwich.\cite{bellan2008fundamentals,arfken2011mathematical} 
+Con lo cual la ecuación \ref{eq:funcion_g_sustitucion} queda como:
+\begin{equation}
+g(t) = \int _0^{\infty} dt' \int ^{\beta +i \infty}_{\beta - i\infty}d(p_r + ip_i) \psi (t')e^{(p_r + ip_i)(t-t')}dp = i \int _0^{\infty} dt' e^{\beta (t-t')} \psi(t') \int ^{\infty}_{-\infty}dp_i e^{ip_i(t-t')}
+\end{equation}
+Donde la última integral es la transformada de Fourier de la $\delta$, salvo una constante, por lo que $g(t)$ queda entonces como:
+\begin{equation}
+g(t)= 2 \pi i \int _0^{\infty} dt' e^{\beta (t-t')} \psi(t') \delta(t-t')=2 \pi i \psi (t)
+\end{equation}
+Con esto, la transformada inversa queda definida como:
+\begin{align}
+\label{eq:Laplace_inversa}
+\psi (t) = \frac{1}{2\pi i} \int ^{\beta +i \infty}_{\beta - i\infty} \psi (p) e^{pt} dp & & \beta > \gamma
+\end{align}
+Otro detalle a recordar es el comportamiento de las derivadas bajo una transformación de Laplace. Para tener una mejor idea de este se hace una integración por partes.
+\begin{equation}
+\label{eq:Laplace_transform_derivadas}
+\int ^{\infty}_0 \frac{d\psi}{dt}e^{-pt}dt =\left[\psi(t)e^{-pt}\right]^{\infty}_0 +p \int^{\infty}_0\psi(t)e^{-pt}dt= p\psi(p) -\psi(0)
+\end{equation}
+De manera similar que la transformada de Fourier, la transformada de Laplace convierte la derivada en una multiplicación, en este caso por el factor $p$, pero a diferencia de la de Fourier el valor inicial forma parte de la transformación. Es por esta razón que la transformada de Laplace es una herramienta más adecuada para el estudio de problemas de valor inicial.
+\onlyinsubfile{\bibliographystyle{unsrt}}
+\onlyinsubfile{\bibliography{../referencias}}
+\end{document}

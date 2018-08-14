@@ -11,6 +11,9 @@
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{subfiles}
+%\usepackage{xr-hyper}
+%\externaldocument[A1-]{Apendice1/ap1}
+%\externaldocument[A2-]{Apendice2/ap2} 
 \usepackage{subcaption}
 %\usepackage{kpfonts}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
@@ -29,8 +32,10 @@
 
 \pagenumbering{roman}
 \newcommand{\onlyinsubfile}[1]{#1}
+\newcommand{\notinsubfile}[1]{}
 \begin{document}
 \renewcommand{\onlyinsubfile}[1]{}
+\renewcommand{\notinsubfile}[1]{#1}
 \maketitle
 %\addcontentsline{toc}{chapter}{Resumen}
 %\chapter*{Resumen}
@@ -59,6 +64,8 @@
 %\numberwithin{equation}{section}
 \chapter{Cálculo de raices}
 \subfile{Apendice1/ap1.tex}\label{Ap:raices}
+\chapter{Transformadas}
+\subfile{Apendice2/ap2.tex}\label{Ap:transformadas}
 
 \cleardoublepage\phantomsection
 \addcontentsline{toc}{chapter}{Bibliografía}

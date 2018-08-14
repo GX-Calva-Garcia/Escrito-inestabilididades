@@ -422,63 +422,99 @@ Ahora bien, haciendo la suposición de que se tienen iones en reposo como fondo,
 \label{eq:dispersion_general_1}
 1 =\omega^2_{p0}\sum_{\sigma}\frac{f_{\sigma}}{(\omega - \overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}}_{\sigma 0})^2}
 \end{equation}
-Donde $\omega^2_{p0}$ es la frecuencia de plasma asociada a la densidad $n_0$. Esta manera alternativa de escribir la relación de dispersión fue simplemente para facilitar la presentación de otra generalización en donde las especies tienen asociadas todas las velocidades y la densidad correspondiente está determinada por una función de distribución $f(v)$, donde el número total de partículas en el intervalo $(v,v+dv)$ está dado por $n_0f(v)dv$. La densidad $f_{\sigma}$ es entonces sustituida por $f(v)dv$ y la suma por unat integral de $-\infty$ a $\infty$.
+Donde $\omega^2_{p0}$ es la frecuencia de plasma asociada a la densidad $n_0$. Esta manera alternativa de escribir la relación de dispersión fue simplemente para facilitar la presentación de otra generalización en donde las especies tienen asociadas todas las velocidades y la densidad correspondiente está determinada por una función de distribución $f(u)$, donde el número total de partículas en el intervalo $(u,u+du)$ está dado por $n_0f(u)du$. La densidad $f_{\sigma}$ es entonces sustituida por $f(u)du$ y la suma por una integral de $-\infty$ a $\infty$.
 \begin{equation}
 \label{eq:dispersion_general_2}
-1= \omega^2_{p0}\int^{\infty}_{-\infty}\frac{f(v)}{(\omega-k v)^2}dv
+1= \omega^2_{p0}\int^{\infty}_{-\infty}\frac{f(u)}{(\omega-k u)^2}du
 \end{equation}
 Al inetgra por partes:
 \begin{equation}
-1=\omega^2_{p0}\left(\frac{f(v)}{(\omega - v)k}- \int^{\infty}_{-\infty}\frac{df/dv}{(\omega -k v)k}dv \right)
+1=\omega^2_{p0}\left(\frac{f(u)}{(\omega - ku)k}- \int^{\infty}_{-\infty}\frac{df/du}{(\omega -k u)k}du \right)
 \end{equation}
 Si se asume que $f$ se desvanece en el infinito se tiene entonces:
 \begin{equation}
-1=-\frac{\omega^2_{p0}}{k}\int^{\infty}_{-\infty}\frac{df/dv}{\omega -k v}dv
+1=-\frac{\omega^2_{p0}}{k}\int^{\infty}_{-\infty}\frac{df/du}{\omega -k u}du
 \end{equation}
-Está forma generalizada presenta un problema ya que hay una singularidad para cuando el valor de $v$ se aproxima al valor de la velocidad de fase de la onda ($\omega/k$).\\
-Con tal de lidiar con esa singularidad se recordarán algunos aspectos de las transformadas de Laplace.\\
-La transformada de Laplace de una función $\psi (t)$ se define como:
+Esta forma generalizada presenta un problema ya que hay una singularidad para cuando el valor de $v$ se aproxima al valor de la velocidad de fase de la onda ($\omega/k$).\\
+El uso de funciones de distribución del plasma, el cual consiste en particulas cargadas con interacciones a larga distancia, indica que es necesaria una ecuación que describa la evolución temporal de estas. Dicha ecuación es conocida como la ecuación de Vlasov.\\
 \begin{equation}
-\label{eq:def_transformada_Laplace}
-\psi (p) = \int^{\infty}_0 \psi (t) e^{-pt}dt
+\label{eq:vlasov_def}
+\frac{\partial f}{\partial t} + \frac{d\overrightarrow{\textbf{r}}}{dt}\cdot \frac{\partial f}{\partial \overrightarrow{\textbf{r}}} + \frac{d \overrightarrow{\textbf{p}}}{dt}\cdot \frac{\partial f}{\partial \overrightarrow{\textbf{p}}}=0
 \end{equation}
-Sin embargo al trabajar con esta integral se debe poner especial cuidado en la convergencia de la integral cuando $\psi (t)$ contiene términos exponenciales crecientes.
-Es entonces necesario imponer una restricción que asegure la convergencia. Si $e^{\gamma t}$ es el término que más rápido crece en $\psi (t)$ la restricción resulta ser $Re p > \gamma$ pues es la que asegura que el término decreciente $e ^{-pt}$ siempre se imponga al término creciente, asegurando asi la convergencia. Con esto la transformada de Laplace es entonces:
-\begin{align}
-\label{eq:transformada_Laplace_restriccion}
-\psi (p) = \int^{\infty}_0 \psi (t) e^{-pt}dt && Re (p) > \gamma
-\end{align}
-Al ser $p$ una cantidad compleja se tiene que la integral en la ecuación \ref{eq:transformada_Laplace_restriccion} solo está definida para la parte del p-plano complejo a la derecha de $\gamma$ por lo que al trabajar con esa integral debe procurarse operar en la región para la cual está definida.\\
-La construcción de la transformada inversa se empieza por considerar la integral
+Para el caso electrostático de un plasma en tres dimensiones la ecuación de Vlasov tiene la forma:
 \begin{equation}
-\label{eq:funcion_g_trans_inversa_laplace}
-g(t) = \int _C \psi(p)e^{pt}dp
+\label{eq:vlasov-poisson_3D}
+\frac{\partial f_{\sigma}}{\partial t} + \overrightarrow{\textbf{u}}_{\sigma} \cdot \nabla f_{\sigma} -\frac{q_{\sigma}}{m_{\sigma}}\nabla \Phi \cdot \frac{\partial f_{\sigma}}{\partial \overrightarrow{\textbf{u}}}=0
 \end{equation}
-Donde el contorno $C$ no está definido pero esta sujeto a la restricción de no salirse de la región para la cual $\psi (p)$ está definida. sustituyendo entonces \ref{eq:transformada_Laplace_restriccion} en \ref{eq:funcion_g_trans_inversa_laplace} se tiene:
-\begin{align}
-\label{eq:funcion_g_sustitucion}
-g(t) = \int ^{\infty}_0dt'\int _C \psi (t')e^{p(t-t')}dp & & Re(p) > \gamma
-\end{align}
-Ahora bien, de la teoría de las transformadas de Fourier se tenía que la delta de dirac se podía expresar como:
+Sería entonces lógico pensar que para estudiar las ondas desde el punto de vista de Vlasov basta con realizar un proceso de linealización para obtener la relación de dispersión del plasma. Sin embargo resulta que el método de Fourier arroja una singularidad en el integrando, de la misma manera en la que aparece una singularidad al insertar una función de distribución en la relación de dispersión.\\
+%%%%%Poner fallo de Fourier%%%%%%%
+Para lidiar con esa singularidad se hace uso de la transformada de Laplace, cuyos detalles se pueden revisar en el apéndice \notinsubfile{\ref{Ap:transformadas}}.\\
+Con el fin de tener una imagen clara se asume el caso de ondas electrostáticas en un plasma en tres dimensiones, estacionario en el equilibrio, neutral, sin magnetizar, espacialmente uniforme y en donde los iones pueden moverse.\\
+Se asume entonces que la distribución de velocidades en equilibrio de cada especie es una función de distribución Maxwelliana en tres dimensiones.
 \begin{equation}
-\label{eq:delta_fourier}
-\delta(t) =\frac{1}{2\pi}\int ^{\infty}_{- \infty} e^{i \omega t} d \omega
+\label{eq:dist_max_3D}
+f_{\sigma 0}(\overrightarrow{\textbf{u}})=n_{\sigma 0} \left(\frac{m_{\sigma}}{2\pi k_B T_{\sigma}}\right)^{3/2}exp(-m_{\sigma}u^2/2k_BT_{\sigma})
 \end{equation}
-La cual es una integral alrededor del eje real $ \omega$ por lo que $\omega$ siempre es real.\\
-El contorno de integración de la ecuación \ref{eq:funcion_g_sustitucion} será entonces tomado de tal manera que la parte real de $p$ permanezca constante, digase un valor $\beta > \gamma$, y mientras la parte imaginaria vaya de $- \infty$ a $\infty$. A dicho contorno se le conoce como el contorno de Bromwich.\cite{bellan2008fundamentals,arfken2011mathematical} 
-Con lo cual la ecuación \ref{eq:funcion_g_sustitucion} queda como:
+Donde el campo eléctrico en equilibrio es cero haciendo entonces que el potencial eléctrico tome el valor de una constante, sea por ejemplo ese valor cero. Además se asume que en el tiempo $t=0$ existe una pequeña perturbación en la función de distribución la cual es dependiente del tiempo por lo que la evolución temporal de la distribución queda caracterizada por:
 \begin{equation}
-g(t) = \int _0^{\infty} dt' \int ^{\beta +i \infty}_{\beta - i\infty}d(p_r + ip_i) \psi (t')e^{(p_r + ip_i)(t-t')}dp = i \int _0^{\infty} dt' e^{\beta (t-t')} \psi(t') \int ^{\infty}_{-\infty}dp_i e^{ip_i(t-t')}
+f_{\sigma}(\overrightarrow{\textbf{x}},\overrightarrow{\textbf{u}},t)=f_{\sigma 0}(\overrightarrow{\textbf{u}})+f_{\sigma 1}(\overrightarrow{\textbf{x}},\overrightarrow{\textbf{u}},t)
 \end{equation}
-Donde la última integral es la transformada de Fourier de la $\delta$, salvo una constante, por lo que $g(t)$ queda entonces como:
+Por lo que la ecuación de Vlasov linealizada queda:
 \begin{equation}
-g(t)= 2 \pi i \int _0^{\infty} dt' e^{\beta (t-t')} \psi(t') \delta(t-t')=2 \pi i \psi (t)
+\frac{\partial f_{\sigma 1}}{\partial t}+ \overrightarrow{\textbf{u}} \cdot \nabla f_{\sigma 1} -\frac{q_{\sigma}}{m_{\sigma}}\nabla \Phi _1 \cdot \frac{f_{\sigma 0}}{\partial  \overrightarrow{\textbf{u}}}=0
 \end{equation}
-Con esto, la transformada inversa queda definida como:
-\begin{align}
-\label{eq:Laplace_inversa}
-\psi (t) = \frac{1}{2\pi i} \int ^{\beta +i \infty}_{\beta - i\infty} \psi (p) e^{pt} dp & & \beta > \gamma
-\end{align}
+Si se asume que la dependencia espacial de las perturbaciones es de la forma $\sim exp(i\overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{x}})$, que viene a ser lo mismo que aplicar una transformada de Fourier en el espacio, se tiene:
+\begin{equation}
+\frac{\partial f_{\sigma 1}}{\partial t}+ i\overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}}f_{\sigma 1}-\frac{i q_{\sigma}}{m_{\sigma}}\Phi _1 \overrightarrow{\textbf{k}}\cdot \frac{\partial f_{\sigma 0}}{\partial \overrightarrow{\textbf{u}}}=0
+\end{equation}
+Es aquí donde se emplea la transformada de Laplace para asi incorporar el valor inicial.
+\begin{equation}
+(p + i\overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}})f_{\sigma 1}(\overrightarrow{\textbf{u}},p)- f_{\sigma _1}(\overrightarrow{\textbf{u}},0)-\frac{i q_{\sigma}}{m_{\sigma}}\Phi _1(p)\overrightarrow{\textbf{k}}\cdot \frac{f_{\sigma 0}}{\partial \overrightarrow{\textbf{u}}}
+\end{equation}
+Si se despeja $f_{\sigma 1}(\overrightarrow{\textbf{u}},p)$ se tiene entonces:
+\begin{equation}
+\label{eq:f1_despeje_laplace}
+f_{\sigma 1}(\overrightarrow{\textbf{u}},p)=\frac{1}{(p + i\overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}})}\left[\frac{i q_{\sigma}}{m_{\sigma}}\Phi _1(p)\overrightarrow{\textbf{k}}\cdot \frac{f_{\sigma 0}}{\partial \overrightarrow{\textbf{u}}} + f_{\sigma _1}(\overrightarrow{\textbf{u}},0)\right]
+\end{equation}
+En este marco se puede escribir la ecuación de Poisson como:
+\begin{equation}
+\nabla ^2 \Phi _1 =- \frac{1}{\epsilon_0}\sum_{\sigma} q_{\sigma}n_{\sigma 1}= - \frac{1}{\epsilon_0}\sum q_{\sigma} \int f_{\sigma 1}(\overrightarrow{\textbf{x}},\overrightarrow{\textbf{u}},t)d^3u
+\end{equation}
+Sustituyendo $\nabla \rightarrow i \overrightarrow{\textbf{k}}$ y aplicando la transformda de Laplace se llega a:
+\begin{equation}
+\label{eq:poisson_sustitucion_Laplace}
+k^2 \Phi _1(p)=\frac{1}{\epsilon_0} \sum_{\sigma} q_{\sigma}\int f_{\sigma 1}(\overrightarrow{\textbf{u}},p)d^3u
+\end{equation}
+Entonces, al sustituir la ecuación \ref{eq:f1_despeje_laplace} en \ref{eq:poisson_sustitucion_Laplace} se tiene
+\begin{equation}
+k^2 \Phi _1(p)=\frac{1}{\epsilon_0}\sum_{\sigma}q_{\sigma}\int \left[\frac{\frac{i q_{\sigma}}{m_{\sigma}}\Phi _1(p)\overrightarrow{\textbf{k}}\cdot \frac{f_{\sigma 0}}{\partial \overrightarrow{\textbf{u}}} + f_{\sigma _1}(\overrightarrow{\textbf{u}},0)}{(p + i\overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}})}\right]d^3u
+\end{equation}
+De donde se factoriza $\Phi_1$ 
+\begin{equation}
+\Phi _1 (p)\left[1-\frac{1}{\epsilon_0 k^2}\sum_{\sigma}\frac{q_{\sigma}^2}{m_{\sigma}}\int  \frac{i\overrightarrow{\textbf{k}}\cdot \frac{\partial f_{\sigma 0}}{\partial \overrightarrow{\textbf{u}}}}{(p + i\overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}})}d^3u \right]=\frac{1}{\epsilon_0 k^2}\sum_{\sigma}q_{\sigma}\int \frac{f_{\sigma 1}(\overrightarrow{\textbf{u}})}{(p + i\overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}})}d^3u
+\end{equation}
+Entonces se tiene una expresión para $\Phi_1(p)$ de la forma
+\begin{equation}
+\label{eq:phi_num_y_denominador}
+\Phi_1(p)=\frac{N(p)}{D(p)}
+\end{equation}
+Donde:
+\begin{equation}
+\label{eq:funcion_numerador}
+N(p)=\frac{1}{\epsilon_0 k^2}\sum_{\sigma}q_{\sigma}\int \frac{f_{\sigma 1}(\overrightarrow{\textbf{u}})}{(p + i\overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}})}d^3u
+\end{equation}
+y
+\begin{equation}
+\label{eq:funcion_denominador}
+D(p)=1-\frac{1}{\epsilon_0 k^2}\sum_{\sigma}\frac{q_{\sigma}^2}{m_{\sigma}}\int  \frac{i\overrightarrow{\textbf{k}}\cdot \frac{\partial f_{\sigma 0}}{\partial \overrightarrow{\textbf{u}}}}{(p + i\overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}})}d^3u
+\end{equation}
+De la construcción de la transformada inversa de Laplace, apéndice \notinsubfile{\ref{Ap:transformadas}}, la expresión para $\Phi _1(t)$ es:
+\begin{equation}
+\label{eq:phi_inversa_laplace}
+\Phi_1(t) =\frac{1}{2\pi i}\int ^{\beta +i \infty}_{\beta - i\infty} \frac{N(p)}{D(p)}e^{pt}dt
+\end{equation}
+Con $\beta$ más grande que el término exponencial contenido en $N(p)/D(p)$ que crece con mayor rapidez.\\
+La ecuación \ref{eq:phi_inversa_laplace} es entonces una solución exacta al problema.
 %%%%%%%Anderson%%%%%%%%%%%%%%%
 %Para evaluar la integral se hace uso de la teoría de variable compleja, en particular el teorema del residuo y el valor principal de Cauchy.\\
 %Se reescribe la integral en una forma más conveniente.
