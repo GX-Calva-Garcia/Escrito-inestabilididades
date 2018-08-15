@@ -448,7 +448,7 @@ Para el caso electrostático de un plasma en tres dimensiones la ecuación de Vl
 \end{equation}
 Sería entonces lógico pensar que para estudiar las ondas desde el punto de vista de Vlasov basta con realizar un proceso de linealización para obtener la relación de dispersión del plasma. Sin embargo resulta que el método de Fourier arroja una singularidad en el integrando, de la misma manera en la que aparece una singularidad al insertar una función de distribución en la relación de dispersión.\\
 %%%%%Poner fallo de Fourier%%%%%%%
-Para lidiar con esa singularidad se hace uso de la transformada de Laplace, cuyos detalles se pueden revisar en el apéndice \notinsubfile{\ref{Ap:transformadas}}.\\
+Para lidiar con esa singularidad se hace uso de la transformada de Laplace, cuyos detalles se pueden revisar en el apéndice \notinsubfile{\ref{Ap:Laplace}}.\\
 Con el fin de tener una imagen clara se asume el caso de ondas electrostáticas en un plasma en tres dimensiones, estacionario en el equilibrio, neutral, sin magnetizar, espacialmente uniforme y en donde los iones pueden moverse.\\
 Se asume entonces que la distribución de velocidades en equilibrio de cada especie es una función de distribución Maxwelliana en tres dimensiones.
 \begin{equation}
@@ -508,13 +508,55 @@ y
 \label{eq:funcion_denominador}
 D(p)=1-\frac{1}{\epsilon_0 k^2}\sum_{\sigma}\frac{q_{\sigma}^2}{m_{\sigma}}\int  \frac{i\overrightarrow{\textbf{k}}\cdot \frac{\partial f_{\sigma 0}}{\partial \overrightarrow{\textbf{u}}}}{(p + i\overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}})}d^3u
 \end{equation}
-De la construcción de la transformada inversa de Laplace, apéndice \notinsubfile{\ref{Ap:transformadas}}, la expresión para $\Phi _1(t)$ es:
+De la construcción de la transformada inversa de Laplace, apéndice \notinsubfile{\ref{Ap:Laplace}}, la expresión para $\Phi _1(t)$ es:
 \begin{equation}
 \label{eq:phi_inversa_laplace}
 \Phi_1(t) =\frac{1}{2\pi i}\int ^{\beta +i \infty}_{\beta - i\infty} \frac{N(p)}{D(p)}e^{pt}dt
 \end{equation}
 Con $\beta$ más grande que el término exponencial contenido en $N(p)/D(p)$ que crece con mayor rapidez.\\
-La ecuación \ref{eq:phi_inversa_laplace} es entonces una solución exacta al problema.
+Se tiene entonces en la ecuación \ref{eq:phi_inversa_laplace} una solución exacta para $\Phi_1$, sin embargo debido a la complejidad de $N(p)$ y $D(p)$ no es una expresión que sea fácil de evaluar. Por otro lado, si se trata el límite asintótico para tiempos largos se vuelve un problema más manejable y arroja luz sobre la física que hay detrás.\\
+Pero incluso antes de empezar el estudio de ese caso son necesarias algunas herramientas de la teoría de variable compleja para lidiar con los posibles polos de la ecuación \ref{eq:phi_inversa_laplace} en particular la continuación analítica de una función. Los detalles referentes a los polos, residuos y a la continuación analítica de una función se pueden revisar en el apéndice \notinsubfile{\ref{Ap:temas_Var_compleja}}.\\
+Debido a la forma de la ecuación \ref{eq:phi_inversa_laplace} es razonable esperar que presente algunos polos que dificulten la evaluación de la integral. Además, la ecuación \ref{eq:phi_inversa_laplace} presenta otro problema: tanto $N(p)$ como $D(p)$ no están definidos para la región $Re(p) < \gamma$ debido a que se llegó a estos términos por medio de transformadas de Laplace las cuales solo están definidas para la región $Re(p) > \gamma$, donde $\gamma$ es el factor exponencial que crece con mayor rapidez en la función a la que se le está aplicando la transformada, véase el apéndice \notinsubfile{\ref{Ap:Laplace}}. Por lo que es necesaría la construcción de continuaciones analíticas para $N(p)$ y $D(p)$.\\
+La manera más simple de hacer esto es simplemente extendiendo la definición a todo el plano complejo de $p$ en las expresiones para $N(p)$ y$D(p)$ con la condición de que las nuevas funciones permanezcan analíticas bajo está nueva extensión.\\
+Considérese primero la continuación analítica de $N(p)$
+\begin{equation}
+\label{eq:cont_analitica_N(p)}
+N(p) = \frac{1}{k^2 \epsilon_0}\sum_{\sigma}q_{\sigma}\int ^{\infty}_{-\infty}\frac{F_{\sigma 1}(u_{\parallel},0)}{(p +iku_{\parallel})}du_{\parallel}=\frac{1}{ik^3 \epsilon_0}\sum_{\sigma}q_{\sigma}\int ^{\infty}_{-\infty}\frac{F_{\sigma 1}(u_{\parallel},0)}{(u_{\parallel} -ip/k)}du_{\parallel}
+\end{equation}
+Donde $\parallel$ indica que es en la dirección $\overrightarrow{\textbf{k}}$, mientras que a la componente paralela del valor inicial de la función de distribución perturbada se le define como
+\begin{equation}
+F_{\sigma 1}(u_{\parallel},0)=\int f_{\sigma 1}(\overrightarrow{\textbf{u}},0)d^2\overrightarrow{\textbf{u}}_{\perp}
+\end{equation}
+El integrando de la ecuación \ref{eq:cont_analitica_N(p)} tiene entonces un polo en $u_{\parallel}=ip/k$. Se toma además a $k>0$ y se recuerda que $N(p)$ tiene la restricción de que $\operatorname{Re}(p)$ debe ser siempre mayor que $\gamma$ para que el polo $u_{\parallel}=ip/k$ se encuentre en la mitad superior del pano complejo de $u_{\parallel}$. Al realizar la continuación analítica se puede permitir a $\operatorname{Re}(p)$ ser menor que $\gamma$ en incluso negativa lo cual permite al polo $u_{\parallel}=ip/k$ moverse en dirección de la parte inferior del plano complejo de $u_{\parallel}$. Surgue sin embargo el problema de como lidiar con el polo cuando este pasa por el cero pues pasaría a estar por debajo del controno de integración y $N(p)$ dejaría de ser analítica. Landau propusó que el contorno se deforme a medida que $\operatorname{Re}(p)$ se vaya haciendo negativa de tal manera que el contorno siempre se encuentre por debajo del polo.\cite{bellan2008fundamentals}\\
+La continuación analítica de $D(p)$ sigue el mismo procedimiento y es también construida a partir de la deformación del contorno de integración de tal manera que siempre se encuentre por debajo del polo.\\
+\begin{equation}
+\label{eq:cont_analitica_D(p)}
+D(p)=1-\frac{1}{k^2}\sum _{\sigma}\frac{q_{\sigma}^2}{\epsilon _0m_{\sigma}}\int ^{\infty}_{-\infty}\frac{\partial F_{\sigma 0}/\partial u_{\parallel}}{(u_{\parallel} -ip/k)}du_{\parallel}
+\end{equation}
+Una vez definidas las continuaciones analíticas de $N(p)$ y $D(p)$ hacia la izquierda del plano complejo de $p$ el cálculo de la integral en la ecuación \ref{eq:phi_inversa_laplace} pasa a ser una tarea más sencilla pues permite usar el método del residuo.\\
+En el caso general donde $N(p)/D(p)$ tenga varios polos en la parte izquierda del plano complejo de $p$ el controno se puede deformar de tal manera que la parte vertical se pueda recorrer hacia la izquierda deformandose alrededor de un un polo $p_j$ cuando pase por este. A medida que el contorno se va moviendo hacia la izquierda es importante recordar que cuando $\operatorname{Re}(p)\rightarrow - \infty$ el numerador tiende a cero mientras que el deniminador tiende a uno. Como $exp(pt)\rightarrow 0$ para $\operatorname{Re}(p)\rightarrow - \infty$ y tiempos positivos la línea vertical recorrida hacia la izquierda no contribuye a la integral por lo que la evaluación de la ecuación \ref{eq:phi_inversa_laplace} consiste en la summa de los residuos de todos sus polos.
+\begin{equation}
+\label{eq:Phi_suma_residuos}
+\Phi_1 (t)=\sum_j \lim _{p\to p_j}\left[(p-p_j)\frac{N(p)}{D(p)}e^{pt}\right]
+\end{equation}
+Queda entonces la incognita del origen de estos polos, para la cual se tienen dos posibiliades: $N(p)$ tiene un polo explícito esto es que tenga un término $\sim 1 /(p-p_j)$ o bién $D(p)$ contiene un factor $\sim (p-p_j)$ es decir $p_j$ es un cero de $D(p)$.\\
+Se podría asumir que el polo de $N(p)$ es el que esta contenido en el integrando pero este polo se utiliza como residuo al momento de integrar por lo que no contribuye. Por otro lado, la integral sobre $v_{\parallel}$ de $F_{\sigma 1}(u_{\parallel},0)$ es finita y por lo tanto tampoco contribuye. Lo anterior deja claro que los polos se encuentran en los ceros de $D(p)$.\\
+Con el fin de deja más clara la física detrás de esto se puede realizar una simplificación más. Esto es tomar el problema solamente para el comportamiento asintótico de tiempos largos donde  el polo $p_j$ ubicado más hacia la derecha domina sobre las contribuciones de los otros polos, por lo cuál lo único que se requiere es encontrar la raíz $p_j$ que tenga la parte real más grande. Y como se había mencionado antes tal raíz será un cero de la ecuación \ref{eq:cont_analitica_D(p)}.\\
+Si se observa además que las cantidades que se están sumando en la ecuación \ref{eq:cont_analitica_D(p)} son en escencia las perturbaciones de los iones y electrones asociadas con la oscilación. Por lo que se puede escribir:
+\begin{equation}
+D(p)=1 + \sum_{\sigma}\chi_{\sigma}=0
+\end{equation}
+en el caso particular donde la función de distribuciónen equilibrio es Maxwelliana, las suceptibilidades se pueden escribir como:
+\begin{multline}
+\chi_{\sigma} = -\frac{1}{2k^2 \lambda ^2_{D\sigma}}\frac{1}{\pi^{1/2}}\int ^{\infty}_{-\infty}\frac{1}{(\xi - ip/kV_{T\sigma})}\frac{\partial}{\partial \xi}exp(-\xi ^2)d\xi\\
+= \frac{1}{k^2 \lambda ^2_{D\sigma}}\left[ \frac{1}{\pi ^{1/2}}\int ^{\infty}_{-\infty} \frac{(\xi - ip/kV_{T\sigma}+ ip/kV_{T\sigma})}{(\xi - ip/kV_{T\sigma})}exp(-\xi ^2)d\xi\right]\\
+=\frac{1}{k^2 \lambda ^2_{D\sigma}}\left[1 + \frac{1}{\pi ^{1/2}}\alpha\int^{\infty}_{-\infty}\frac{exp(-\xi ^2)}{\xi -\alpha}d\xi\right]\\
+= \frac{1}{k^2 \lambda ^2_{D\sigma}}\left[1+\alpha Z(\alpha)\right]
+\end{multline}
+Donde $\alpha = ip/kV_{T\sigma}$ y el últmo renglón introduce un término referente a una función de dispersión del plasma $Z(\alpha)$ definida como:
+\begin{equation}
+Z(\alpha) =\frac{1}{\pi ^{1/2}}\int^{\infty}_{-\infty}\frac{exp(-\xi ^2)}{(\xi- \alpha)}d\xi
+\end{equation}
 %%%%%%%Anderson%%%%%%%%%%%%%%%
 %Para evaluar la integral se hace uso de la teoría de variable compleja, en particular el teorema del residuo y el valor principal de Cauchy.\\
 %Se reescribe la integral en una forma más conveniente.

@@ -3,7 +3,8 @@
 \onlyinsubfile{\appendix}
 \onlyinsubfile{\setcounter{chapter}{1}}
 \onlyinsubfile{\pagenumbering{arabic}}
-\onlyinsubfile{\chapter{Transformadas}}
+\onlyinsubfile{\chapter{Temas suplementarios}}
+\section{Transformada de Laplace}\label{Ap:Laplace}
 La transformada de Laplace de una función $\psi (t)$ se define como:
 \begin{equation}
 \label{eq:def_transformada_Laplace}
@@ -13,7 +14,7 @@ Sin embargo al trabajar con esta integral se debe poner especial cuidado en la c
 Es entonces necesario imponer una restricción que asegure la convergencia. Si $e^{\gamma t}$ es el término que más rápido crece en $\psi (t)$ la restricción resulta ser $Re p > \gamma$ pues es la que asegura que el término decreciente $e ^{-pt}$ siempre se imponga al término creciente, asegurando asi la convergencia. Con esto la transformada de Laplace es entonces:
 \begin{align}
 \label{eq:transformada_Laplace_restriccion}
-\psi (p) = \int^{\infty}_0 \psi (t) e^{-pt}dt && Re (p) > \gamma
+\psi (p) = \int^{\infty}_0 \psi (t) e^{-pt}dt && \operatorname{Re}(p) > \gamma
 \end{align}
 Al ser $p$ una cantidad compleja se tiene que la integral en la ecuación \ref{eq:transformada_Laplace_restriccion} solo está definida para la parte del p-plano complejo a la derecha de $\gamma$ por lo que al trabajar con esa integral debe procurarse operar en la región para la cual está definida.\\
 La construcción de la transformada inversa se empieza por considerar la integral
@@ -24,7 +25,7 @@ g(t) = \int _C \psi(p)e^{pt}dp
 Donde el contorno $C$ no está definido pero esta sujeto a la restricción de no salirse de la región para la cual $\psi (p)$ está definida. sustituyendo entonces \ref{eq:transformada_Laplace_restriccion} en \ref{eq:funcion_g_trans_inversa_laplace} se tiene:
 \begin{align}
 \label{eq:funcion_g_sustitucion}
-g(t) = \int ^{\infty}_0dt'\int _C \psi (t')e^{p(t-t')}dp & & Re(p) > \gamma
+g(t) = \int ^{\infty}_0dt'\int _C \psi (t')e^{p(t-t')}dp & & \operatorname{Re}(p) > \gamma
 \end{align}
 Ahora bien, de la teoría de las transformadas de Fourier se tenía que la delta de dirac se podía expresar como:
 \begin{equation}
@@ -52,6 +53,61 @@ Otro detalle a recordar es el comportamiento de las derivadas bajo una transform
 \int ^{\infty}_0 \frac{d\psi}{dt}e^{-pt}dt =\left[\psi(t)e^{-pt}\right]^{\infty}_0 +p \int^{\infty}_0\psi(t)e^{-pt}dt= p\psi(p) -\psi(0)
 \end{equation}
 De manera similar que la transformada de Fourier, la transformada de Laplace convierte la derivada en una multiplicación, en este caso por el factor $p$, pero a diferencia de la de Fourier el valor inicial forma parte de la transformación. Es por esta razón que la transformada de Laplace es una herramienta más adecuada para el estudio de problemas de valor inicial.
+\section{Temas de variable compleja}\label{Ap:temas_Var_compleja}
+\subsection{Funciones analíticas}
+Se dice que una función $f: \mathbb{C} \rightarrow \mathbb{C}$ es analítica en $z_0$, si $f$ es diferenciable en $z_0$ y en una vecindad alrededor de $z_0$
+\subsection{Singularidades y polos}
+Si para una función $f: \mathbb{C} \rightarrow \mathbb{C}$ existe un punto $z_0$ donde $f$ deja de ser analítica, entonces a $z_0$ se le conoce como una singularidad. Además, si existe alguna vecindad alrededor de $z_0$ para la cual $f$ es analítica en todo punto con la excepción de $z_0$ se dice que es una singularidad aislada. Estas a su vez pueden ser clasificadas de acuerdo a los siguientes criterios.\\
+Sea $f: \mathbb{C} \rightarrow \mathbb{C}$ con una singularidad aislada en $z_0$, existen entonces un número real $r>0$ y una región, también llamada anillo degenerado, $0<|z-z_0|<r$ para los cuales $f$ es analítica y se puede representar por medio de la serie de Laurent \cite{hassani2013mathematical}
+\begin{equation}
+\label{eq:serie_Laurent}
+f(z) = \sum^{\infty}_{n=0}a_n (z-z_0)^n + \sum^{\infty}_{n=0} \frac{b_n}{(z-z_0)^n}
+\end{equation}
+La segunda suma en la ecuación \ref{eq:serie_Laurent} contiene potencias negativas para $(z-z_0)$ y es conocida como la parte principal de $f$ en $z_0$. Se puede utilizar la parte principal para determinar que tipo de singularidad es $z_0$. Esta clasificación resulta útil pues la función $f$ se comporta de manera diferente cerca de estas singularidades dependiendo del tipo de singularidades aisladas que sean estas. Se tienen entonces tres casos:
+\begin{enumerate}
+\item $b_n=0$ $\forall n\geq1$. En este caso $z_0$ es llamado una singularidad removible de $f$. La serie de Laurent contiene solo potencias no negativas de $(z-z_0)$ y si se escoge un valor para $f(z_0)$, sea ese valor por ejemplo $a$, la función se vuelve analítica en $z_0$
+\item $b_n=0$ $\forall n >m$ para alguna $m$ y $b_m \neq 0$. Es aqui cuando a $z_0$ se le conoce como un polo de orden $m$, donde la parte principal de $f$ en $z_0$ consiste en una suma que contiene únicamente a los términos $b_k$ con $1\leq k \leq m$ pues los otros se hacen cero. Adicionalmente, si $m=1$, se dice que se tiene un polo simple.
+\item $b_n \neq 0$ para infinitas $n$'s. Se dice entonces que $f$ tiene una singularidad esencial en $z_0$.
+\end{enumerate}
+\subsection{Funciones exponenciales y continuación analítica}
+Considerese la función siguiente
+\begin{equation}
+f(t) = e^{qt}
+\end{equation}
+Con $q$ una constante compleja. Si la parte real de $q$ es positiva entonces la amplitud de $f(t)$ crece exponencialmente mientras que si es negativa la amplitud decrece de manera exponencial.\\
+Ahora bien, al calcular la transformación de Laplace para $f(t)$ se tiene que
+\begin{align}
+\label{Ap-eq:fp_original}
+f(p) = \int ^{\infty}_0 e^{(q-p)t}dt = \frac{1}{p-q} && \operatorname{Re}(p) > \operatorname{Re}(q)
+\end{align}
+Se realiza entonces una integral de Bromwich y a esta se le llamará $F(t)$ de forma tentativa.
+\begin{align}
+F(t) =\frac{1}{2\pi i}\int ^{\beta + i \infty}_{\beta - i\infty}f(p)e^{pt}dp && \beta > \operatorname{Re}(q)
+\end{align}
+La restricción $\beta > \operatorname{Re}(p)$ impide que la integral se pueda cerrar del lado izquierdo del plano complejo de $p$. Esto presenta un problema si se quiere evaluar la integral de forma sencilla por medio del método del residuo. No obstante, existe una manera de lidiar con esa dificultad.\\
+Se empieza por construir una función $\widehat{f}(p)$ tal que
+\begin{itemize}
+\item $\widehat{f}(p) = f(p)$ en la región $\beta > \operatorname{Re}(q)$
+\item $\widehat{f}(p)$ está definida en la región $\beta < \operatorname{Re}(p)$
+\item $\widehat{f}(p)$ es analítica
+\end{itemize}
+Por construcción, la integral de $\widehat{f}(p)$ a lo largo del controno de Bromwich da el mismo resultado que integrando $f(p)$ sobre el mismo contorno. Se puede entonces sustituir $f(p)$ por $\widehat{f}(p)$ para la expresión que se tenía de $F(t)$.
+\begin{equation}
+F(t) =\frac{1}{2\pi i}\int ^{\beta + i \infty}_{\beta - i\infty}\widehat{f}(p)e^{pt}dp 
+\end{equation}
+Donde ahora no hay restricción sobre que parte del plano compleo de $p$ se haga la integración, siempre y cuando los límites de integración permanezcan fijos y no se cruce ningún polo. Estas condiciones también permiten deformar el contorno de integración de una función analítica de manera arbitraria. Lo anterior se debe a que la diferencia entre el contorno original y el deformado es un controno cerrado que se integra a cero si no encierra a ningún polo. \cite{bellan2008fundamentals}\\
+Como $\widehat{f}(p) \rightarrow 0$ en los límites de integración, el contorno de integración $\widehat{f}(p)$ pude ser deformado hacia el lado izquierdo del plano complejo de $p$ siempre y cuando $\widehat{f}(p)$ permanezca como una función analítica, es decir que no pase sobre algún polo o línea de corte.\\
+Queda entonces por construir de forma explícita esta nueva función $\widehat{f}(p)$. Se tenía que $f(p)$ estaba dada por la ecuación \ref{Ap-eq:fp_original} que a su vez tenía una restricción en cuanto a la región para la cual estaba definida, por lo que para construir $\widehat{f}(p)$ simplemente se define una función idéntica donde no existe tal restricción siempre y cuando $\widehat{f}(p)$ permanezca analítica. Por lo que se tiene:
+\begin{equation}
+\widehat{f}(p) = \frac{1}{p-q}
+\end{equation}
+Con esto el contorno de Bromwich se puede deformar al lado izquierdo del plano. Lo cual resulta conveniente pues si se recuerda que $exp(pt) \rightarrow 0$ para $t$ positiva y $\operatorname{Re}(p) <0$ la cual era una región inaccesible para la función $f(p)$ original y que ahora es accesible para intregación para está nueva función $\widehat{f}(p)$. A la construcción anterior se le conoce como continuación analítica.\\
+En el caso particular de $\widehat{f}(p)$, el controno de integración puede cerrarse con una arco que va hacia la izquierda del plano complejo de $p$. Este nuevo contorno encierra al polo que se encuentra en $p=q$ por lo que la integral puede ser calculada por medio del método del residuo.
+\begin{equation}
+F(t) =\frac{1}{2\pi i}\oint \frac{1}{p-q}e^{pt}dp= \lim_{p\to q}2\pi i(p-q)\left[\frac{e^{pt}}{2\pi i (p-q)}\right]=e^{qt}
+\end{equation}
+El caso anterior ayuda a ilustrar el hecho de si bien el contorno de Bromwich da de manera formal la transfromada inversa de Laplace, este por si mismo no garantiza que se pueda usar el método del residuo pues los polos de interes se encuentran en la región donde la función no está definida.\\
+Esto se solventa con la continuación analítica que permite la deformación del contorno de Bromwich original hacia la región que antes estaba restringida, lo cual permite el uso del teorema del residuo para la evaluación de la transformada inversa.
 \onlyinsubfile{\bibliographystyle{unsrt}}
 \onlyinsubfile{\bibliography{../referencias}}
 \end{document}
