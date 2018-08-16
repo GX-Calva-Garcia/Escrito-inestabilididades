@@ -174,7 +174,7 @@ z = \pm \sqrt{(\lambda^2 +1) - (4 \lambda ^2 + 1)^{1/2}}
 En donde como ya se había mencionado, lo que se busca es la raíz con la componente imaginaria positiva, por lo que se escoge el signo positivo en la ecuación \ref{eq:z_misma_omega}. La figura \ref{fig:misma_omega_tasa_de_crecimiento} muestra entonces la tasa de crecimiento de inestabilidad Im$z$ como función de $\lambda$.
 \begin{figure}
 \includegraphics[height=0.3\paperheight]{grafica_misma_omega_contrarias.png}
-\caption{Tasa de crecimiento para dos especies con misma $\omega_{p\sigma}^2$ pero con velocidades de signo contrario.}
+\caption{Tasa de crecimiento para dos especies con misma $\omega_{p\sigma}^2$ pero con velocidades de signo contrario. Donde $\operatorname{Im}(z)_{max}=1/2$}
 \label{fig:misma_omega_tasa_de_crecimiento}
 \end{figure}
 \section{Caso misma $\boldsymbol{\omega_{p\sigma}}$ con una especie incidente y la otra estacionaria.}
@@ -232,7 +232,7 @@ Y al resolver para $\lambda$ se obtiene
 Estos valores se pueden apreciar en la figura \ref{fig:misma_omega_tasa_de_crecimiento} que grafica la parte imaginaria de $z$, es decir la correspondiente al crecimiento de la inestabilidad, contra $\lambda$. 
 \begin{figure}[!h]
 \includegraphics[height=0.3\paperheight]{grafica_misma_omega_reposo.png}
-\caption{Tasa de crecimiento para dos especies con misma $\omega_{p\sigma}^2$ pero una de ellas estacionaria.}
+\caption{Tasa de crecimiento para dos especies con misma $\omega_{p\sigma}^2$ pero una de ellas estacionaria. Con $\operatorname{Im}(z)_{max}=1/2$}
 \label{fig:misma_omega_reposo}
 \end{figure}
 Ahora bien regresando a variables físicas se tiene que el umbral de insetabilidad ocurre cuando
@@ -360,7 +360,7 @@ z_{max} = \frac{1}{2}\left(\sqrt{3(1+\epsilon)} + i \sqrt{(1+\epsilon)} \right)
 La figura \ref{fig:d-d} muestra el comportamiento de la parte imaginaria de $z$ para el caso que se acaba de estudiar.
 \begin{figure}
 \includegraphics[height=0.3\paperheight]{grafica-d-d-reposo}
-\caption{$Im(z)$ en función de $\lambda$, con $\epsilon = 2.72 \times 10^{-4}$ para el caso de un haz de deuterio-electrén incidiendo con un plasma estacionario deuterio-electrón.}
+\caption{$Im(z)$ en función de $\lambda$, para el caso de un haz de dos especies incidiendo con un plasma estacionario de dos especies. Con $\operatorname{Im}(z)_{max}=\frac{1}{2}\sqrt{(1+\epsilon)}$}
 \label{fig:d-d}
 \end{figure}
 \section{Caso para iones estacionarios y electrones incidentes}
@@ -448,12 +448,66 @@ Para el caso electrostático de un plasma en tres dimensiones la ecuación de Vl
 \end{equation}
 Sería entonces lógico pensar que para estudiar las ondas desde el punto de vista de Vlasov basta con realizar un proceso de linealización para obtener la relación de dispersión del plasma. Sin embargo resulta que el método de Fourier arroja una singularidad en el integrando, de la misma manera en la que aparece una singularidad al insertar una función de distribución en la relación de dispersión.\\
 %%%%%Poner fallo de Fourier%%%%%%%
-\subsection*{Fallo Fourier}
+\subsection*{Fallo de Fourier}
 Para ilustar como falla el análisis de Fourier para tratar al problema desde el punto de vista de Vlasov se tomará el caso de un plasma sin magnetizar en equilibrio estacionario y con comportamiento Maxwelliano. Donde también se asumirá que los iones no se mueven, esto es $m_i \to \infty$, y que la densidad de los iones es igual a la densidad de los electrones en equlibrio $n_e =n_i$. El campo electrostático es entonces cero en el equlibrio debido a que hay neutralidad de carga en el equlibrio. Además como los iones son imóviles, todo el estudio de la dinámica será de los electrones.Falta entonces plantear al problema de tal manera que este bien definido y tenga relevancia física. Para ello se asume la distribución en equilibrio de velocidades de los electrones como una distribución Maxwelliana.
 \begin{equation}
+\label{eq:fourier_distribucion_maxwelliana}
 f_0(u)=n_0\frac{1}{\pi^{1/2}V_T}e^{-u^2/V_T^2}
 \end{equation}
-
+Donde $V_T^2=2k_BT/m$. Y si además se tiene $E=- \partial \Phi/\partial x$ la ecuación linealizada de Vlasov en una dimensión es de la forma:
+\begin{equation}
+\label{eq:vlasov_1D_linealizada}
+\frac{\partial f_1}{\partial t}+u\frac{\partial f_1}{\partial x}-\frac{q}{m}\frac{\partial \Phi _1}{\partial x}\frac{\partial f_0}{\partial u}=0
+\end{equation}
+Como Vlasov describe la evolución en el espacio fase $u$ es una variable independiente y por lo tanto si se asume que la dependencia espacial tiene la forma de un modo normal $\sim exp(ikx-i\omega t)$ la ecuación \ref{eq:vlasov_1D_linealizada} queda entonces
+\begin{equation}
+-i(\omega-ku)f_1- ik\Phi _1 \frac{q}{m}\frac{\partial f_0}{\partial u}=0
+\end{equation}
+Despejando $f_1$
+\begin{equation}
+f_1 =-\frac{k}{(\omega -ku)}\frac{q}{m}\frac{\partial f_0}{\partial u}\Phi_1
+\end{equation}
+Se tiene tambien quela densidad de los electrones perturbados es
+\begin{equation}
+\label{eq:densidad_electrones_perturbados}
+n_1 = \int^{\infty}_{-\infty} f_1 du=-\frac{q}{m}\Phi_1 \int^{\infty}_{-\infty}\frac{k}{(\omega-ku)}\frac{\partial f_0}{\partial u}du
+\end{equation}
+La ecuación \ref{eq:densidad_electrones_perturbados} proveé una relación entre $n_1$ y $\Phi _1$. Otra relación entre esos dos términos es dada por la ecuación de Poisson, que linealizada en este caso es
+\begin{equation}
+\frac{\partial ^2 \Phi _1}{\partial x^2}=-\frac{n_1 q}{\epsilon _0}
+\end{equation}
+Que al realizar una transformación de Fourier en el espacio resulta en
+\begin{equation}
+k^2\Phi_1 = \frac{n_1 q}{\epsilon_0}
+\end{equation}
+Que al despejar $\Phi_1$ y sustituyendo en la ecuación \ref{eq:densidad_electrones_perturbados} se obtiene
+\begin{equation}
+1= - \frac{q^2}{k^2 m \epsilon_0}\int^{\infty}_{-\infty} \frac{k}{(\omega -ku)}\frac{\partial f_0}{\partial u}du
+\end{equation}
+Que da la relación de dispersión
+\begin{equation}
+\label{eq:fourier_dispersion_sin_normalizar}
+1 + \frac{q^2}{k^2 m \epsilon_0}\int^{\infty}_{-\infty} \frac{k}{(\omega -ku)}\frac{\partial f_0}{\partial u}du=0
+\end{equation}
+Ahora bien, sustituyendo la ecuación \ref{eq:fourier_distribucion_maxwelliana} en \ref{eq:fourier_dispersion_sin_normalizar} y definiendo las cantidades adimensionales $\xi = u/V_T$ y $\alpha= \omega / k V_T$ resulta en la expresión
+\begin{equation}
+1+\frac{1}{2k^2}\frac{q^2n_0}{\epsilon_0 k_BT}\frac{1}{\pi ^{1/2}}\int^{\infty}_{-\infty}\frac{1}{(\alpha -\xi)}\frac{\partial}{\partial \xi}e^{-\xi ^2}du=0
+\end{equation}
+La cual también se puede reescribir como 
+\begin{equation}
+1 - \frac{1}{2k^2 \lambda _D^2}\frac{1}{\pi ^{1/2}}\int^{\infty}_{-\infty}\frac{1}{(\xi -\alpha)}\frac{\partial}{\partial \xi}e^{-\xi ^2}d\xi=0
+\end{equation}
+Que vendría siendo una expresión de la forma:
+\begin{equation}
+1 + \chi =0
+\end{equation}
+Por lo que se podría expresar la susceptibilidad de los electrones como:
+\begin{equation}
+\label{eq:susceptibilidad_Vlasov_fourier}
+\chi_e = -\frac{1}{2k^2 \lambda _D^2}\frac{1}{\pi ^{1/2}}\int^{\infty}_{-\infty}\frac{1}{(\xi -\alpha)}\frac{\partial}{\partial \xi}e^{-\xi ^2}d\xi
+\end{equation}
+A diferencia del tratamiento de fluidos en donde se partían  de las ecuaciones de continuidad, de movimiento y de estado, que no son otra cosa que los momentos de la ecuación de Vlasov, aquí se tiene que solo la ecuación de Vlasov está involucrada. Con esto se puede inferir que Vlasov contiene ya toda la información de esas ecuaciones. Sería lógico pensar que este método es un método más simple y directo para encontrar las suscepibilidades que el tratamiento de fluidos. Sin embargo, de este surge una dificultad matemática.\\
+Dicha dificultad se presenta debido a que el denominador del integrando de la ecuación \ref{eq:susceptibilidad_Vlasov_fourier} que define a la susceptibilidad se desvanece cuando $\xi=\alpha$, es decir cuando $\omega = kV_T$. Debido a que no hay manera clara de como lidiar con esa singularidad, la integral sobre $\xi$ no puede ser evaluada y el método de Fourier falla.
 \subsection*{Método de Landau}
 Para lidiar con esa singularidad se hace uso de la transformada de Laplace, cuyos detalles se pueden revisar en el apéndice \notinsubfile{\ref{Ap:Laplace}}.\\
 Con el fin de tener una imagen clara se asume el caso de ondas electrostáticas en un plasma en tres dimensiones, estacionario en el equilibrio, neutral, sin magnetizar, espacialmente uniforme y en donde los iones pueden moverse.\\
@@ -549,11 +603,11 @@ En el caso general donde $N(p)/D(p)$ tenga varios polos en la parte izquierda de
 Queda entonces la incognita del origen de estos polos, para la cual se tienen dos posibiliades: $N(p)$ tiene un polo explícito esto es que tenga un término $\sim 1 /(p-p_j)$ o bién $D(p)$ contiene un factor $\sim (p-p_j)$ es decir $p_j$ es un cero de $D(p)$.\\
 Se podría asumir que el polo de $N(p)$ es el que esta contenido en el integrando pero este polo se utiliza como residuo al momento de integrar por lo que no contribuye. Por otro lado, la integral sobre $v_{\parallel}$ de $F_{\sigma 1}(u_{\parallel},0)$ es finita y por lo tanto tampoco contribuye. Lo anterior deja claro que los polos se encuentran en los ceros de $D(p)$.\\
 Con el fin de deja más clara la física detrás de esto se puede realizar una simplificación más. Esto es tomar el problema solamente para el comportamiento asintótico de tiempos largos donde  el polo $p_j$ ubicado más hacia la derecha domina sobre las contribuciones de los otros polos, por lo cuál lo único que se requiere es encontrar la raíz $p_j$ que tenga la parte real más grande. Y como se había mencionado antes tal raíz será un cero de la ecuación \ref{eq:cont_analitica_D(p)}.\\
-Si se observa además que las cantidades que se están sumando en la ecuación \ref{eq:cont_analitica_D(p)} son en escencia las perturbaciones de los iones y electrones asociadas con la oscilación. Por lo que se puede escribir:
+Si se observa además que las cantidades que se están sumando en la ecuación \ref{eq:cont_analitica_D(p)} son en escencia las perturbaciones de los iones y electrones asociadas con la oscilación se puede escribir entonces
 \begin{equation}
 D(p)=1 + \sum_{\sigma}\chi_{\sigma}=0
 \end{equation}
-en el caso particular donde la función de distribuciónen equilibrio es Maxwelliana, las suceptibilidades se pueden escribir como:
+Esto también resulta evidente si se compara la ecuación \ref{eq:cont_analitica_D(p)} con la ecuación \ref{eq:susceptibilidad_Vlasov_fourier} que se había obtenido antes para expresar susceptibilidades. Con esto, se hace uso de que la función de distribución en equilibrio es Maxwelliana y entonces se expresan a las susceptibilidades como:
 \begin{multline}
 \chi_{\sigma} = -\frac{1}{2k^2 \lambda ^2_{D\sigma}}\frac{1}{\pi^{1/2}}\int ^{\infty}_{-\infty}\frac{1}{(\xi - ip/kV_{T\sigma})}\frac{\partial}{\partial \xi}exp(-\xi ^2)d\xi\\
 = \frac{1}{k^2 \lambda ^2_{D\sigma}}\left[ \frac{1}{\pi ^{1/2}}\int ^{\infty}_{-\infty} \frac{(\xi - ip/kV_{T\sigma}+ ip/kV_{T\sigma})}{(\xi - ip/kV_{T\sigma})}exp(-\xi ^2)d\xi\right]\\
