@@ -427,7 +427,7 @@ Donde $\omega^2_{p0}$ es la frecuencia de plasma asociada a la densidad $n_0$. E
 \label{eq:dispersion_general_2}
 1= \omega^2_{p0}\int^{\infty}_{-\infty}\frac{f(u)}{(\omega-k u)^2}du
 \end{equation}
-Al inetgra por partes:
+Al integrar por partes:
 \begin{equation}
 1=\omega^2_{p0}\left(\frac{f(u)}{(\omega - ku)k}- \int^{\infty}_{-\infty}\frac{df/du}{(\omega -k u)k}du \right)
 \end{equation}
@@ -436,7 +436,7 @@ Si se asume que $f$ se desvanece en el infinito se tiene entonces:
 1=-\frac{\omega^2_{p0}}{k}\int^{\infty}_{-\infty}\frac{df/du}{\omega -k u}du
 \end{equation}
 Esta forma generalizada presenta un problema ya que hay una singularidad para cuando el valor de $v$ se aproxima al valor de la velocidad de fase de la onda ($\omega/k$).\\
-El uso de funciones de distribución del plasma, el cual consiste en particulas cargadas con interacciones a larga distancia, indica que es necesaria una ecuación que describa la evolución temporal de estas. Dicha ecuación es conocida como la ecuación de Vlasov.\\
+El uso de funciones de distribución del plasma, el cual consiste en particulas cargadas con interacciones a larga distancia, indica que es necesaria una ecuación que describa la evolución temporal de estas. Dicha ecuación es conocida como la ecuación de Vlasov.\cite{bellan2008fundamentals}\\
 \begin{equation}
 \label{eq:vlasov_def}
 \frac{\partial f}{\partial t} + \frac{d\overrightarrow{\textbf{r}}}{dt}\cdot \frac{\partial f}{\partial \overrightarrow{\textbf{r}}} + \frac{d \overrightarrow{\textbf{p}}}{dt}\cdot \frac{\partial f}{\partial \overrightarrow{\textbf{p}}}=0
@@ -448,6 +448,13 @@ Para el caso electrostático de un plasma en tres dimensiones la ecuación de Vl
 \end{equation}
 Sería entonces lógico pensar que para estudiar las ondas desde el punto de vista de Vlasov basta con realizar un proceso de linealización para obtener la relación de dispersión del plasma. Sin embargo resulta que el método de Fourier arroja una singularidad en el integrando, de la misma manera en la que aparece una singularidad al insertar una función de distribución en la relación de dispersión.\\
 %%%%%Poner fallo de Fourier%%%%%%%
+\subsection*{Fallo Fourier}
+Para ilustar como falla el análisis de Fourier para tratar al problema desde el punto de vista de Vlasov se tomará el caso de un plasma sin magnetizar en equilibrio estacionario y con comportamiento Maxwelliano. Donde también se asumirá que los iones no se mueven, esto es $m_i \to \infty$, y que la densidad de los iones es igual a la densidad de los electrones en equlibrio $n_e =n_i$. El campo electrostático es entonces cero en el equlibrio debido a que hay neutralidad de carga en el equlibrio. Además como los iones son imóviles, todo el estudio de la dinámica será de los electrones.Falta entonces plantear al problema de tal manera que este bien definido y tenga relevancia física. Para ello se asume la distribución en equilibrio de velocidades de los electrones como una distribución Maxwelliana.
+\begin{equation}
+f_0(u)=n_0\frac{1}{\pi^{1/2}V_T}e^{-u^2/V_T^2}
+\end{equation}
+
+\subsection*{Método de Landau}
 Para lidiar con esa singularidad se hace uso de la transformada de Laplace, cuyos detalles se pueden revisar en el apéndice \notinsubfile{\ref{Ap:Laplace}}.\\
 Con el fin de tener una imagen clara se asume el caso de ondas electrostáticas en un plasma en tres dimensiones, estacionario en el equilibrio, neutral, sin magnetizar, espacialmente uniforme y en donde los iones pueden moverse.\\
 Se asume entonces que la distribución de velocidades en equilibrio de cada especie es una función de distribución Maxwelliana en tres dimensiones.
