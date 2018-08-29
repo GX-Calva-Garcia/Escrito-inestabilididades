@@ -605,10 +605,12 @@ Se podría asumir que el polo de $N(p)$ es el que esta contenido en el integrand
 Con el fin de deja más clara la física detrás de esto se puede realizar una simplificación más. Esto es tomar el problema solamente para el comportamiento asintótico de tiempos largos donde  el polo $p_j$ ubicado más hacia la derecha domina sobre las contribuciones de los otros polos, por lo cuál lo único que se requiere es encontrar la raíz $p_j$ que tenga la parte real más grande. Y como se había mencionado antes tal raíz será un cero de la ecuación \ref{eq:cont_analitica_D(p)}.\\
 Si se observa además que las cantidades que se están sumando en la ecuación \ref{eq:cont_analitica_D(p)} son en escencia las perturbaciones de los iones y electrones asociadas con la oscilación se puede escribir entonces
 \begin{equation}
+\label{eq:D(p)_como_suma_de_susceptibilidades}
 D(p)=1 + \sum_{\sigma}\chi_{\sigma}=0
 \end{equation}
 Esto también resulta evidente si se compara la ecuación \ref{eq:cont_analitica_D(p)} con la ecuación \ref{eq:susceptibilidad_Vlasov_fourier} que se había obtenido antes para expresar susceptibilidades. Con esto, se hace uso de que la función de distribución en equilibrio es Maxwelliana y entonces se expresan a las susceptibilidades como:
 \begin{multline}
+\label{eq:susceptibilidad_Landau}
 \chi_{\sigma} = -\frac{1}{2k^2 \lambda ^2_{D\sigma}}\frac{1}{\pi^{1/2}}\int ^{\infty}_{-\infty}\frac{1}{(\xi - ip/kV_{T\sigma})}\frac{\partial}{\partial \xi}exp(-\xi ^2)d\xi\\
 = \frac{1}{k^2 \lambda ^2_{D\sigma}}\left[ \frac{1}{\pi ^{1/2}}\int ^{\infty}_{-\infty} \frac{(\xi - ip/kV_{T\sigma}+ ip/kV_{T\sigma})}{(\xi - ip/kV_{T\sigma})}exp(-\xi ^2)d\xi\right]\\
 =\frac{1}{k^2 \lambda ^2_{D\sigma}}\left[1 + \frac{1}{\pi ^{1/2}}\alpha\int^{\infty}_{-\infty}\frac{exp(-\xi ^2)}{\xi -\alpha}d\xi\right]\\
@@ -616,8 +618,172 @@ Esto también resulta evidente si se compara la ecuación \ref{eq:cont_analitica
 \end{multline}
 Donde $\alpha = ip/kV_{T\sigma}$ y el últmo renglón introduce un término referente a una función de dispersión del plasma $Z(\alpha)$ definida como:
 \begin{equation}
+\label{eq:Z_dispersion_plasma}
 Z(\alpha) =\frac{1}{\pi ^{1/2}}\int^{\infty}_{-\infty}\frac{exp(-\xi ^2)}{(\xi- \alpha)}d\xi
 \end{equation}
+\subsection*{Evaluación de la función de dispersión del plasma.}
+Para la evaluación de la ecuación \ref{eq:Z_dispersion_plasma} se pueden considerar dos casos límites. El primero es cuando se tiene $|\alpha|\gg 1$, que corresponde al límite adiabático en el análisis de fluidos donde $\omega / k \gg V_{T\sigma}$, y cuando $|\alpha|\ll 1$ que su vez corresponde al límite isotérmico en el análisis de fluidos donde $\omega / k \ll V_{T\sigma}$\\
+La correspondencia de estos límites para $|\alpha |$ con los límites adiabático e isotérmico obtenidos del análisis de fluidos sugiere entonces que para esos dos casos se puede hacer uso de ciertos resultados de este al momento de evaluar $Z(\alpha )$. En particular se tiene que el análisis de fluidos solo habían ondas no amortiguadas por lo que las perturbaciones que aparecen como resultado del análisis de Vlasov deben de ser lo suficientemente debiles para que haya una correspondencia en estos límites. Lo anterior es equivalente a decir que la solución de Vlasov correspondiente al modo del análisis de fluidos solo puede tener un polo que de encontrarse debajo del eje real solo sea a una distancia lo suficientemente pequeña. Por lo tanto solo es necesario hacer una continuación analítica de $N(p)/D(p)$ ligeramente hacia la parte negativa del eje imaginario de $p$ y por lo tanto tener un contorno de integración que se deforme solo ligeramente hacia la parte negativa del eje imaginario, por ejemplo un semicírculo de radio $\delta$ que pase por debajo del polo. Esto a su vez permite dividir el contorno de integración para la ecuación \ref{eq:Z_dispersion_plasma} en tres partes:
+\begin{itemize}
+\item Una línea con dirección hacia la derecha $\xi \in (-\infty , \alpha -\delta ]$ pero ubicada a la izquierda del polo.
+\item Un semicírculo de radio $\delta$ debajo del polo en sentido contrario a las manecillas del reloj y que solamente encierre parcialmente al polo.
+\item Una línea que parte de $\alpha +\delta$, es decir a la derecha del polo, y continúa hacia $\xi < \infty$.
+\end{itemize}
+En el límite $\delta \to 0$ la suma de los dos segmentos que recorren una línea definen lo que se conoce como el valor principal de la integral. Por otro lado, la parte correspondiente al semicírculo resulta ser medio residuo por lo que su contribución es $i\pi$ veces este, en lugar de $2i\pi$. Con esto se tiene entonces que la función de dispersión del plasma para un polo que se encuentra ligeramente por debajo del eje real es:
+\begin{equation}
+\label{eq:Z_ValorP_medioRes}
+Z(\alpha) = \frac{1}{\pi ^{1/2}}\left[P\int ^{\infty}_{-\infty} \frac{exp(-\xi ^2)}{(\xi -\alpha)}d\xi\right]+ i\pi^{1/2}exp(-\alpha ^2)
+\end{equation}
+Donde $P$ denota el valor principal de la integral y el sgundo término del lado derecho expresa la contribución del semicírculo. La ecuación \ref{eq:Z_ValorP_medioRes} da una manera de lidiar con las integrales mal definidas del tipo como la que aparece en la ecuación \ref{eq:fourier_dispersion_sin_normalizar}.\\
+Regresando entonces al problema de los dos casos límites se empezará primero revisando el caso $\alpha \gg 1$ que corresponde al caso de ondas de electrones.\\
+Primero se empieza por notar que el factor $exp(-\xi^2)$ solo contribuye de manera significativa a la integral cuando $\xi$ es del orden de la unidad o más pequeña. En la parte de la integral donde este término es finito, la cual es la región de interes, se tiene $|\alpha | \gg \xi$. 
+Es entonces en esta región donde los otros factores del integrando pueden ser expandidos de la siguiente manera
+\begin{equation}
+\frac{1}{(\xi - \alpha)}= -\frac{1}{\alpha}\left(1-\frac{\xi}{\alpha}\right)^{-1}=-\frac{1}{\alpha}\left[1+\frac{\xi}{\alpha}+\left(\frac{\xi}{\alpha}\right)^2+\left(\frac{\xi}{\alpha}\right)^3+\left(\frac{\xi}{\alpha}\right)^4+\cdots\right]
+\end{equation}
+Sustituyendo en la integral de la ecuación \ref{eq:Z_ValorP_medioRes} y haciendo uso del hecho de que se trata de una integral par, se desprecian los términos impares pues estos no contribuyen y se llega a la siguiente expresión:
+\begin{equation}
+P\int ^{\infty}_{-\infty} \frac{exp(-\xi ^2)}{(\xi -\alpha)}d\xi = - \frac{1}{\alpha}\frac{1}{\pi ^{1/2}}\int^{\infty}_{-\infty}exp(-\xi^2)d\xi \left[1 + \left(\frac{\xi}{\alpha}\right)^2 + \left(\frac{\xi}{\alpha}\right)^4 + \cdots \right]
+\end{equation}
+Los términos resultantes sugieren una integral de forma Gaussiana, o bien la suma de varias integrales de forma Gaussiana, de lo cual se puede sacar provecho si se toman las derivadas sucesivas con respecto de $a$ de la expresión
+\begin{equation*}
+\frac{1}{\pi ^{1/2}}\int exp(-a\xi ^2)d\xi =\frac{1}{a^{1/2}}
+\end{equation*}
+De lo cual haciendo $a=1$ se tiene
+\begin{align*}
+\frac{1}{\pi ^{1/2}}\int \xi ^2 exp(-a\xi ^2)d\xi =\frac{1}{2}& &\frac{1}{\pi ^{1/2}}\int \xi ^4 exp(-a\xi ^2)d\xi =\frac{3}{4}
+\end{align*}
+El valor principal toma entonces la forma 
+\begin{equation}
+\label{eq:ValorP_alpha_gg_1}
+P\int ^{\infty}_{-\infty} \frac{exp(-\xi ^2)}{(\xi -\alpha)}d\xi = -\frac{1}{\alpha}\left[1 + \frac{1}{2\alpha^2}+\frac{3}{4\alpha^4}+\cdots\right]
+\end{equation}
+Por lo que la función de dispersión del plasma en el caso asintótico $|\alpha|\gg 1$ tiene la forma
+\begin{equation}
+\label{eq:Z_aprox_alpha_gg_1}
+Z(\alpha)= -\frac{1}{\alpha}\left[1 + \frac{1}{2\alpha^2}+\frac{3}{4\alpha^4}+\cdots\right]+ i\pi ^{1/2}exp(-\alpha)
+\end{equation}
+Para evaluar la integral en el límite de $|\alpha |\ll 1$ se introduce una variable $\eta = \xi -\alpha$ donde $d\eta = d\xi$ por lo que el valor principal de la ecuación \ref{eq:Z_ValorP_medioRes} se puede reescribir y expandir de la siguiente manera:
+\begin{equation}
+\begin{split}
+\frac{1}{\pi^{1/2}}\int^{\infty}_{-\infty}\frac{exp(-\eta ^2 - 2\alpha \eta - \alpha^2 )}{\eta}d\eta &=\\
+&=\frac{e^{-\alpha^2}}{\pi^{1/2}}\int^{\infty}_{-\infty}\frac{e^{-\eta^2}}{\eta}d\eta \left[1-2\alpha \eta + \frac{(-2\alpha)^2}{2!}+\frac{(-2\alpha)^3}{3!}+\cdots\right]\\
+&=-2\alpha\frac{e^{-\alpha^2}}{\pi^{1/2}}\int^{\infty}_{-\infty}e^{-\eta^2}d\eta\left[1+\frac{2\eta^2\alpha^2}{3}+\cdots\right]\\
+&=-\alpha \left(1-\alpha^2+\cdots\right)\left(1+\frac{\alpha^2}{3}+\cdots\right)\\
+&=-2\alpha \left(1-\frac{2\alpha^2}{3} + \cdots \right)
+\end{split}
+\end{equation}
+Donde los términos impares del segundo renglón se integran a cero en el tercer rengón debido a la simetría de la integral.
+Teniendo entonces que la función de dispersión del plasma para este límite es
+\begin{equation}
+\label{eq:Z_aprox_alpha_ll_1}
+Z(\alpha)=-2\alpha \left(1-\frac{2\alpha^2}{3}+\cdots \right)+i\pi^{1/2}exp(-\alpha^2)
+\end{equation}
+Los límites anteriores corresponden al caso físico de ondas de electrones y ondas acústicas de iones los cuales a su vez hablan de diferentes susceptibilidades y por consecuencia de diferentes comportamientos para los amortiguamientos que surgen de estudiar las oscilaciones.
+\subsection*{Ondas de electrones}
+Esto corresponde al caso $|\alpha| \gg 1$ por lo cual se utiliza la ecuación \ref{eq:Z_aprox_alpha_gg_1} para la evaluación de \ref{eq:susceptibilidad_Landau} y donde además se define una suerte de frecuencia $\omega = ip$ para de esa manera tener $\alpha = \omega /kV_{T\sigma}$ y  $\alpha_i = \omega_i /kV_{T\sigma}$ por lo que entonces la susceptibilidad puede expresarse como:
+\begin{equation}
+\label{eq:susceptibilidad_landau_ondas_electrones}
+\begin{split}
+\chi _{\sigma} &= \frac{1}{k^2 \lambda^2_{D\sigma}}\left\lbrace 1+\alpha \left[-\frac{1}{\alpha}\left(1+\frac{1}{2\alpha^2}+\frac{3}{4\alpha^4}+\cdots\right)+i\pi^{1/2}exp(-\alpha^2)\right]\right\rbrace\\
+&=\frac{1}{k^2 \lambda^2_{D\sigma}}\left\lbrace - \left(\frac{1}{2\alpha^2}+\frac{3}{4\alpha^4}+\cdots\right) + i\alpha\pi^{1/2}exp(-\alpha^2)\right\rbrace\\
+&=-\frac{\omega^2_{p\sigma}}{\omega^2}\left(1+3\frac{k^2}{\omega^2}\frac{k_BT_{\sigma}}{m_{\sigma}}+\cdots \right)+i\frac{\omega}{kV_{T\sigma}}\frac{\pi^{1/2}}{k^2\lambda^2_{D\sigma}}exp(-\omega^2/k^2V^2_{T\sigma})
+\end{split}
+\end{equation}
+Por lo que si se se tiene que la raíz es tal que $|\alpha |\gg 1$ la ecuación \ref{eq:D(p)_como_suma_de_susceptibilidades} para los polos pasa a ser
+\begin{equation}
+\label{eq:suma_susc_ondas_electrones}
+1-\sum_{\sigma}\frac{\omega^2_{p\sigma}}{\omega^2}\left(1+3\frac{k^2}{\omega^2}\frac{k_BT_{\sigma}}{m_{\sigma}}+\cdots \right)+i\frac{\omega}{kV_{T\sigma}}\frac{\pi^{1/2}}{k^2\lambda^2_{D\sigma}}exp(-\omega^2/k^2V^2_{T\sigma}) =0
+\end{equation}
+Que resulta ser similar a la expresión encontrada para la relación de dispersón en el tratamiento de fluidos con la excepción de que en este caso se tienen términos adicionales imaginarios.
+Se tiene además que la ecuación \ref{eq:suma_susc_ondas_electrones} no es una relación de dispersión sino la ecuación para las raíces de $D(p)$. Las cuales a su vez determinan los polos en $N(p)/D(p)$ que producen las oscilaciones con menor amortiguamiento, reultantes de alguna perturbación inicial en la función de distribución.\\
+Como $\omega^2_{pe}/\omega^2_{pi}=m_i/m_e$ y además en genral se tiene $V_{Ti} \ll V_{Te}$ tanto la parte real como la imaginaria referente a los términos de los iones son mucho más pequñas que los términos de electrones. Por lo tanto, despreciando los términos de los iones
+\begin{equation}
+\label{eq:relacion_disp_ondas_electrones}
+1- \frac{\omega^2_{pe}}{\omega^2}\left(1+3\frac{k^2}{\omega^2}\frac{k_BT_{e}}{m_{e}}+\cdots \right)+i\frac{\omega}{kV_{Te}}\frac{\pi^{1/2}}{k^2\lambda^2_{De}}exp(-\omega^2/k^2V^2_{Te}) =0
+\end{equation}
+Recordando que $\omega$ es una cantidad compleja se separa entonces en su parte real e imaginaria $\omega =\omega_r +\omega_i$ y de esta manera se prosigue a encontrar la raíz compleja $\omega$ de \ref{eq:relacion_disp_ondas_electrones}.
+Para ello se reescribe la ecuación como
+\begin{equation}
+\label{eq:D_Dr_mas_Di}
+D(\omega_r + i\omega_i) = D_r(\omega_r + i\omega_i)+iD_i(\omega_r + i\omega_i)=0
+\end{equation}
+Con $D_r$ la parte de $D$ que no contiene ningún término imaginario explícito mientras que $D_i$ es la parte que contiene de manera explícita a $i$. De esta manera se tiene:
+\begin{align}
+\label{eq:Dr_y_Di_ondas_electrones}
+D_r =1-\frac{\omega^2_{pe}}{\omega^2}\left(1+\frac{3k^2}{\omega^2}\frac{k_BT_e}{m_e}+\cdots\right)&&D_i=\frac{\omega}{kV_{Te}}\frac{\pi^{1/2}}{k^2\lambda^2_{De}}exp(-\omega^2/k^2V^2_{Te})
+\end{align}
+Además al haber asumido amortiguaciones debiles, es decir $\omega_1 \ll \omega_r$ la ecuación \ref{eq:D_Dr_mas_Di} puede expandirse por Taylor alrededor de $\omega_i$
+\begin{equation}
+\label{eq:expansion_Dr_ondas_electrones}
+D_r(\omega_r)+i\omega_i \left(\frac{dD_r}{d\omega}\right)_{\omega=\omega_r} + i\left[D_i(\omega_r)+i\omega_i\left(\frac{dD_i}{d\omega}\right)_{\omega=\omega_r}\right]
+\end{equation}
+Como $\omega_i \ll \omega_r$ la parte real de la ecuación \ref{eq:expansion_Dr_ondas_electrones} es aproximadamente cero y por lo tanto se desprecia.
+\begin{equation}
+\label{eq:Dr_ondas_electrones}
+D_r(\omega_r)\simeq 0
+\end{equation}
+Por otro lado si se despeja $\omega_i$ de la parte imaginaria se obtiene
+\begin{equation}
+\label{eq:despeje_parte_im_ondas_electrones}
+\omega_i=-\frac{D_i(\omega_r)}{\frac{dD_r}{d\omega}}
+\end{equation}
+Por lo que las ecuaciones \ref{eq:Dr_ondas_electrones} y \ref{eq:Dr_y_Di_ondas_electrones} dan la parte real de la frecuencia como
+\begin{equation}
+\label{eq:wr_ondas_electrones}
+\omega^2_r=\omega^2_{pe}\left(1+3\frac{k^2}{\omega^2_r}\frac{k_BT_e}{m_e}\right)\simeq\omega^2_{pe}\left(1+3k^2\lambda^2_{De}\right)
+\end{equation}
+Mientras que las ecuaciones \ref{eq:despeje_parte_im_ondas_electrones} y \ref{eq:Dr_y_Di_ondas_electrones} dan la parte imaginaria
+\begin{equation}
+\label{eq:Amortiguamiento_Landau_ondas_electrones}
+\begin{split}
+\omega_i &=-\sqrt{\frac{\pi}{8}}\frac{\omega_{pe}}{k^3\lambda^3_{De}}exp(-\omega^2/k^2V^2_{Te})\\
+&=-\sqrt{\frac{\pi}{8}}\frac{\omega_{pe}}{k^3\lambda^3_{De}}exp\left[-(1+3k^2\lambda^2_{De})/2k^2\lambda^2_{De}\right]
+\end{split}
+\end{equation}
+Es justamente a esa parte imaginaria que se le conoce como el amortiguamiento de Landau. Debido a que las oscilaciones menos amortiguadas evolucionan de la forma $exp(pt)=exp(-i\omega_rt+\omega_it)$ y en la ecuación \ref{eq:Amortiguamiento_Landau_ondas_electrones} se tiene una $\omega_i$ negativa, queda claro entonces que se trata de un amortiguamiento.\\
+Por último cabe señalar que si bien se asumió $\omega_i \ll \omega_r$ no quiere decir que $\omega_i$ sea despreciable debido a que el factor $2\pi$ afecta de manera diferente las partes imaginarias y reales de la fase de la onda.
+\subsection*{Ondas acústicas de iones}
+Las ondas acústicas de los iones son un resultado del análisis de dos fluidos en la región donde $V_{Ti} \ll \omega /k \ll V_{Te}$. En donde los electrones exhiben un comportamiento isotérmico mientras que los iones se comportan de manera adibática.
+Esta diferencia de comportamiento siguiere que $D(p)$ también tiene raíces en esa región donde $|\alpha _e|\ll 1$ y $|\alpha _i|\gg 1$.\\
+Se tiene entonces que de las ecuaciones \ref{eq:susceptibilidad_Landau} y \ref{eq:Z_aprox_alpha_ll_1} la suceptibilidad en el caso $|\alpha | \ll 1$ es
+\begin{equation}
+\label{eq:susceptibilidad_Landau_ondas_iones}
+\begin{split}
+\chi _{\sigma} &= \frac{1}{k^2\lambda^2_{D\sigma}}\left\lbrace 1-2\alpha^2 \left(1-\frac{2\alpha^2}{3}+\cdots \right) + i\alpha \pi^{1/2}exp(-\alpha^2)\right\rbrace \\
+&\simeq \frac{1}{k^2\lambda^2_{D\sigma}}+i\frac{\alpha}{k^2\lambda^2_{D\sigma}}\pi^{1/2}exp(-\alpha^2)
+\end{split}
+\end{equation}
+Si además se hace uso de las ecuaciones \ref{eq:susceptibilidad_Landau_ondas_iones} para la suceptibiliad de los electrones y \ref{eq:susceptibilidad_landau_ondas_electrones} para la susceptibiliad de los iones se obtiene
+\begin{equation}
+\begin{split}
+D(\omega) &= 1+\frac{1}{k^2 \lambda^2_{De}}+i\frac{\omega}{kV^2_{Te}}\frac{\pi^{1/2}}{k^2\lambda^2_{De}}exp(-\omega^2/k^2V^2_{Te})\\
+&-\frac{\omega^2_{pi}}{\omega^2}\left(1+3\frac{k^2}{\omega^2}\frac{k_BT_i}{m_i}+\cdots \right)+i\frac{\omega}{kV_{Ti}}\frac{\pi^{1/2}}{k^2\lambda^2_{Di}}exp(-\omega^2/k^2V^2_{Ti})
+\end{split}
+\end{equation}
+Si se hace una expansión de Taylor de la misma manera que en las ecuaciones \ref{eq:Dr_ondas_electrones} y \ref{eq:despeje_parte_im_ondas_electrones} se llega a que $\omega_r$ es la raíz de 
+\begin{equation}
+D_r(\omega_r)=1+\frac{1}{k^2\lambda^2_{De}}-\frac{\omega^2_{pi}}{\omega^2_r}\left(1+3\frac{k^2}{\omega^2}\frac{k_BT_i}{m_i}\right)=0
+\end{equation}
+y por lo tanto
+\begin{equation}
+\omega^2_r =\frac{k^2 C^2_s}{1+k^2\lambda^2_{De}}\left(1+3\frac{k^2}{\omega^2}\frac{k_BT_i}{m_i}\right)\simeq\frac{k^2C^2_s}{1+k^2\lambda^2_{De}}+3k^2\frac{k_BT_i}{m_i}
+\end{equation}
+Donde $C^2_s=\omega^2_{pi}\lambda^2_{De}=k_BT_e/m_i$ es la velocidad acústica de los iones. Por otro lado la perte imaginaria resulta ser
+\begin{equation}
+\label{eq:Amortiguamiento_Landau_ondas_iones}
+\begin{split}
+\omega_i &\simeq -\frac{D_i(\omega_r)}{\frac{dD_r}{d\omega}}\\
+&= -\frac{\omega \pi^{1/2}}{k^3}\left[\frac{\frac{1}{\lambda^2_{De}}exp(-\omega^2/k^2V^2_{Te})+\frac{1}{\lambda^2_{Di}V_{Ti}}exp(-\omega^2 /k^2V^2_{Ti}}{2\omega^2_{pi}/\omega^3}\right]\\
+&=-\frac{\omega^4}{k^3C^3_s}\sqrt{\frac{\pi}{8}}\left[\sqrt{\frac{m_e}{m_i}}+\left(\frac{T_e}{T_i}\right)^{3/2}exp(-\omega^2/k^2V^2_{Ti})\right]\\
+&=-\frac{|\omega_r|}{(1+k^2\lambda^2_{De})^{3/2}}\sqrt{\frac{\pi}{8}}\left[\sqrt{\frac{m_e}{m_i}}+\left(\frac{T_e}{T_i}\right)^{3/2}exp\left(-\frac{T_e/2T_i}{1+2k^2\lambda^2_{De}}-\frac{3}{2}\right)\right]
+\end{split}
+\end{equation}
+Resulta que el amortiguamiento dominante de Landau proviene de los iones, esto es debido a que el amortiguamiento de Landau asociado a los electrones tiene el factor $\sqrt{m_e/m_i}$ el cual es pequeño.
+Si $T_e \gg T_i$ el término de los iones también se vuelve pequeño pues el término exponencial tiende a cero a medida que su argumeto se vuelve más grande.\\
+De lo anterior se conlcuye que un amortiguamiento fuerte de Landau ocurre cuando $T_i$ se aproxima a $T_e$ y por lo tanto las ondas acusticas de los iones solo pueden propagarse sin sufrir atenuaciones significativas cuando el plasma tiene la propiedad $T_e \gg T_i$
+%\subsection*{Relaciones de potencia}
+%\subsection*{Fórmula de Plemelj}
 %%%%%%%Anderson%%%%%%%%%%%%%%%
 %Para evaluar la integral se hace uso de la teoría de variable compleja, en particular el teorema del residuo y el valor principal de Cauchy.\\
 %Se reescribe la integral en una forma más conveniente.
@@ -639,7 +805,7 @@ Z(\alpha) =\frac{1}{\pi ^{1/2}}\int^{\infty}_{-\infty}\frac{exp(-\xi ^2)}{(\xi- 
 %\label{eq:disp_general_residuo}
 %1 = \frac{\omega^2_{p0}}{k^2} \left(PV\int^{\infty}_{-\infty}\frac{df/dv}{v- \omega /k}dv + i \pi \left(\frac{df}{dv}\right)_{v=\omega/k}\right)
 %\end{equation}
-%Asumiendo el caso donde la velocidad de fase de la onda es mucho mayor que las velocidades en la distribución el valor principal ($PV$) se puede aproximar expandiendo el denominaodr de la integral alrededor de $v=0$, esto da:
+%Asumiendo el caso donde la velocidad de fase de la onda es mucho mayor que las velocidades en la distribución el valor principal ($PV$) se puede aproximar expandiendo el denominador de la integral alrededor de $v=0$, esto da:
 %\begin{equation}
 %PV= \frac{1}{\omega}\int^{\infty}_{-\infty} \left(1+\frac{kv}{\omega}+\frac{k^2v^2}{\omega^2}+...\right)\frac{df}{dv}dv
 %\end{equation}
@@ -675,7 +841,7 @@ Z(\alpha) =\frac{1}{\pi ^{1/2}}\int^{\infty}_{-\infty}\frac{exp(-\xi ^2)}{(\xi- 
 %\omega_{im}\approx \frac{\pi \omega^2_{p0}}{2k^2}\left(\frac{df}{dv}\right)_{v=\omega/k}
 %\end{equation}
 %Ahora bien si $f(v)$ es una distribución maxwelliana entonces $f(v) \propto exp(-v^2/v^2_T)$, es decir una función decreciente en la velocidad por lo que su derivada evaluada en $\omega/k$ es negativa y entonces $\omega_{im}$ representa un amortiguamiento en la onda.
-%A este amortiguamineto se le conoce como amortiguamiento de Landau, cuyo origen resulta evidente si se recuerda que la suposición de una velocidad de fase lo suficientemente grande inplica que las especies se mueven a una velocidad más lenta y por lo tanto la transferencia de energía es desde la onda hacia las partículas.
+%A este amortiguamineto se le conoce como amortiguamiento de Landau, cuyo origen resulta evidente si se recuerda que la suposición de una velocidad de fase lo suficientemente grande implica que las especies se mueven a una velocidad más lenta y por lo tanto la transferencia de energía es desde la onda hacia las partículas.
 \onlyinsubfile{\bibliographystyle{unsrt}}
 \onlyinsubfile{\bibliography{../referencias}}
 \end{document}
