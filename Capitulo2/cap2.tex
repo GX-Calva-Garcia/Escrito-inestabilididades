@@ -395,7 +395,26 @@ P_{\substack{ganacia\\particulas} } &=-\frac{\pi m \omega }{2k^2} \left( \frac{q
 \end{split}
 \end{equation}
 Si se hace la aproximación $\omega \sim \omega_{pe}$
-%\subsection*{Fórmula de Plemelj}
+\begin{equation}
+\label{eq:P_ganancia_part_aprox}
+\begin{split}
+P_{\substack{ganacia\\particulas} } &= \sqrt{\frac{\pi}{8}}\sqrt{\frac{m}{k^3_BT^3}}\frac{\omega ^2_{pe}}{k^3}q^2n_0E^2_{onda}exp\left( -\frac{\omega ^2_{pe}}{k^2v^2_{Te}}\right)\\
+&=\sqrt{\frac{\pi}{8}}\sqrt{\frac{m}{k_BT}}\frac{\omega ^2_{pe}}{k^3}\frac{\epsilon _0}{\lambda ^2_{De}}E^2_{onda}exp\left( -\frac{\omega ^2_{pe}}{k^2v^2_{Te}}\right)\\
+&=\sqrt{\frac{\pi}{8}}\frac{\omega _{pe}}{k^3\lambda ^3_{De}}exp\left( -\frac{\omega ^2_{pe}}{k^2v^2_{Te}}\right) \epsilon _0 E^2_{onda}
+\end{split}
+\end{equation}
+Que resulta ser la ecuación \ref{eq:potencia_perdida-onda_Landau} salvo un factor de 2. Esta discrepancia resulta de la suposición inicial de que toda la energía de la onda se encontraba contenida en el campo eléctrico. Lo que la ecuación \ref{eq:P_ganancia_part_aprox} ilustra es que el campo eléctrico solo aporta la mitad de la energía total encontrada en la onda. Queda entonces por determinar donde está contenida la otra mitad de la energía de la onda. No obstante, de esto se puede concluir que la tasa verdadera de perdida de potencia es dos veces la ecuación \ref{eq:potencia_perdida-onda_Landau}.
+\subsection{Fórmula de Plemelj}
+El método de Landau expuesto en este capítulo ilustró que la manera más adecuada de analizar problemas que llevan a la obtención de integrales mal definidas es proponiendo el problema como uno de valor inicial en lugar de un estacionario.
+El resultado esencial de este método fue encontrar una manera de lidiar con las singularidades tomando el medio residuo del polo para determinar su contribución y el valor principal de la integral para el resto del contorno para el cual el polo no contribuye.
+A pesar de ser una herramienta adecuada para lidiar con las singularidades, el método de Landau tiene la inconveniencia de ser algo tardado. Afortunadamente existe una manera de resumir su resultado esencial y se hace por medio de la llamada fórmula de Plemelj.
+\begin{equation}
+\label{eq:formula_Plemelj}
+lim _{\epsilon \to 0}\frac{1}{\xi -a\mp i|\xi |}=P\frac{1}{\xi -a}\pm i\pi \delta (\xi -a)
+\end{equation}
+La cual muestra de manera simple como lidiar con integrales que contengan una singularidad de la forma en la que aparecen en la función de dispersión del plasma.
+Esto ayuda a simplificar el proceso ya que en lugra de realizar el método de Landau completo se puede empezar por un análisis de Fourier y después utilizar la ecuación \ref{eq:formula_Plemelj} para poder lidiar con las singularidades que se puedan presentar y de esta manera evaluar las integrales.
+Para mayor detalle sobre su derivación vease el apéndice \ref{Ap2:Plemelj}.
 %%%%%%%Anderson%%%%%%%%%%%%%%%
 %Para evaluar la integral se hace uso de la teoría de variable compleja, en particular el teorema del residuo y el valor principal de Cauchy.\\
 %Se reescribe la integral en una forma más conveniente.
