@@ -1,9 +1,419 @@
 \documentclass[../tesis_main_file.tex]{subfiles}
 \begin{document}
+\onlyinsubfile{\graphicspath{ {../figuras/} }}
 \onlyinsubfile{\pagenumbering{arabic}}
-\onlyinsubfile{\chapter{Interacción entre partículas y ondas}}
+\onlyinsubfile{\chapter{Inestabilidad de dos corrientes.}}
 \section{Introducción}
-Este capítulo habla de las interacciones entre un conjunto de partículas y una onda. En partícular, el intercambio de energía que ocurre durante la interacción.
+Este capítulo habla de las interacciones entre un conjunto de partículas y una onda. En partícular, el intercambio de energía que ocurre durante la interacción.\\
+Para tratar el tema de inestabilidades se mostrará primero que frecuencias complejas pueden aparecer en el plasma si se tiene un arreglo de haces de partículas adecuado \cite{bellan2008fundamentals}.
+\section{Relación de dispersión}
+El tratamiento inicial se hará desde la perspectiva de fluidos. Se parte entonces de las siguientes ecuaciones:
+\begin{equation}
+\label{cont_nl}
+\frac{\partial n_{\sigma}}{\partial t} + \overrightarrow{\nabla} \cdot n_{\sigma}\overrightarrow{\textbf{u}}_{\sigma}=0
+\end{equation}
+\begin{equation}
+\label{eq_movimiento_nl}
+n_{\sigma}m_{\sigma}\frac{d\overrightarrow{\textbf{u}}_{\sigma}}{dt}= n_{\sigma}q_{\sigma}(\overrightarrow{\textbf{E}} + \overrightarrow{\textbf{u}}_{\sigma} \times \overrightarrow{\textbf{B}}) - \nabla P_{\sigma} - \textbf{R}_{\sigma \alpha}
+\end{equation}
+\begin{equation}
+\label{poisson_nl}
+\nabla ^2 \Phi = -\frac{1}{\epsilon_0}\sum _{\sigma}q_{\sigma} n_{\sigma}
+\end{equation}
+Las cuales son respectivamente la ecuación de continuidad, movimiento y Poisson para cada especie. Al tratarse del caso electróstatico la ecuación \ref{eq_movimiento_nl} se puede reducir a la siguiente forma:
+\begin{equation}
+\label{eq_mov_simpl_nl}
+n_{\sigma}m_{\sigma}\frac{d\overrightarrow{\textbf{u}}_{\sigma}}{dt}= n_{\sigma}q_{\sigma} \overrightarrow{\textbf{E}}
+\end{equation}
+Con $\overrightarrow{\textbf{E}} = - {\overrightarrow\nabla} \Phi$. Y donde se han despreciado los términos de aceleración debido al campo magnético (puesto que ese término es cero para modos longitudinales), la presión y a la fuerza de fricción debida a colisiones. Además, se tiene $d/dt \equiv \partial / \partial t + \overrightarrow{\textbf{u}}_{\sigma} \cdot \overrightarrow{\nabla}$, la cual se le conoce como la derivada convectiva.\\
+%Los términos $\nabla P_{\sigma}$ y $\textbf{R}_{\sigma \alpha}$ se refieren a la presión y a la fuerza de fricción resultante de las colisiones entre las especies $\sigma$ y $\alpha$ respectivamente.\\
+El siguiente paso entonces es introducir un método que permita ver el comportamiento de las ondas longitudinales en el  plasma debido a cada una de las especies. Dicho método se le conoce como análisis lineal y el procedimiento es el siguiente:
+\begin{itemize}
+\item Se reduce el sistema a un simple conjunto de ecuaciones que describan su comportamiento.
+\item Se determina una solución de equilibrio para las ecuaciones y a las cantidades de equilibrio se les designa con el subíndice 0, indicando que son cantidades de orden cero.
+\item Si $\lbrace f(\textbf{x},t), g(\textbf{x},t),h(\textbf{x},t),...\rbrace$ es el conjunto de las variables dependientes y se le agrega una perturbación a una de las variables, entonces al resolver el sistema de ecuaciones se obtendrá la respuesta de las otras variables a la perturbación. Supongasé que se le agrega una perturbación $\epsilon f_1$ a la variable $f$, con $\epsilon \ll 1$ entonces se tiene:
+\begin{equation*}
+f = f_0 + \epsilon f_1
+\end{equation*}
+El sistema entonces da la dependencia funcional de las otras variables, por ejemplo $g = g(f) = g(f_0 + \epsilon f_1)$. Dado que ésta dependencia por lo general es no lineal la expansión de Taylor da $g = g_0 + \epsilon g_1 + \epsilon^2 g_2 + \epsilon^3 g_3 +...$ Si se considera a las epsilons como coeficientes implícitos las variables se pueden escribir entonces como:
+$$
+\begin{array}{lllllllll}
+f &= &f_0 &+ &f_1 \\
+g &= &g_0 &+ &g_1 &+ &g_2 &+ &...\\
+h &= &h_0 &+ &h_1 &+ &h_2 &+ &...
+\end{array}
+$$
+\item Se reescriben entonces las ecuaciones del sistema con las variables expandidas a primer orden y se discriminan los términos de segundo orden resultantes, así como también haciendo uso de las soluciones de equilibrio para simplificar las expresiones.
+\end{itemize}
+Para el caso de la ecuación de continuidad se tiene entonces:
+\begin{equation}
+\frac{\partial (n_{\sigma 0} + n_{\sigma 1})}{\partial t} + \overrightarrow{\nabla} \cdot [(n_{\sigma 0}+n_{\sigma 1})(\overrightarrow{\textbf{u}}_{\sigma 0} + \overrightarrow{\textbf{u}}_{\sigma 1})]=0
+\end{equation}
+Donde la solución de equiibrio es:
+\begin{equation}
+\frac{\partial n_{\sigma 0}}{\partial t} + \overrightarrow{\nabla} \cdot n_{\sigma 0}\overrightarrow{\textbf{u}}_{\sigma 0}=0
+\end{equation}
+Lo que da:
+\begin{equation}
+\frac{\partial n_{\sigma 1}}{\partial t}+ \overrightarrow{\nabla} \cdot (n_{\sigma 1} \overrightarrow{\textbf{u}}_{\sigma 0} + n_{\sigma 0} \overrightarrow{\textbf{u}}_{\sigma 1} + n_{\sigma 1} \overrightarrow{\textbf{u}}_{\sigma 1}) =0
+\end{equation}
+El término $n_1 \overrightarrow{\textbf{u}}_1$ es de segundo orden y por lo tanto se descarta. Con lo que la ecuación de continuidad linealizada es:
+\begin{equation}
+\label{cont_lin}
+\frac{\partial n_{\sigma 1}}{\partial t}+ \overrightarrow{\nabla} \cdot (n_{\sigma 1} \overrightarrow{\textbf{u}}_{\sigma 0} + n_{\sigma 0} \overrightarrow{\textbf{u}}_{\sigma 1}) =0
+\end{equation}
+De manera similar, las ecuaciones de movimiento y de Poisson son linealizadas para dar:
+\begin{equation}
+\label{eq_mov_lin}
+\frac{\partial \overrightarrow{\textbf{u}}_{\sigma 1}}{\partial t} + \overrightarrow{\textbf{u}}_{\sigma 0} \cdot \overrightarrow{\nabla}\overrightarrow{\textbf{u}}_{\sigma 1} = - \frac{q_{\sigma}}{m_{\sigma}} \overrightarrow{\nabla}\Phi _1
+\end{equation}
+\begin{equation}
+\label{poisson_lin}
+\nabla ^2 \Phi _1 = -\frac{1}{\epsilon_0}\sum _{\sigma}q_{\sigma} n_{\sigma 1}
+\end{equation}
+Recordando que lo que se quiere estudiar está en el marco de ondas longitudinales en el plasma se considera que la perturbación lineal es un modo de Fourier. Por lo cual las variables cambian de la misma manera en la que lo haría exp ($i \overrightarrow{\textbf{k}} \cdot \overrightarrow{\textbf{x}} - i \omega t $), es decir $\overrightarrow{\nabla} \rightarrow i\overrightarrow{\textbf{k}}$ y $\partial / \partial t \rightarrow -i \omega$ por lo que las ecuaciones \ref{cont_lin}, \ref{eq_mov_lin} y \ref{poisson_lin} se pueden reescribir como:
+\begin{equation}
+\label{cont_fourier}
+ -i \omega n_{\sigma 1}+ i\overrightarrow{\textbf{k}} \cdot (n_{\sigma 1} \overrightarrow{\textbf{u}}_{\sigma 0} + n_{\sigma 0} \overrightarrow{\textbf{u}}_{\sigma 1}) =0
+\end{equation}
+\begin{equation}
+\label{eq_mov_fourier}
+-i \omega \overrightarrow{\textbf{u}}_{\sigma 1} + \overrightarrow{\textbf{u}}_{\sigma 0} \cdot i \overrightarrow{\textbf{k}}\overrightarrow{\textbf{u}}_{\sigma 1} = - \frac{i q_{\sigma}}{m_{\sigma}} \overrightarrow{\textbf{k}}\Phi _1
+\end{equation}
+\begin{equation}
+\label{poisson_fourier}
+-k^2 \Phi _1 = -\frac{1}{\epsilon_0}\sum _{\sigma}q_{\sigma} n_{\sigma 1}
+\end{equation}
+Si se fatoriza el término de primer orden de la velocidad en la ecuación de movimiento se obtiene:
+\begin{equation}
+\label{U1}
+\overrightarrow{\textbf{u}}_{\sigma 1} = \frac{- i q_{\sigma} k \Phi _1}{m_{\sigma}(-i \omega + \overrightarrow{\textbf{u}}_{\sigma 0} \cdot i \overrightarrow{\textbf{k}})}
+\end{equation}
+Al sustituir \ref{U1} en \ref{cont_fourier} se obtiene:
+\begin{equation}
+n_{\sigma 1} = n_{\sigma 0}\frac{k^2 q_{\sigma} \Phi _1  }{m_{\sigma}(\omega - \overrightarrow{\textbf{u}}_{\sigma 0} \cdot \overrightarrow{\textbf{k}})^2 }
+\end{equation}
+La cual a su vez se sustituye en \ref{poisson_fourier} y recordando que $\omega_{p \sigma}^2 = q_{\sigma}^2 n_{\sigma 0} / m_{\sigma} \epsilon_0$ se llega a:
+\begin{equation}
+\label{eq_dispersion}
+1 = \sum_{\sigma} \frac{\omega_{p \sigma}^2}{(\omega - \overrightarrow{\textbf{u}}_{\sigma 0} \cdot \overrightarrow{\textbf{k}})^2}
+\end{equation}
+A la expresión resultante se le conoce como la relación de dispersión. Se tienen entonces las herramientas necesarias para este primer estudio de inestabilidades en un plasma para distintas configuraciones de haces.\\
+Debido a que la ecuación \ref{eq_dispersion} parte de la ecuación de Poisson se puede inferir que la relación de dispersión es equivalente a una expresión para la permitividad eléctrica. Para ver esto se recuerda que
+$\nabla ^2 \Phi _1 = - \nabla \cdot \overrightarrow{\textbf{E}}$ o en este caso $-k^2 \Phi _1 = -i \overrightarrow{\textbf{k}} \cdot \overrightarrow{\textbf{E}}$ por lo que se puede escribir:
+\begin{equation}
+-i \overrightarrow{\textbf{k}} \cdot \overrightarrow{\textbf{E}} = - \sum \frac{\omega_{p \sigma}^2 k^2 \Phi _1}{(\omega - \overrightarrow{\textbf{u}}_{\sigma 0} \cdot \overrightarrow{\textbf{k}})^2} = - \sum \frac{\omega_{p \sigma}^2 (i \overrightarrow{\textbf{k}} \cdot \overrightarrow{\textbf{E}})}{(\omega - \overrightarrow{\textbf{u}}_{\sigma 0} \cdot \overrightarrow{\textbf{k}})^2}
+\end{equation}
+Factorizando términos se llega a:
+\begin{equation}
+\label{eq:gauss_dilectric_omega}
+i \overrightarrow{\textbf{k}} \cdot \overrightarrow{\textbf{E}} \left( 1 - \sum \frac{\omega_{p \sigma}^2 }{(\omega - \overrightarrow{\textbf{u}}_{\sigma 0} \cdot \overrightarrow{\textbf{k}})^2} \right) = 0
+\end{equation}
+La ecuación \ref{eq:gauss_dilectric_omega} se puede ver como un caso especial de la ley de Gauss para dieléctricos en donde $\nabla \cdot \overrightarrow{\textbf{D}}=0$, donde además si se tiene $\overrightarrow{\textbf{D}}= \epsilon \overrightarrow{\textbf{E}}$ con $\epsilon = 1+ \chi$, siendo $\chi$ la susceptibilidad eléctrica, el término del lado derecho de la ecuación \ref{eq_dispersion} se puede ver como la suma de las susceptibilidades de las diferentes especies.
+\begin{equation}
+\label{eq:suma_susceptibilidades}
+\sum \chi _\sigma = - \sum_{\sigma} \frac{\omega_{p \sigma}^2}{(\omega - \overrightarrow{\textbf{u}}_{\sigma 0} \cdot \overrightarrow{\textbf{k}})^2}
+\end{equation}
+Las expresiones aquí obtenidas son generalizadas, a continuación se presentará el estudio de algunos casos particulares.
+\section{Casos Particulares}
+\subsection{\texorpdfstring{$\boldsymbol{\omega_{p\sigma}}$}{w} iguales y velocidades de flujo de signo contrario.}
+El caso más simple es el de dos especies con la misma frecuencia de plasma al cuadrado y velocidades de flujo iguales en magnitud pero de signo contrario. Este caso podría referirse a dos haces de electrones, dos haces de iones o un haz de electrones y otro de positrones con velocidades de signo contrario. En cualquiera de estos casos la relación de dispersión queda como:
+\begin{equation}
+\label{dispersion_ep}
+1= \frac{\omega_{p\sigma}^2}{(\omega - \overrightarrow{\textbf{u}}_{\sigma 0} \cdot \overrightarrow{\textbf{k}})^2} + \frac{\omega_{p\sigma}^2}{(\omega + \overrightarrow{\textbf{u}}_{\sigma 0} \cdot \overrightarrow{\textbf{k}})^2}
+\end{equation}
+Ahora bien, si se definen $z= \omega / \omega_{p\sigma}$ y $\lambda = \overrightarrow{\textbf{k}} \cdot \overrightarrow{\textbf{u}}_{\sigma 0}/ \omega_{p\sigma}$ y se substituyen en la ecuación anterior se llega a la expresión:
+\begin{equation}
+\label{dispersion_ep_adimensional}
+1 = \frac{1}{(z - \lambda)^2} + \frac{1}{(z + \lambda)^2}
+\end{equation}
+El siguiente paso es desarrollar la ecuación pero nótese que en el lado derecho de la ecuación hay singularidades en $z= \pm \lambda$ es decir dependiendo del valor que se tenga de $\lambda$ se determinará el mínimo de $z(\lambda)$ en la región $(- \lambda, \lambda)$. Con esto en mente se prosigue a desarrollar la ecuación \ref{dispersion_ep_adimensional}.
+\begin{equation}
+z^4 -2z^2(\lambda^2 + 1) +\lambda ^4 -2 \lambda ^2 =0
+\end{equation}
+Donde al resolver para $z^2$ se llega a:
+\begin{equation}
+\label{bicaudratica_ep}
+z^2= (\lambda^2 +1) \pm (4 \lambda ^2 + 1)^{1/2}
+\end{equation}
+La elección del signo determinará dos raíces de $z$, si $z^2 >0$ las raíces son reales, de la misma magnitud pero signo opuesto. En cambio si $z^2 <0$ las dos raíces son imaginarias, conjugadas. Recordando la definición de $z$ y la forma en la que varía la perturbación se llega entonces  a la conclusión de que la raíz imaginaria positiva corresponde a una perturbación que crece exponencialmente con el tiempo, es decir a una inestabilidad. Con este fin se escoje el signo negativo en la ecuación \ref{bicaudratica_ep} entonces se tiene que la condición para la inestabilidad es:
+\begin{equation}
+(4 \lambda ^2 + 1)^{1/2} > (\lambda^2 +1 )
+\end{equation}
+O de manera más simple:
+\begin{equation}
+0 < \lambda < \sqrt{2}
+\end{equation}
+Una vez conseguido esto, lo siguiente sería encontrar la máxima tasa de crecimiento de la inestabilidad. Para ello se maximizará  la ecuación \ref{bicaudratica_ep} con respecto a $\lambda$ haciendo entonces el término $dz/d \lambda = 0$ queda
+\begin{equation}
+2 \lambda - \frac{4 \lambda}{(4 \lambda ^2 + 1)^{1/2}}=0
+\end{equation}
+Que simplificando es:
+\begin{equation}
+(4 \lambda ^2 + 1)^{1/2} = 2
+\end{equation}
+Del cual se obtiene $\lambda = \sqrt{3} / 2$. Sustituyendo en la ecuación \ref{bicaudratica_ep} se obtiene $z = i / 2$.\\
+Regresando a las variables físicas, se tiene que el umbral de inestabilidad es:
+\begin{equation}
+ku_0 < \sqrt{2}\omega_{p \sigma}
+\end{equation}
+Mientras que la máxima tasa de crecimiento resulta ocurrir cuando:
+\begin{equation}
+ku_0 = \frac{\sqrt{3}}{2}\omega_{p \sigma}
+\end{equation}
+Por lo que se tiene:
+\begin{equation}
+\omega  = i \frac{ \omega_{p \sigma}}{2}
+\end{equation}
+Finalmente, para poder ver el comportamiento de la tasa de crecimiento en función de $\lambda$ se calcula entonces la raíz de la ecuación \ref{bicaudratica_ep}, obteniendo la expresión siguiente:
+\begin{equation}
+\label{eq:z_misma_omega}
+z = \pm \sqrt{(\lambda^2 +1) - (4 \lambda ^2 + 1)^{1/2}}
+\end{equation}
+En donde como ya se había mencionado, lo que se busca es la raíz con la componente imaginaria positiva, por lo que se escoge el signo positivo en la ecuación \ref{eq:z_misma_omega}. La figura \ref{fig:misma_omega_tasa_de_crecimiento} muestra entonces la tasa de crecimiento de inestabilidad Im$z$ como función de $\lambda$.
+\begin{figure}
+\includegraphics[height=0.3\paperheight]{grafica_misma_omega_contrarias.png}
+\caption{Tasa de crecimiento para dos especies con misma $\omega_{p\sigma}^2$ pero con velocidades de signo contrario. Donde $\operatorname{Im}(z)_{max}=1/2$}
+\label{fig:misma_omega_tasa_de_crecimiento}
+\end{figure}
+\subsection{Misma \texorpdfstring{$\boldsymbol{\omega_{p\sigma}}$}{w} con una especie incidente y la otra estacionaria.}
+La relación de dispersión para este caso es muy similar a la ecuación \ref{dispersion_ep_adimensional}, el único cambio se da en recordar que una de las especies tiene velocidad cero, por lo tanto se tiene:
+\begin{equation}
+\label{eq:misma_omega_reposo}
+1 = \frac{1}{z^2} + \frac{1}{(z-\lambda)^2}
+\end{equation}
+Al igual que el caso de dos especies con misma $\omega_{p\sigma}^2$ pero con velocidades de signo contrario, la raíz que nos es de interes es la raíz cuya parte imaginaria sea positiva, es decir en donde la perturbación crece exponencialmente con el tiempo. Para resolver la raíz se emplea el cambio de variable $z=x+\frac{\lambda}{2}$ lo que resulta en la siguiente expresión:
+\begin{equation}
+\label{eq:reducida_misma_reposo}
+x^4 - \frac{1}{2}(4 + \lambda^2)x^2 + \frac{1}{16}\lambda^2 (\lambda^2 -8)=0
+\end{equation}
+La cuál es una ecuación bicuadrática de $x$ que permite entonces escribir:
+\begin{equation}
+\label{eq:bicuad_misma_reposo}
+x^2 = \frac{1}{4}(4 + \lambda^2 \pm 4\sqrt{ \lambda^2 +1})
+\end{equation}
+De la cual se calcula la raíz para $x$ y se realiza el cambio de variable correspondiente para recuperar una solución en $z$.
+\begin{equation}
+\label{eq:solucion_misma_reposo}
+z = \frac{1}{2}\left(\lambda + \sqrt{4 + \lambda ^2 - 4 \sqrt{1 + \lambda ^2}} \right)
+\end{equation}
+Los signos de la raíz se escogen para que la parte imaginaria de $z$ sea positiva. Para más detalle sobre la obtención de la raíz véase el apéndice \ref{Ap:raices}.
+El siguiente paso es buscar el umbral en donde sucede la inestabilidad y para ello se estudia el lado derecho de la ecuación \ref{eq:misma_omega_reposo} y se observa que tiene dos singularidades $z=0,\lambda$. Aquí, el valor de $\lambda$ determinará el mínimo del lado derecho de \ref{eq:misma_omega_reposo} en el intervalo $(0,\lambda)$, al cual llamaremos $f(z,\lambda)$ por simplicidad. La figura \ref{fig:fz_reposo} ilustra el caso para una cierta $\lambda$, en donde se puede apreciar como el valor de $\lambda$ puede afectar el mínimo en el intervalo $(0,\lambda)$. El mínimo que nos interesa es el de valor $1$ pues ese índica cuando las raíces de ecuación \ref{eq:misma_omega_reposo} empiezan a ser imaginarias. Estrictamente hablando, cuando el mínimo es uno quiere decir que dos de sus raíces reales se vuelven una y es cuando el mínimo es mayor que uno que aparecen raíces imaginarias.
+\begin{figure}
+\includegraphics[height=0.3\paperheight]{f_z_reposo.png}
+\caption{Gráfica del lado derecho de la ecuación \ref{eq:misma_omega_reposo} para un cierto valor de $\lambda$}
+\label{fig:fz_reposo}
+\end{figure}
+Para encontrar ese umbral se busca entonces para que $\lambda$s el mínimo de $f(z,\lambda)$ es igual a uno. Se empieza entonces por minimizar.
+\begin{equation}
+\frac{1}{z^3} + \frac{1}{(z-\lambda)^3}=0
+\end{equation}
+El cual da $z=\lambda / 2$. Que al sustituir en \ref{eq:misma_omega_reposo} y resolver para $\lambda$ da $\lambda = \sqrt{8}$. Por lo que se tiene que el intervalo de inestabilidad es:
+\begin{equation}
+0 < \lambda < \sqrt{8}
+\end{equation}
+Para encontrar la máxima tasa de crecimiento se hace uso de que la ecuación \ref{eq:solucion_misma_reposo} representa un número complejo. Basta entonces buscar el máximo de la norma de dicho número. Se tiene entonces:
+\begin{equation}
+|z|^2 = \frac{1}{4}[\lambda^2 -4 - \lambda^2 + 4(1 + \lambda^2)^{1/2}]
+\end{equation}
+Donde al observar la ecuación \ref{eq:solucion_misma_reposo} vemos que los términos que le corresponden a la parte imaginaria son $-4 - \lambda^2 + 4(1 + \lambda^2)^{1/2}$. Es decir si $z=x +iy$:
+\begin{equation}
+y^2= -4 - \lambda^2 + 4(1 + \lambda^2)^{1/2}
+\end{equation}
+Que al maximizar con respécto de $\lambda$ da:
+\begin{equation}
+2\lambda -\lambda(1 + \lambda^2)^{1/2} =0
+\end{equation}
+Y al resolver para $\lambda$ se obtiene
+\begin{equation}
+\lambda = \sqrt{3}
+\end{equation}
+Estos valores se pueden apreciar en la figura \ref{fig:misma_omega_tasa_de_crecimiento} que grafica la parte imaginaria de $z$, es decir la correspondiente al crecimiento de la inestabilidad, contra $\lambda$. 
+\begin{figure}[!h]
+\includegraphics[height=0.3\paperheight]{grafica_misma_omega_reposo.png}
+\caption{Tasa de crecimiento para dos especies con misma $\omega_{p\sigma}^2$ pero una de ellas estacionaria. Con $\operatorname{Im}(z)_{max}=1/2$}
+\label{fig:misma_omega_reposo}
+\end{figure}
+Ahora bien regresando a variables físicas se tiene que el umbral de insetabilidad ocurre cuando
+\begin{equation}
+ku_0 < \sqrt{8} \omega_{p\sigma}
+\end{equation}
+Y la máxima tasa de crecimiento sucede cuando:
+\begin{equation}
+ku_0= \sqrt{3} \omega_{p\sigma}
+\end{equation}
+Y en cuyo caso se tiene
+\begin{equation}
+\omega = \frac{1}{2} (\sqrt{3} + i)\omega_{p\sigma}
+\end{equation}
+\subsection{Generalizando el caso para dos especies con la misma \texorpdfstring{$\boldsymbol{\omega_{p\sigma}}$}{w}}
+Como se vió en el caso para mismas especies con velocidades opuestas, la relación de dispersión se reduce a una ecuación bicuadrática y de esa manera se encuentran las raíces de la ecuación cuártica. Ésta reducción es posible debido a la simetría del problema. Sin embargo, se tiene que al encontrar las raíces de la ecuación cuártica para el caso de una especie en reposo y otra especie incidente con cierta velocidad arbitraria, también se llega a una ecuación bicuadrática a pesar de no tener la misma simetría que el caso con dos velocidades opuestas. Dicha ecuación bicuadrática aparece como resultado de un cambio de variable $z=x+\lambda /2$, para más detalle véase el apéndice \ref{Ap:raices}. Esto podría sugerir que para dos especies con la misma $\omega_{p\sigma}$ su relación de dispersión siempre se puede reducir a una ecuación bicuadrática con el cambio de variable apropiado. Independientemente de la velocidad que lleve cada especie.\\
+Una manera de hacer esto sería partir del caso general y aplicar el cambio de variable sugerido en el apéndice \ref{Ap:raices} para comprobar que se obtiene una ecuación bicuadrática. Sin embargo, otra manera de proceder es partir del caso de una especie en reposo y por medio de un cambio de variable recuperar el caso general.
+Se empieza entonces por la relación de dispersión del caso de una especie estacionaria y otra incidente, ambas con la misma $\omega_{p\sigma}$, es decir la ecuación \ref{eq:misma_omega_reposo}.
+\begin{equation*}
+1 = \frac{1}{z^2} + \frac{1}{(z-\lambda)^2}
+\end{equation*}
+Si se graficara el lado derecho de la ecuación en función de $z$, véase la figura \ref{fig:fz_reposo}, se observa que los valores de $z$ para los que aparecen raíces complejas se encuentran en el intervalo $(0, \lambda)$. Por otro lado, se puede ver este caso como uno con dos velocidades en donde una de las velocidades resulta ser cero y por lo tanto su $\lambda$ asociada es cero. Se tiene entonces que la distancia entre las dos $\lambda$s es precisamente $\lambda$.\\
+Una manera más simple de ver esto es considerando también los otros valores posibles para cada una de las $\lambda$s, recordando que son reales, estos casos son ilustrados en la figura \ref{fig:valores_lambda}.
+\begin{figure}[h]
+\centering
+ \begin{subfigure}[b]{0.4\textwidth}
+ 	 \includegraphics[width=\textwidth]{grafica_lambdas_negativas.png}
+ 	 \caption{}
+ 	 \label{fig:lamdas_negativas}
+ \end{subfigure}
+ 
+ \begin{subfigure}[b]{0.4\textwidth}
+ \includegraphics[width=\textwidth]{grafica_lambdas_alternadas.png}
+ \caption{}
+ \label{fig:lamdas_alternadas}
+ \end{subfigure}
+ ~
+  \begin{subfigure}[b]{0.4\textwidth}
+ \includegraphics[width=\textwidth]{grafica_lambdas_positivas.png}
+  \caption{}
+ \label{fig:lamdas_positivas}
+ \end{subfigure}
+ \caption{Representaciones de los distintos valores que $\lambda_1$ y $\lambda_2$ pueden tomar. Siendo estos cuando ambas son negativas, cuando una es negativa y la otra es positiva y el caso donde ambas son positivas.}\label{fig:valores_lambda}
+\end{figure}
+Se tiene entonces que se puede definir una distancia $\lambda$ entre $\lambda_1$ y $\lambda_2$ de la forma $\lambda = \lambda_1 - \lambda_2$. La cual permite ver que la ecuación \ref{eq:misma_omega_reposo} es un caso donde $\lambda_2 =0$ y por lo tanto $\lambda_1 = \lambda$. No está de más entonces suponer que si se tiene $\lambda$ constante se puedan recuperar los casos de velocidades opuestas y el de velocidades arbitrarias a partir de una traslación del caso en reposo.\\
+Dicha traslación se propone como el cambio de variable $z=z'-\lambda_2$ y recordando que se está tomando $\lambda= \lambda_1 - \lambda_2$ se llega a:
+\begin{equation}
+\label{eq:misma_omega_general}
+1 = \frac{1}{(z'-\lambda_2)^2} + \frac{1}{(z'-\lambda_1)^2}
+\end{equation}
+Que es el caso general para dos especies con misma $\omega_{p\sigma}$ y velocidades arbitrarias. Lo que la ecuación \ref{eq:misma_omega_general} expone es que el caso de dos velocidades de signo contrario se puede recuperar del caso en reposo ya se haciendo $\lambda_2 = -\lambda_1$ en \ref{eq:misma_omega_general} o realizando el cambio de variable $z=z' +\lambda_1$ y $\lambda= 2\lambda_1$ en \ref{eq:misma_omega_reposo}. Cualquiera de los dos métodos da la expresión:
+\begin{equation}
+\label{eq:misma_omega_opuestas_cambio}
+1 = \frac{1}{(z'+\lambda_1)^2} + \frac{1}{(z'-\lambda_1)^2}
+\end{equation}
+La cual sabemos se reduce a una ecuación bicuadrática.\\
+Del caso de una especie en reposo se tenía que el umbral era:
+\begin{equation}
+0<\lambda<\sqrt{8}
+\end{equation}
+Que pasandolo al caso general se tiene:
+\begin{equation}
+0<\lambda_1 - \lambda_2 <\sqrt{8}
+\end{equation}
+Por otro lado la máxima tasa de crecmiento sucedía cuando
+\begin{equation}
+\lambda=\sqrt{3}
+\end{equation}
+Que resulta ser 
+\begin{equation}
+\lambda_1 - \lambda_2 = \sqrt{3}
+\end{equation}
+%\subsection*{Caso con $\omega_{p\sigma}$ diferentes y una especie estacionaria.}
+%
+\subsection{Plasma estacionario y plasma incidente}
+Este caso consiste en un plasma compuesto por dos especies que se mueven a una velocidad $\overrightarrow{\textbf{u}}_{\sigma 0}$ incidiendo con un plasma estacionario compuesto por las mismas especies. Se trata entonces de un caso de cuatro especies. Cuya relación de dispersión normalizada es de la forma:
+\begin{equation}
+\label{eq:disp_d-d}
+\frac{\epsilon_1}{z^2}+\frac{1}{z^2}+\frac{\epsilon_1}{(z-\lambda)^2}+\frac{1}{(z-\lambda)^2}=1
+\end{equation}
+Donde $\epsilon_1 = \omega_{p1}/ \omega_{pe}$. Para encontrar el umbral de inestabilidad se realiza el mismo procedimiento de los casos anteriores. Se minimiza la ecuación \ref{eq:disp_d-d} y se resuelve para obtener $z$ en términos de $\lambda$. Que resulta ser $z=\lambda /2$.
+\begin{equation}
+\frac{\epsilon_1}{z^3}+\frac{1}{z^3}+\frac{\epsilon_1}{(z-\lambda)^3}+\frac{1}{(z-\lambda)^3}=0
+\end{equation}
+Si se sustituye en \ref{eq:disp_d-d} y se resuelve para $\lambda$ se encuentra entonces que:
+\begin{equation}
+0 < \lambda < \sqrt{8(1+\epsilon)}
+\end{equation}
+Para encontrar la máxima tasa de crecimiento se empieza por buscar la raíz del lado derecho de \ref{eq:disp_d-d} que tenga parte imaginaria positiva. Dicha raíz resulta ser:
+\begin{equation}
+\label{eq:raiz_d-d}
+z =\frac{1}{2}\left(\lambda + \sqrt{4 + 4\epsilon + \lambda ^2 -4\sqrt{1+2\epsilon + \epsilon^2+ \lambda^2 + \epsilon \lambda ^2}} \right)
+\end{equation}
+La cual también se multiplica por su conjugado para así obtener el cuadrado de su componente imaginaria.
+\begin{equation}
+y^2 = -\left(4 + 4\epsilon + \lambda ^2 -4\sqrt{1+2\epsilon + \epsilon^2+ \lambda^2 + \epsilon \lambda ^2}\right)
+\end{equation}
+El cual se maximiza con respecto a $\lambda$ y al resolver da $\lambda = \sqrt{3(1 + \epsilon)}$. La cual se sustituye en la ecuación \ref{eq:disp_d-d} para dar:
+\begin{equation}
+\label{eq:z-max-d-d}
+z_{max} = \frac{1}{2}\left(\sqrt{3(1+\epsilon)} + i \sqrt{(1+\epsilon)} \right)
+\end{equation}
+%Al tratarse de el caso de deuterio, se tiene que $\epsilon = 2.72 \times 10^{-4}$. Que al sustituir en la ecuación \ref{eq:z-max-d-d} da:
+%\begin{equation}
+%z=0.86614 + 0.50007i
+%\end{equation}
+%Entonces, el umbral de inestabilidad resulta ser:
+%\begin{equation}
+%0 < \lambda < 2.82881
+%\end{equation}
+%Y la máxima tasa de crecimiento sucede cuando $\lambda = 1.73229$.
+%Esto se traduce como:
+%\begin{equation}
+%ku_0 < 2.82881 \omega_{pe}
+%\end{equation}
+%Para el umbral de inestabilidad.
+%\begin{equation}
+%ku_0 = 1.73229 \omega_{pe}
+%\end{equation}
+%Para el valor al cual aparece la máxima tasa de crecimiento.
+%\begin{equation}
+%\omega = (0.86614 + 0.50007i)\omega_{pe}
+%\end{equation}
+%Y finalmente la expresión para la frecuencia cuando ésta ocurre. 
+La figura \ref{fig:d-d} muestra el comportamiento de la parte imaginaria de $z$ para el caso que se acaba de estudiar.
+\begin{figure}
+\includegraphics[height=0.3\paperheight]{grafica-d-d-reposo}
+\caption{$Im(z)$ en función de $\lambda$, para el caso de un haz de dos especies incidiendo con un plasma estacionario de dos especies. Con $\operatorname{Im}(z)_{max}=\frac{1}{2}\sqrt{(1+\epsilon)}$}
+\label{fig:d-d}
+\end{figure}
+\subsection{Iones estacionarios y electrones incidentes}
+La relación de dispersión para este caso es la siguiente:
+\begin{equation}
+\label{eq:disp_ion_electron}
+\frac{\epsilon}{z^2}+\frac{1}{(z-\lambda)^2}=1
+\end{equation}
+Donde $z$ y $\lambda$ son las constantes normalizadas de los casos anteriores, mientras que $\epsilon = m_e/m_i$.
+Siguiendo el proceso que se ha estado haciendo, lo primero que se busca es el umbral de inestabilidad. Es decir para que valores de $\lambda$ dos raíces reales colapsan a una sola o aparecen raíces complejas. Como ya se había mencionado, esto sucede cuando el mínimo del lado izquierdo de la ecuación \ref{eq:disp_ion_electron} es mayor o igual a la unidad. Si se toma al lado izqueirdo de \ref{eq:disp_ion_electron} como una función $f(z,\lambda)$ y se minimiza se llega a una expresión:
+\begin{equation}
+\frac{\epsilon}{z^3}+\frac{1}{(z-\lambda)^3}=0
+\end{equation}
+De donde se busca tener exponentes positivos para $z$ por lo que se manipula para obtener:
+\begin{equation}
+\frac{z^3}{\epsilon}=-(z-\lambda)^3
+\end{equation}
+De donde se pueden obtener raíces cúbicas de cada término:
+\begin{equation}
+\frac{z}{\epsilon ^{1/3}}=-(z-\lambda)
+\end{equation}
+De la cual se despeja $z$
+\begin{equation}
+z_{min}=\frac{\epsilon ^{1/3}\lambda}{(1- \epsilon^{1/3})}
+\end{equation}
+Que es el valor que la variable $z$ debe tener para que el mínimo sea uno. Está $z_{min}$ se puede substituir en la relación de dispersión para llegar al valor de $\lambda$ que buscamos:
+\begin{equation}
+1=f(z_{min},\lambda)=\frac{(1+\epsilon^{1/3})^3}{\lambda^2}
+\end{equation}
+Entonces, para que el mímimo sea mayor o igual a uno el valor de $\lambda$ debe ser:
+\begin{equation}
+\label{eq:umbral_ion_electron}
+\lambda \geq (1+\epsilon^{1/3})^{3/2}
+\end{equation}
+El cual es nuestro umbral de inestabilidad.
+El siguiente paso es entonces buscar una raíz para $z$ en la expresión \ref{eq:disp_ion_electron} que describa el crecimiento de una inestabilidad. Sin embargo, a diferencia de los casos anteriores la ecuación \ref{eq:disp_ion_electron} no se reduce a una ecuación bicuadrática al hacer el cambio de variable y por ello el procedimiento para encontrar la raíz es más laborioso. A continuación se muestra a grandes razgos el cálculo de la raíz, el procedimiento se encuentra con mayor detalle en el apéndice \ref{Ap:raices}.\\
+Al expandir la ecuación \ref{eq:disp_ion_electron} y realizando el cambio de vairable $z=x+\frac{\lambda}{2}$ se llega a:
+\begin{equation}
+x^4 + (-\frac{\lambda^2}{2} -\epsilon -1)x^2 + (\epsilon \lambda - \lambda)x + \frac{\lambda^4}{16}-\frac{\epsilon \lambda^2}{4}-\frac{\lambda^2}{4}=0
+\end{equation}
+De cuyos coeficientes se construye una expresión para el término auxiliar $\alpha_0$ que es de la forma:
+\begin{multline}
+\alpha_0 = \frac{1}{3}\left(\frac{\lambda^2}{2} + \epsilon + 1 \right)\\
++ \left(\frac{1}{216}\lbrace-\epsilon^3+3\epsilon^2(\lambda^2-1)-
+3\epsilon(\lambda^4 +16\lambda^2 +1)+ (\lambda^2 -1)^3\rbrace \right. \\
+\left. +\frac{\lambda}{12\sqrt{3}}\lbrace\epsilon [\epsilon^3-3\epsilon^2(\lambda^2 -1)+3\epsilon(\lambda^4 + 7\lambda^2 +1)- (\lambda^2-1)^3]\rbrace^{1/2} \vphantom{\frac{1}{216}}\right)^{1/3}\\
++ \left(\frac{1}{216}\lbrace-\epsilon^3+3\epsilon^2(\lambda^2-1)-
+3\epsilon(\lambda^4 +16\lambda^2 +1)+ (\lambda^2 -1)^3\rbrace \right. \\
+\left. -\frac{\lambda}{12\sqrt{3}}\lbrace\epsilon [\epsilon^3-3\epsilon^2(\lambda^2 -1)+3\epsilon(\lambda^4 + 7\lambda^2 +1)- (\lambda^2-1)^3]\rbrace^{1/2} \vphantom{\frac{1}{216}}\right)^{1/3}
+\end{multline}
+Una vez obtenido $\alpha_0$ se puede encontrar entonces una raíz para $x$ cuya parte imaginaria sea postiva y al volver a realizar un cambio de variable se recupera la raíz para $z$.
+\begin{equation}
+z= \frac{1}{2} \left( \lambda + \sqrt{2\alpha_0} + \sqrt{2\alpha_0 -4 \left(-\frac{1}{2}(\frac{\lambda^2}{2}+\epsilon+1)+\alpha_0 +\frac{\epsilon \lambda - \lambda}{2\sqrt{2\alpha_0}}\right)}\right)
+\end{equation}
 \section{Transferencia de energía}
 Se empieza con proponer un potencial de onda unidimensional.
 \begin{equation}
@@ -203,10 +613,10 @@ Si ahora se supone que $f(v_0)$ tiene forma maxweliana es decir $f(v_0)\sim exp(
 \left[\frac{d}{dv_0}f(v_0)v_0\right]_{v_0=\omega /k} &= \left[v_0 \frac{d}{dv_0}(f(v_0))+f(v_0)\right]_{v_0=\omega /k}\\
 &=\left[-2 \frac{v_0^2}{v_T^2}(f(v_0))+f(v_0)\right]_{v_0=\omega /k}
 \end{align}
-Queda entonces que el término de la derivada en $v_0$ es el término dominante por que el promedio se reescribe como:
+Queda entonces que el término de la derivada en $v_0$ de $f(v_0)$ es el término dominante por que el promedio se reescribe como:
 \begin{equation}
 \label{eq:promedio_w_total_f_maxweliana}
-\left\langle \frac{dW_{total}}{dt}\right\rangle=-\frac{\pi m}{2k^3}\left(\frac{qk\Phi_0}{m}\right)^2\left[\frac{d}{dv_0}(f(v_0))\right]_{v_0=\omega /k}
+\left\langle \frac{dW_{total}}{dt}\right\rangle=-\frac{\pi m \omega}{2k^2}\left(\frac{qk\Phi_0}{m}\right)^2\left[\frac{d}{dv_0}(f(v_0))\right]_{v_0=\omega /k}
 \end{equation}
 La interpretación de la ecuación \ref{eq:promedio_w_total_f_maxweliana} es que si la pendiente de la función de distribución es negativa cuando $v\sim \omega /k$ entonces las partículas ganan energía la cual proviene de la onda, en cambio si la pendiente es positiva son las partículas las que pierden energía.\\
 Queda entonces que para partículas no atrapadas la dirección en la que se transfiere la energía depende de la velocidad inicial de las partículas , resultando en que si hay más partículas cuya velocidad sea mayor a la velocidad de fase que partículas más lentas que la velocidad de fase entonces habrá uns transferencia neta de energía promedio de las partículas a la onda.
@@ -321,7 +731,7 @@ Una vez que se ha encontrado una expresión para la energía interna se puede em
 \begin{equation}
 \langle W \rangle_{onda}= \frac{1}{8\pi}\frac{d(\omega \epsilon)}{d\omega}\langle\textbf{E}^2\rangle
 \end{equation}
-De lo anterior queda entonces claro que se pueden identificar las ondas con energías positivas y negativas a partir del factor $\epsilon$, el cual como se verá en el capítulo siguiente puede ser derivado a partir de las ecuaciones de continuidad, movimiento y de Poisson.
+De lo anterior queda claro que se pueden identificar las ondas con energías positivas y negativas a partir del factor $\epsilon$, el cual a su vez puede ser expresado a partir de la relación de dispersión del plasma.
 %\subsection{Ondas con energías positivas y negativas en un plasma en desplazamiento}
 %Para ilustrar la prescencia de ondas con energía cinética negativa en el plasma es conveniente derivar un teorema de conservación de energía para estas ondas.\\
 %Se parte entonces de las ecuaciones de Maxwell en el vacio, 
