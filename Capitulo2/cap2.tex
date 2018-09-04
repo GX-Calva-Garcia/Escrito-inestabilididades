@@ -404,7 +404,7 @@ P_{\substack{ganacia\\particulas} } &= \sqrt{\frac{\pi}{8}}\sqrt{\frac{m}{k^3_BT
 \end{split}
 \end{equation}
 Que resulta ser la ecuación \ref{eq:potencia_perdida-onda_Landau} salvo un factor de 2. Esta discrepancia resulta de la suposición inicial de que toda la energía de la onda se encontraba contenida en el campo eléctrico. Lo que la ecuación \ref{eq:P_ganancia_part_aprox} ilustra es que el campo eléctrico solo aporta la mitad de la energía total encontrada en la onda. Queda entonces por determinar donde está contenida la otra mitad de la energía de la onda. No obstante, de esto se puede concluir que la tasa verdadera de perdida de potencia es dos veces la ecuación \ref{eq:potencia_perdida-onda_Landau}.
-\subsection{Fórmula de Plemelj}
+\section{Fórmula de Plemelj}
 El método de Landau expuesto en este capítulo ilustró que la manera más adecuada de analizar problemas que llevan a la obtención de integrales mal definidas es proponiendo el problema como uno de valor inicial en lugar de un estacionario.
 El resultado esencial de este método fue encontrar una manera de lidiar con las singularidades tomando el medio residuo del polo para determinar su contribución y el valor principal de la integral para el resto del contorno para el cual el polo no contribuye.
 A pesar de ser una herramienta adecuada para lidiar con las singularidades, el método de Landau tiene la inconveniencia de ser algo tardado. Afortunadamente existe una manera de resumir su resultado esencial y se hace por medio de la llamada fórmula de Plemelj.
@@ -413,8 +413,57 @@ A pesar de ser una herramienta adecuada para lidiar con las singularidades, el m
 lim _{\epsilon \to 0}\frac{1}{\xi -a\mp i|\xi |}=P\frac{1}{\xi -a}\pm i\pi \delta (\xi -a)
 \end{equation}
 La cual muestra de manera simple como lidiar con integrales que contengan una singularidad de la forma en la que aparecen en la función de dispersión del plasma.
-Esto ayuda a simplificar el proceso ya que en lugra de realizar el método de Landau completo se puede empezar por un análisis de Fourier y después utilizar la ecuación \ref{eq:formula_Plemelj} para poder lidiar con las singularidades que se puedan presentar y de esta manera evaluar las integrales.
+Esto ayuda a simplificar el proceso ya que en lugar de realizar el método de Landau completo se puede empezar por un análisis de Fourier y después utilizar la ecuación \ref{eq:formula_Plemelj} para poder lidiar con las singularidades que se puedan presentar y de esta manera evaluar las integrales.
 Para mayor detalle sobre su derivación vease el apéndice \ref{Ap2:Plemelj}.
+\section{Criterio de Penrose}
+El análisis que se ha estando realizando hasta ahora ha mostrado que las ondas electrostáticas están sujetas al amortiguamiento de Landau,
+el cual es una atenuación no colisional proporcional a $[\partial f / \partial u]_{u=\omega / k}$ y que a su vez es consistente con el cálculo de potencia recibida por las partículas desde una onda electrostática.\\
+Debido a que una distribución Maxwelliana tiene pendiente negativa, su amortiguamiento de Landau asociado resulta ser siempre una atenuación de la onda.
+Lo cual es consistente con lo desarrollado en el capítulo \ref{Ch1:inestabilidades} en donde se mostraba que la energía se transfería desde una onda hacia la partícula si habían más partículas lentas que rápidas con respecto a la velocidad de fase de la onda.
+Queda por ver que sucede cuando la función de distribución no es Maxwelliana y en un particular una donde haya más partículas rápidas que lentas con respecto a la velocidad de fase.
+En otras palabras, ver que pasa cuando $[\partial f / \partial u]_{u=\omega / k} > 0$.\\
+Debido a que $f(u) \to 0$ a medida que $|u| \to \infty $, $f$ solo puede tener una pendiente postiva en un rango finito de velocidad postiva y de igual manera solo puede tener pendiente negativa en un rango finito de velocidad negativa.
+En particular, se tiene que las pendientes postivas de la función de distribución deben estar siempre ubicadas a la izquierda de un máximo local de $f(u)$ en la región $u>0$ del plano velocidad-espacio.
+Un máximo local en $f(u)$ corresponde a un haz de partículas veloces superpuestas sobre un fondo de partículas que tiene una $f(u)$ que decrece de manera monotona.
+Queda entonces por ver si el proceso que da origen al amortiguamiento de Landau puede ser revertido en el sentido que genere una inestabilidad en las ondas.
+Resulta que no solo eso sucede sino que tambiñen existe un criterio el cual muestra que tan fuerte debe de ser un haz para que de origen a una inestabilidad de Landau. A ese criterio se le conoce como criterio de Penrose. \cite{bellan2008fundamentals}\\
+Se empieza entonces por recordar la ecuación \ref{eq:fourier_dispersion_sin_normalizar} la cual se reescribe de la siguiente manera
+\begin{equation}
+\label{eq:k2=Q}
+k^2 =Q(z)
+\end{equation}
+donde
+\begin{equation}
+\label{eq:Q(z)_integral}
+Q(z) = \frac{q^2}{m \epsilon _0}\int^{\infty}_{-\infty} \frac{1}{(u -z)}\frac{\partial f_0}{\partial u}du
+\end{equation}
+es una función compleja de la variable $z=\omega /k$, tambiñen compleja.El número de onda $k$ se asume como una cantidad real positiva y se utilizará la fórmula de Plemelj para lidiar con la singularidad del integrando.
+Por suposición, se tiene que el lado izquierdo de \ref{eq:k2=Q} es siempre real y positivo para cualquier $k$. Por lo las soluciones que se buscan son cuando $Q(z)$es real y positiva.\\
+$Q(z)$  puede ser interpretada como un mapeo de $z$-plano $\mapsto$ $Q$-plano. Debido a que las soluciones de \ref{eq:k2=Q} que producen inestabilidades son aquellas en donde $\operatorname{Im}(\omega)$, la parte superior del $z$-plano corresponde a las inestabilidades mientras que el eje rea de $z$ representa la división entre estabilidad e inestabilidad.\\
+Considerese entonces un controno en línea recta $C_z$ paralelo al eje real de $z$ y que pasa ligeramente por encima de este .
+Dicho contorno puede ser representado como $z=z_r + i\delta$ donde $d$ es una constante pequeña y $z_r$ toma valores de $-\infty$ a $\infty$.\\
+La función $Q(z) \to 0$ cuando $z \pm \infty$ y por lo tanto a medida que $z$ se mueve a lo largo de $C_z$  el contorno $C_Q$ correspondiente en el $Q-plano$ complejo debe empezar y terminar su recorrido en el origen.
+Además, como $Q$ puede ser evaluada por medio de la fórmula de Plemelj se observa que $Q$ es finita para todas las $z$ en $C_z$.
+Se tiene entonces en consequencia que $C_Q$ es una curva continua finita que empieza y termina en el origen del $Q$-plano complejo.\\
+Debido a que el mapeo de la parte superior del $z$-plano corresponde a la región encerrada por $C_Q$ se tiene que si $Q(z)$ no toma valor real positivos alguno de $z$ entonces  la $C_Q$ correspondiente no puede ser solución de \ref{eq:k2=Q} correspondiente a una inestabilidad. 
+Se impone entonces la condición de que $Q(z)$ tome valores positivos de la parte real de $z$ lo que es equivalente a hacer que $C_Q$ pase por la región $\operatorname{Re}(Q) >0$ y cruce el eje real de $Q$.
+Lo cual corresponde a soluciones que generen inestabilidades.
+Por último, se recuerda que $C_z$ son la frecuencias ligeramente inestables por lo el mapeo a $C_Q$ donde se cruza el eje real positivo de $Q$ también representa inestabilidades ligeras.\\
+Se presta atención entonces a cuando $C_Q$ cruza el eje positivo real de $Q$. Si se usa la fórmula de Plemelj en \ref{eq:Q(z)_integral} se obtiene
+\begin{equation}
+\operatorname{Im}(Q) = \frac{q^2}{m\epsilon _0}\pi \left[\frac{\partial f_0}{\partial u}\right]_{u= \omega /k}
+\end{equation}
+Si además se desplaza a lo largo de $C_Q$ desde un punto ligeramente por debajo del eje real de $Q$ a uno ligeramente por encima, $\operatorname{Im}(Q)$ pasa de ser negativo a positivo. Y en consecuencia $[\partial f_0 / \partial u]_{u = \omega /k}$ cambia de negativo a positivo de tal manera que sobre el eje real positivo de $Q$ $f_0$ es un mínimo en algún valor $u=u_{min}$ donde el subíndice $min$ indica que ese es el valor que resulta en un mínimo no que $u$ sea un mínimo.\\
+Una expansión de Taylor alrededor de este mínimo da
+\begin{equation}
+\label{eq:taylor_min_Penrose}
+f(u) =f[u_{min}+(u-u_{min})] = f(u_{min})+0+\frac{(u -u_{min})^2}{2}f''(u_{min})+ \cdots
+\end{equation}
+Y ya que $f(u_{min})$ es una constante, se puede escribir la derivada parcial de $f_0$ como
+\begin{equation}
+\frac{\partial f_0}{\partial u} = \frac{\partial}{\partial u}\left[f_0(u)-f_0(u_{min})\right]
+\end{equation}
+Lo cual facilita la integración por partes de \ref{eq:Q(z)_integral}
 %%%%%%%Anderson%%%%%%%%%%%%%%%
 %Para evaluar la integral se hace uso de la teoría de variable compleja, en particular el teorema del residuo y el valor principal de Cauchy.\\
 %Se reescribe la integral en una forma más conveniente.
