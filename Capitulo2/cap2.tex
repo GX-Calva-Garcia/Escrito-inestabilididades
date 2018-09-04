@@ -5,7 +5,8 @@
 \onlyinsubfile{\setcounter{chapter}{1}}
 \onlyinsubfile{\chapter{Amortiguamiento de Landau}}
 \section{Introducción}
-Para tratar el tema de inestabilidades se mostrará primero que frecuencias complejas pueden aparecer en el plasma si se tiene un arreglo de haces de partículas adecuado \cite{bellan2008fundamentals}.
+El capítulo anterior expuso como surgen inestabilidades en la onda en la interacción distintas especies tanto en un plasma estacionario como en un haz incidente asi como también la transferencia de energía de la onda a las partículas.\\
+El proposito de este capítulo es entonces explicar de donde surgen las inestabilidades en estas interacciones asi como también encontrar una relación entre las inestabilidades y la transferencia de energía. \cite{bellan2008fundamentals}.
 \section{Amortiguamiento de Landau}
 En el capítulo anterior se estudiaron diferentes casos particulares para la relación de dispersión. Recordando que la forma general está dada por la ecuación \ref{eq_dispersion} que describe un plasma compuesto por distintas especies con velocidades $\overrightarrow{\textbf{u}}_{\sigma 0}$ y frecuencia de plasma $\omega^2_{p \sigma}$.\\
 Ahora bien, haciendo la suposición de que se tienen iones en reposo como fondo, la densidad de cada especie se puede escribir entonces como $n_{\sigma 0} = f_{\sigma}n_0$ donde $n_0$ es la densidad de los iones de fondo y $f_{\sigma}$ es la densidad parcial de la especie $\sigma$. De tal manera que la suma de las $f_{\sigma}$ da la unidad. Por lo que la ecuación \ref{eq_dispersion} se puede reescribir como:
@@ -58,7 +59,7 @@ Despejando $f_1$
 \begin{equation}
 f_1 =-\frac{k}{(\omega -ku)}\frac{q}{m}\frac{\partial f_0}{\partial u}\Phi_1
 \end{equation}
-Se tiene tambien quela densidad de los electrones perturbados es
+Se tiene también quela densidad de los electrones perturbados es
 \begin{equation}
 \label{eq:densidad_electrones_perturbados}
 n_1 = \int^{\infty}_{-\infty} f_1 du=-\frac{q}{m}\Phi_1 \int^{\infty}_{-\infty}\frac{k}{(\omega-ku)}\frac{\partial f_0}{\partial u}du
@@ -180,7 +181,7 @@ Donde $\parallel$ indica que es en la dirección $\overrightarrow{\textbf{k}}$, 
 F_{\sigma 1}(u_{\parallel},0)=\int f_{\sigma 1}(\overrightarrow{\textbf{u}},0)d^2\overrightarrow{\textbf{u}}_{\perp}
 \end{equation}
 El integrando de la ecuación \ref{eq:cont_analitica_N(p)} tiene entonces un polo en $u_{\parallel}=ip/k$. Se toma además a $k>0$ y se recuerda que $N(p)$ tiene la restricción de que $\operatorname{Re}(p)$ debe ser siempre mayor que $\gamma$ para que el polo $u_{\parallel}=ip/k$ se encuentre en la mitad superior del pano complejo de $u_{\parallel}$. Al realizar la continuación analítica se puede permitir a $\operatorname{Re}(p)$ ser menor que $\gamma$ en incluso negativa lo cual permite al polo $u_{\parallel}=ip/k$ moverse en dirección de la parte inferior del plano complejo de $u_{\parallel}$. Surgue sin embargo el problema de como lidiar con el polo cuando este pasa por el cero pues pasaría a estar por debajo del controno de integración y $N(p)$ dejaría de ser analítica. Landau propusó que el contorno se deforme a medida que $\operatorname{Re}(p)$ se vaya haciendo negativa de tal manera que el contorno siempre se encuentre por debajo del polo.\cite{bellan2008fundamentals}\\
-La continuación analítica de $D(p)$ sigue el mismo procedimiento y es también construida a partir de la deformación del contorno de integración de tal manera que siempre se encuentre por debajo del polo.\\
+La continuación analítica de $D(p)$ sigue el mismo procedimiento y es también construida a partir de la deformación del contorno de integración de tal manera que siempre se encuentre por debajo del polo.
 \begin{equation}
 \label{eq:cont_analitica_D(p)}
 D(p)=1-\frac{1}{k^2}\sum _{\sigma}\frac{q_{\sigma}^2}{\epsilon _0m_{\sigma}}\int ^{\infty}_{-\infty}\frac{\partial F_{\sigma 0}/\partial u_{\parallel}}{(u_{\parallel} -ip/k)}du_{\parallel}
@@ -437,7 +438,7 @@ donde
 \label{eq:Q(z)_integral}
 Q(z) = \frac{q^2}{m \epsilon _0}\int^{\infty}_{-\infty} \frac{1}{(u -z)}\frac{\partial f_0}{\partial u}du
 \end{equation}
-es una función compleja de la variable $z=\omega /k$, tambiñen compleja.El número de onda $k$ se asume como una cantidad real positiva y se utilizará la fórmula de Plemelj para lidiar con la singularidad del integrando.
+es una función compleja de la variable $z=\omega /k$, también compleja.El número de onda $k$ se asume como una cantidad real positiva y se utilizará la fórmula de Plemelj para lidiar con la singularidad del integrando.
 Por suposición, se tiene que el lado izquierdo de \ref{eq:k2=Q} es siempre real y positivo para cualquier $k$. Por lo las soluciones que se buscan son cuando $Q(z)$es real y positiva.\\
 $Q(z)$  puede ser interpretada como un mapeo de $z$-plano $\mapsto$ $Q$-plano. Debido a que las soluciones de \ref{eq:k2=Q} que producen inestabilidades son aquellas en donde $\operatorname{Im}(\omega)$, la parte superior del $z$-plano corresponde a las inestabilidades mientras que el eje rea de $z$ representa la división entre estabilidad e inestabilidad.\\
 Considerese entonces un controno en línea recta $C_z$ paralelo al eje real de $z$ y que pasa ligeramente por encima de este .
@@ -464,6 +465,21 @@ Y ya que $f(u_{min})$ es una constante, se puede escribir la derivada parcial de
 \frac{\partial f_0}{\partial u} = \frac{\partial}{\partial u}\left[f_0(u)-f_0(u_{min})\right]
 \end{equation}
 Lo cual facilita la integración por partes de \ref{eq:Q(z)_integral}
+\begin{equation}
+\label{eq:Q_z=u_min}
+\begin{split}
+Q\left( z=u_{min}\right) &=\frac{q^2}{m\epsilon _0}\left\lbrace P\int ^{\infty}_{-\infty} \frac{\frac{\partial}{\partial u}\left[f(u)-f(u_{min})\right]}{(u-u_{min})}du + i\pi \left[\frac{\partial}{\partial u}f(u)\right]_{u=u_{min}}\right\rbrace\\
+&=\frac{q^2}{m\epsilon _0}P\int ^{\infty}_{-\infty} \frac{1}{(u-u_{min})^2}\left[ f(u)-f(u_{min})\right]du\\
+&= \frac{q^2}{m\epsilon _0}\int ^{\infty}_{-\infty}\frac{1}{(u-u_{min})^2} \left[0+\frac{(u-u_{min})^2}{2}f''(u_{min})+\cdots \right]du
+\end{split}
+\end{equation}
+En el segundo renglón de la ecuación \ref{eq:Q_z=u_min} se tiene que la parte imaginaria se hace cero  mientras que en el tercer renglón se ha quitado la $P$ debido a que el término dominante es proporcional a $(u-u_{min})^2$ y por lo tanto ya no hay singularidad en $u=u_{min}$.\\
+Se tiene entonces que el requisito para que haya una ligera inestabilidad se puede resumir en que $f(u)$ tiene un mínimo en  $u-u_{min}$ y el valor de $Q$ es real y positivo, esto es:
+\begin{equation}
+\label{eq:criterio_Penrose}
+Q(u_{min})=\frac{q^2}{m\epsilon _0}\int ^{\infty}_{-\infty}\left[\frac{f(u)-f(u_{min})}{(u-u_{min})^2}\right]du > 0
+\end{equation}
+Por último se tiene que el criterio de Penrose extiende el análisis de inestabilidad en dos corrientes a una distribución arbitraria que contiene un número finito de haces con distintas temperaturas.
 %%%%%%%Anderson%%%%%%%%%%%%%%%
 %Para evaluar la integral se hace uso de la teoría de variable compleja, en particular el teorema del residuo y el valor principal de Cauchy.\\
 %Se reescribe la integral en una forma más conveniente.
