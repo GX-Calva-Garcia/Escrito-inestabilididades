@@ -3,7 +3,241 @@
 \onlyinsubfile{\graphicspath{ {../figuras/} }}
 \onlyinsubfile{\pagenumbering{arabic}}
 \onlyinsubfile{\chapter{Introducción.}}
-una introducción
+
+Considerando que la mayoría de la materia visible se encuentra en estado de plasma \cite{bittencourt2013fundamentals} no es de extrañar que se encuentren varios ejemplos de plasmas en la naturaleza los cuales van desde la ionosfera hasta los plasmas interestelares como los encontrados en las estrellas.\\
+El estudio continuo de la física de plasmas ha derivado en diferentes aplicaciones de las cuales las más notables son la búsqueda de obtención de energía mediante procesos de fusión nuclear confinados en un plasma y propulsión de vehículos espaciales.\\
+Al igual que los otros estados de la materia el plasma presenta diversos fenómenos de interes como es la interacción entre ondas y partículas en un plasma. 
+Esta interacción es el enfoque de este trabajo tomando el caso de ondas electrostáticas.\\
+Su importancia reside en que se trata de un fenómeno no colisional donde hay intercambio de energía y momento. 
+Interacciones entre ondas y partículas se pueden observar en diversos plasmas espaciales e incluso en la magnetosfera terrestre \cite{kitamura2018direct}.
+Lo cual ayuda a ilustrar el alcance que tiene el estudio de esta interacción.\\
+Otro proceso no colisional encontrado en los plasmas es el llamado amortiguamiento de Landau cuya aparición se puede ver como consecuencia de la transferencia de energía entre la onda y las partículas. \cite{bellan2008fundamentals}.
+El amortiguamineto de Landau a su vez aparece en distintos sistemas que van desde la física de altas energías hasta sistemas biológicos \cite{sagan1994physics}.\\
+Otra consecuencia de esta transferencia de energía es la aparición de inestabilidades en las ondas a partir de la interacción de distintas especies en un plasma, por especie se entiende partículas que tienen una frecuencia de plasma y velocidad característica.\\
+El siguiente trabajo presenta entonces un estudio de esta interacción onda-partícula en un plasma, en el caso electrostático. Haciendo énfasis en el crecimiento de inestabilidades debido a la interacción de distintas especies en un plasma y el amortiguamiento de Landau que se presenta en el plasma.\\
+Si bien este análisis es una versión simplificada del problema real ayuda a ilustrar el fenómeno y facilita el estudio de casos más cercanos a la realidad.\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Un problema de gran interés, tanto en plasmas espaciales como en experimentos de confinamiento magnético de fusión nuclear controlada, es el de la interacción entre haces de partículas cargadas y un plasma.  En el primer caso, que es por naturaleza no colisional, son de interés para comprender cómo las partículas son aceleradas por ondas, así como el proceso contrario, de la generación espontánea de ondas por una distribución de partículas. Estos procesos han sido medidos por la misión espacial MMS (Magnetospheric Multiscale) \cite{kitamura2018direct}. En fusión nuclear, es importante comprender cómo las partículas energéticas pueden  provocar inestabilidades como los llamados modos de Alfvén toroidales \cite{heidbrink2008basic,pinches2015energetic}. Landau en 1936 \cite{landau1936kinetische,landau1946vibrations} estudió una versión simplificada, en la que se consideran únicamente ondas electrostáticas (modelo de Vlasov-Poisson), mostrando el mecanismo mediante el cual puede haber conservación de energía en la interacción no colisional entre ondas y partículas en la aproximación lineal. El amortiguamiento de Landau fue demostrado experimentalmente en 1964 tanto para electrones \cite{malmberg1964collisionless}, como para iones \cite{wong1964landau}. Recientemente se ha seguido estudiando el sistema de Vlasov-Poisson en el régimen no lineal \cite{mouhot2011landau,hou2011trapped}, y Cedric Villani obtuvo la medalla Fields en 2010 por su trabajo en esta área.
+%
+%En esta tesis, basada en libros de texto como los de Bellan \cite{bellan2008fundamentals}, Goldston y Rutherford \cite{goldston1995introduction} y Nicholson \cite{nicholson1983introduction}, así como en artículos. Se hace una exposición en la que se parte, en base al modelo de fluidos,  de la susceptibilidad eléctrica que obtenida para la inestabilidad de dos haces de partículas. Se infiere la de un gas de partículas cargadas con una distribución de velocidades. Posteriormente se estudia el problema de ondas lineales para un modelo de Vlasov-Poisson, y se recupera la misma expresión para la susceptibilidad. Se muestra el tratamiento del problema según Vlasov en donde se toman transformadas de Fourier en el tiempo y el espacio, y posteriormente la corrección de Landau, en la que se toma como un problema de condiciones iniciales, empleando transformada de Laplace para el tiempo. De este modo se explican las condiciones necesarias para que exista el amortiguamiento de ondas, así como el desarrollo de inestabilidades que generen ondas a partir de perturbaciones en la función de distribución de partículas, dependiendo de la pendiente de la función de distribución. Finalmente se regresa al problema con el que se inició la tesis; el de la inestabilidad de dos haces de partículas, pero ahora con temperatura finita.
+%\begin{enumerate}
+%	\item Introducción
+%	\item Inestabilidad de dos corrientes y permitividad para un plasma con una función de distribución de velocidades
+%	\item Modelo de Vlasov-Poisson. 
+%	\subitem Tratamiento de Vlasov
+%	\subitem Tratamiento de Landau
+%	\item Energía de ondas y partículas en el tratamiendo de Landau
+%	\item Amortiguamiento e Inestabilidades en la interacción entre una onda y el plasma
+%	\subitem Distribución de equilibrio con perturbación (“bump on the tail”)
+%	\subitem Interacción entre dos haces de partículas con temperatura
+%	\item Conclusiones 
+%\end{enumerate}
+\section{Definición de un plasma}
+En física se habla de plasmas para referirse a un gas ionizado que poseé ciertas propiedades las cuales dependen de la interacción entre partículas cuya dinámica está dominada por efectos de fuerzas electromagnéticas provenientes de campos internos y externos por lo que la mayoría de las interacciones son de carácter electromagnético.
+Esto no quiere decir que solo hay un tipo de interacción entre partículas de un plasma puesto que también hay interacciones de naturaleza colisional pero las propiedades que definen a un plasma son predominantemente de origen electromagnético. 
+\subsection{Neutralidad macroscópica}
+La primera de las propiedades que son propias de un plasma se refiere a que bajo condiciones de equilibrio y en ausencia de fuerzas externas se tiene que dentro de un volumen lo suficientemente pequeño para que los parámetros macroscópicos, como son la densidad y temperatura, no varíen pero lo suficientemente grande para contener un gran número de partículas la carga eléctrica neta es cero.
+En otras palabras, dentro de esta región microscópica los campos eléctricos se cancelan entre sí y en consecuencia la carga neta en la región macroscópica se hace cero.  
+\subsection{Longitud de Debye}
+La neutralidad macroscópica puede dejar de cumplirse cuando la energía térmica de la partícula puede compensar el potencial electrostático proveniente de la separación de partículas cargadas lo cual solo llega a ocurrir, en ausencia de fuerzas externas, cuando se encuentra dentro de cierta distancia que es del orden de una longitud característica del plasma llamada longitud de Debye.
+Esta longitud se refiere a la distancia en la que el campo eléctrico de una partícula cargada dentro del plasma afecta a otras partículas vecinas.
+O dicho de otro modo, es la distancia dentro de la cual las cargas se acomodan alrededor de la que está generando el campo para así formar una especie de escudo que protege a la partícula cargada de campos electrostáticos externos.
+La forma explícita de la longitud de Debye es:
+\begin{equation}
+\lambda_D = \left( \frac{\epsilon_0 k T}{n_p q^2} \right)^{1/2}
+\end{equation}
+Donde $k$, es la constante de Boltzmann, $T$ la temperatura, $\epsilon_0$ la permitividad del vacío, $q$ la carga de la partícula y $n_p$ la densidad numérica de la partícula.
+Se define entonces una esfera de Debye cuyo radio es $\lambda_D$ en donde el campo electrostático localizado en el centro de la esfera no es afectado por campo externos que se encuentran fuera de la esta.
+Como consecuencia, todas las partículas cargadas dentro del plasma solo interactúan con cargas que se encuentran dentro de su esfera de Debye.
+De lo anterior se puede concluir que para que un plasma conserve la propiedad de neutralidad la longitud característica del sistema debe de ser mucho mayor que la longitud de Debye. Es decir:
+\begin{equation}
+L \gg \lambda_D
+\end{equation}
+Para que las cargas puedan proveer de una protección efectiva de otros campos externos se necesita que el número de cargas dentro de la esfera sea lo suficientemente grande lo cual queda expresado con:
+\begin{equation}
+n_p \lambda_D^3 \gg 1
+\end{equation}
+Lo que quiere decir que la distancia entre cargas es significativamente menor en comparación con $\lambda_D$. De la relación anterior también se puede definir una cantidad que se le denominará como el parámetro del plasma
+\begin{equation}
+g= \frac{1}{n_p \lambda_D^3}
+\end{equation}
+Y la condición $g \ll 1$ se le conoce como la aproximación del plasma.
+%\subsection{Frecuencia del plasma}
+
+\section{Derivación de las ecuaciones de fluidos a partir de la teoría cinética}
+Se tiene que un plasma es un sistema compuesto por un gran número de partículas cargadas que interactúan entre sí, por eso mismo es a menudo conveniente hacer un estudio desde un enfoque estadístico \cite{bittencourt2013fundamentals}.
+Es en este análisis que toda la información física de interés se encuentra contenida en la función de distribución $f(\textbf{x},\textbf{v},t)$ la cual reside en el espacio fase posición-velocidad.\\
+Determinar entonces una expresión para $f(\textbf{x},\textbf{v},t)$, es el problema a tratar cuando se trabaja con el modelo cinético. La ecuación diferencial más básica que describe la variación temporal y espacial de una función de distribución de una cierta especie $j$ de partículas cargadas es la llamada ecuación de Boltzmann \cite{jardin2010computational}.
+\begin{equation}
+\label{eq:boltzmann-intro}
+\frac{\partial f_j}{\partial t}+ \textbf{v}\cdot \nabla f_j + \textbf{a}\cdot \nabla _v f_j=\left(\frac{\partial f_j}{\partial t}\right)_{col}
+\end{equation}
+El lado derecho proviene de las interacciones entre partículas y se le conoce como el término colisional.\\
+Para propositos de este trabajo se utilizará un caso partícular de la ecuación de Boltzmann en donde el término colisional se hace cero y lo que se quiere estudiar es la función de distribución de partículas cargadas por lo que la aceleración viene dada por la aceleración de Lorentz. A este caso partícular se le conoce como la ecuación de Vlasov.
+\begin{equation}
+\label{eq:boltzmann-vlasov-intro}
+\frac{\partial f_j}{\partial t}+ \textbf{v}\cdot \nabla f_j + \frac{q_j}{m_j}\left( \textbf{E} + \textbf{v} \times \textbf{B}\right)\cdot \nabla _v f_j=0
+\end{equation}
+%A esta forma, que incluye la fuerza de Lorentz y la exclusión de términos colisionales se le conoce también como la ecuación de Vlasov \cite{bittencourt2013fundamentals,nicholson1983introduction}. 
+Donde $q_j$ representa la carga, $m_j$ la masa, $\textbf{v}$ la velocidad de la especie, mientras que $\nabla _v$ se refiere a que el operador esta actuando solo sobre el espacio de velocidades. Por último $\textbf{E}$ y $\textbf{B}$ son el campo eléctrico y magnético respectivamente.\\
+Los campos de la ecuación \ref{eq:boltzmann-vlasov-intro} se obtienen a partir de las ecuaciones de Maxwell:
+\begin{equation}
+\nabla \cdot \textbf{E}=\frac{\rho_q}{\epsilon _0}
+\end{equation}
+\begin{equation}
+\nabla \cdot \textbf{B}=0
+\end{equation}
+\begin{equation}
+\nabla \times \textbf{E}=-\frac{\partial \textbf{B}}{\partial t}
+\end{equation}
+\begin{equation}
+\nabla \times \textbf{E} = \mu _0 \left(\textbf{J}+\epsilon_0\frac{\partial \textbf{E}}{\partial t} \right)
+\end{equation}
+Con las densidades de carga y energía dadas por
+\begin{equation}
+\rho_q = \sum_j q_j \int_v f_j(\textbf{x},\textbf{v},t) d^3 \textbf{v}
+\end{equation}
+\begin{equation}
+\textbf{J}= \sum_j q_j \int_v \textbf{v}f_j(\textbf{x},\textbf{v},t) d^3 \textbf{v}
+\end{equation}
+Las ecuaciones del modelo de dos fluidos se derivan del modelo cinético al calcular los momentos de velocidades de la ecuación de Boltzmann.\\
+El momento cero se obtiene de integrar la ecuación \ref{eq:boltzmann-vlasov-intro} sobre el espacio de velocidades es decir $\int d^3 \textbf{v}$.
+\begin{equation}
+ \int \frac{\partial f_j}{\partial t}d^3 \textbf{v}+ \int \textbf{v}\cdot \nabla f_j d^3 \textbf{v} + \int \frac{q_j}{m_j}\left( \textbf{E} + \textbf{v} \times \textbf{B}\right)\cdot \nabla _v f_j d^3 \textbf{v}=0
+\end{equation}
+Es conveninete entonces apoyarse en la definición del promedio sobre las velocidades:
+\begin{equation}
+\langle g(\textbf{v}) \rangle _j = \frac{\int g(\textbf{v})f_j(\textbf{x},\textbf{v},t)d^3\textbf{v}}{n_j(\textbf{x},t)}
+\end{equation}
+Donde $n_j(\textbf{x},t)=\int f_j(\textbf{x},\textbf{v},t) d^3\textbf{v}$ y $g$ una función de la velocidad. Es más facil ver su utilidad si se expresa como:
+\begin{equation}
+\int g(\textbf{v})f_j(\textbf{x},\textbf{v},t)d^3\textbf{v}= n_j(\textbf{x},t)\langle g(\textbf{v}) \rangle _j
+\end{equation}
+Pues si a la ecuación \ref{eq:boltzmann-vlasov-intro} se le multiplica por la función $g$ y se integra sobre el espacio de velocidades se tiene:
+\begin{equation}
+\label{eq:Boltzmann-g}
+ \int g\frac{\partial f_j}{\partial t}d^3 \textbf{v}+ \int g\textbf{v}\cdot \nabla f_j d^3 \textbf{v} + \int g\frac{q_j}{m_j}\left( \textbf{E} + \textbf{v} \times \textbf{B}\right)\cdot \nabla _v f_j d^3 \textbf{v}=0
+\end{equation}
+De donde 
+\begin{equation}
+\int g\frac{\partial f_j}{\partial t}d^3 \textbf{v}=\frac{\partial}{\partial t}\int gf_jd^3\textbf{v}-\int f\frac{\partial g}{\partial t}d^3\textbf{v}=\frac{\partial n_j \langle g\rangle_j}{\partial t}
+\end{equation}
+La derivada parcial temportal de $g$ se desvanece pues $g$ solo es función de $\textbf{v}$.
+Mientras que para el segundo término: 
+\begin{equation}
+\int g\textbf{v}\cdot \nabla f_j d^3 \textbf{v}= \nabla \cdot \int g\textbf{v}f_j d^3\textbf{v}=\nabla \cdot \left(n_j \langle g\textbf{v} \rangle_j \right)
+\end{equation}
+En este caso, debido a que el operador $\nabla$ actua solo sobre las posiciones el término $f_j \nabla \cdot (g\textbf{v})$ que proveniente de $\nabla \cdot (g\textbf{v}f_j)$ se desvanece.
+Por último, para el tercer término se tiene
+\begin{equation}
+\int g\frac{q_j}{m_j}\left( \textbf{E} + \textbf{v} \times \textbf{B}\right)\cdot \nabla _v f_j d^3 \textbf{v}= \int \nabla_v\cdot (g\textbf{a}f)d^3\textbf{v}- \int f_j \nabla_v\cdot (g\textbf{a})d^3\textbf{v}=-n_j\langle \textbf{a}\cdot \nabla_v g\rangle_j
+\end{equation}
+Por simplicidad se ha hecho $\frac{q_j}{m_j}\left( \textbf{E} + \textbf{v} \times \textbf{B}\right)=\textbf{a}$ y la integral de $\nabla_v\cdot (g\textbf{a}f)$ se desvance pues se tiene que es una integral de superficie $\int gf\textbf{a}\cdot d\textbf{s}$ la cual tiende a cero. Finalmente, la integral  del término $f_jg\nabla_v \cdot \textbf{a}$ proveniente de $\int f_j\nabla _v \cdot (g\textbf{a})d^3\textbf{v} = \int (f\textbf{a} \cdot \nabla_v g + fg\nabla_v \cdot \textbf{a})d^3\textbf{v}$ se hace cero pues $\textbf{a}$ es perpendicular a $\nabla_v$. Con esto, la ecuación \ref{eq:Boltzmann-g} puede ser expresada como:
+\begin{equation}
+\label{eq:Boltzmann-Vlasov-promedios}
+\frac{\partial n_j \langle g \rangle_j}{\partial t}+\nabla \cdot (n_j \langle g \textbf{v} \rangle_j)-n_j \langle \textbf{a}\cdot \nabla_v g \rangle_j=0
+\end{equation}
+Para una $g$ arbitraria. Se tiene entonces que encontrar el momento cero de la ecuación \ref{eq:boltzmann-vlasov-intro} es equivalente a hacer $g=v^0=1$ en la ecuación \ref{eq:Boltzmann-g} que a su vez puede reescribirse como la ecuación \ref{eq:Boltzmann-Vlasov-promedios}, por lo que el momento cero resulta ser:
+\begin{equation}
+\frac{\partial n_j}{\partial t}+\nabla \cdot (n_j \textbf{u}_j)=0
+\end{equation}
+Que es la ecuación de continuidad, donde $\textbf{u}_j$ es la velocidad promedio.\\
+De manera análoga al momento cero, para encontrar el primer momento se toma $\textbf{g}=m\textbf{v}$ en la ecuación \ref{eq:Boltzmann-Vlasov-promedios}. Lo que da:
+\begin{equation}
+\frac{\partial (m_jn_j\textbf{u}_j)}{\partial t}+\nabla \cdot (m_jn_j\langle \textbf{v}\textbf{v} \rangle_j)-m_jn_j\frac{q_j}{m_j}\langle (\textbf{E}+\textbf{v}\times \textbf{B})\cdot \nabla_v\textbf{v}\rangle=0
+\end{equation}
+El primer término es simplemente:
+\begin{equation}
+\frac{\partial (m_jn_j\textbf{u}_j)}{\partial t}= m_jn_j\frac{\partial \textbf{u}_j}{\partial t}+ \textbf{u}_j\frac{\partial (m_jn_j)}{\partial t}
+\end{equation}
+Para el segundo término se hace uso de $\textbf{v}=\textbf{u}_j+(\textbf{v}-\textbf{u}_j)=\textbf{u}_j+\textbf{v}_c$ donde a $\textbf{v}_c$ se le denomina como la velocidad aleatoria, la cual tiene la propiedad de que $\langle \textbf{v}_c \rangle=0$.
+Por lo que el producto en el segundo término se puede obtener mediante:
+\begin{equation}
+\textbf{v}\textbf{v}=\textbf{u}_j \textbf{u}_j + 2\textbf{u}_j \textbf{v}_c + \textbf{v}_c \textbf{v}_c
+\end{equation}
+\begin{equation}
+\langle \textbf{v} \textbf{v} \rangle = \textbf{u}_j \textbf{u}_j +\langle \textbf{v}_c \textbf{v}_c \rangle
+\end{equation}
+Por lo que la divergencia se puede expresar como:
+\begin{equation}
+\nabla \cdot (m_jn_j\langle \textbf{v}\textbf{v} \rangle_j)=m_j \textbf{u}_j\nabla \cdot n_j \textbf{u}_j+m_jn_j\textbf{u}_j\cdot \nabla \textbf{u}_j+\nabla \cdot \langle m_jn_j \textbf{v}_c \textbf{v}_c \rangle
+\end{equation}
+Sumando entonces el primer y segundo término se obtiene:
+\begin{equation}
+\frac{\partial (m_jn_j\textbf{u}_j)}{\partial t}+\nabla \cdot (m_jn_j\langle \textbf{v}\textbf{v} \rangle_j)=m_jn_j \left( \frac{\partial \textbf{u}_j}{\partial t}+\textbf{u}_j\cdot \nabla \textbf{u}_j \right)+ \nabla \cdot \langle m_jn_j \textbf{v}_c \textbf{v}_c \rangle
+\end{equation}
+De donde $\partial_t n_j$ y $\nabla \cdot n_j \textbf{u}_j$ se desvanecen pues sumados dan cero por la ecuación de continuidad.\\
+En el tercer término se tiene $\nabla _v \textbf{v}=\textbf{I}$ por lo que se puede escribir
+\begin{equation}
+\langle (\textbf{E}+\textbf{v}\times \textbf{B})\cdot \nabla_v\textbf{v}\rangle = \textbf{E}+\textbf{u}_j\times \textbf{B}
+\end{equation}
+Reacomodando términos se tiene entonces:
+\begin{equation}
+\label{eq:momento_fluidos}
+m_jn_j \left( \frac{\partial \textbf{u}_j}{\partial t}+\textbf{u}_j\cdot \nabla \textbf{u}_j \right)= n_jq_j(\textbf{E}+\textbf{u}_j\times \textbf{B})- \nabla \cdot \langle m_jn_j \textbf{v}_c \textbf{v}_c \rangle
+\end{equation}
+En el tercer término se tiene un tensor cuya naturaleza física puede ser no muy evidente. Se puede enclarecer un poco si se separa en dos términos, uno para los términos diagonales y el otro para los no diagonales. De esta manera se tiene:
+\begin{equation}
+\langle m_j n_j \textbf{v}_c \textbf{v}_c \rangle _{ik}=\langle m_j n_jv_{ci}v_{ci}\rangle+ \langle m_j n_jv_{ci}v_{ck}\rangle
+\end{equation}
+Por el momento, conviene analizar las componentes de la matriz diagonal. Las cuales contienen velocidades aleatorias al cuadrado, o para ser más exactos se tratan de valores promedios de los cuadrados. Esto evoca a la expresión proveniente de la teoría termodiámica que relaciona la energía cinética con la temperatura.
+\begin{equation}
+\frac{1}{2}mv_t^2 =\frac{3}{2}kT=\frac{N}{2}kT
+\end{equation}
+Donde $N$ se refiere a los grados de libertad del sistema y de donde se puede despejar para $v_t^2$ y obtener $v_t^2=NkT/m$, y si además se hace uso de la ecuación de estado del gas ideal $p=nkT$, $v^2_t$ se puede expresar como:
+\begin{equation}
+v_t^2=\frac{NkT}{m}=\frac{Np}{nm}
+\end{equation}
+Regresando entonces a las componentes de la matriz diagonal se tiene que $\langle v_c^2\rangle=v_t^2$, lo que permite escribir una expresión para la energía cinética en términos de los promedios pero a su vez permite sustituir $\langle v_c^2\rangle$ por $NkT/m$ teniendo así la siguiente expresión:
+\begin{equation}
+\frac{1}{2}mn \langle v_c^2\rangle = \frac{1}{2}NnkT
+\end{equation}
+Es evidente que la presión puede sustituirse en la ecuación anterior pero si se recuerda que lo que se quiere calcular son las componentes de $v_a$ se necesita el paso adicional de hacer $N=1$ y así conseguir:
+\begin{equation}
+mn \langle v_{ci}^2\rangle = p_i
+\end{equation} 
+Con esto se ha conseguido la información de que la matriz diagonal se refiere al tensor de presión \textbf{P}. Por otro lado en la matriz de términos cruzados lo que se tiene son presiones provenientes de fuerzas de corte \cite{bittencourt2013fundamentals} y recibe el nombre de tensor de viscosidad \textbf{$\Pi$}.De esta manera se ha aclarado el significado físico del tercer término de la ecuación \ref{eq:momento_fluidos} el cual es:
+\begin{equation}
+\label{eq:tensor_p_vis}
+\nabla \cdot \langle m_jn_j \textbf{v}_c \textbf{v}_c \rangle= \nabla \cdot (\textbf{P}+ \Pi)
+\end{equation}
+Si además se considera el caso anisotrópico, el tensor $\Pi$ se desvanece y $\nabla \cdot \textbf{P}=\nabla p$, donde $p$ es la presión escalar y entonces la ecuación \ref{eq:momento_fluidos} queda expresada de la suguiente manera:
+\begin{equation}
+\label{eq:movimiento_reducida}
+m_jn_j \left( \frac{\partial \textbf{u}_j}{\partial t}+\textbf{u}_j\cdot \nabla \textbf{u}_j \right)= n_jq_j(\textbf{E}+\textbf{u}_j\times \textbf{B})- \nabla p
+\end{equation}
+Que es la ecuación de movimiento de la teoría de fluidos.
+%\begin{equation}
+%m \int \textbf{v} \frac{\partial f_j}{\partial t}d^3\textbf{v}=m \frac{\partial}{\partial t}(n_j \textbf{u})
+%\end{equation}
+%\begin{equation}
+%q\int \textbf{v}(\textbf{E} + \textbf{v} \times \textbf{B} ) \cdot \nabla _v f_j=-qn_j(\textbf{E}+\textbf{u}\times \textbf{B})
+%\end{equation}
+%\begin{equation}
+%m\int \textbf{v}(\textbf{v} \cdot \nabla f_j) d^3 \textbf{v} = m_j \textbf{u}\nabla \cdot (n_j \textbf{u})+m_jn_j(\textbf{u}\cdot \nabla) \textbf{u} + \nabla \cdot \textbf{P}
+%\end{equation}
+%Que da la ecuación de movimiento del fluido:
+%\begin{equation}
+%\frac{\partial}{\partial t}(m_j n_j \textbf{u})+ m_j \textbf{u}\nabla \cdot (n_j \textbf{u})+m_jn_j(\textbf{u}\cdot \nabla) \textbf{u} + \nabla \cdot \textbf{P}-q(\textbf{E} +\textbf{u}\times \textbf{B})=0
+%\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%El análisis inicial se hará desde el punto de vista microscópico 
+%\begin{equation}
+%%\label{eq:vlasov_def}
+%\frac{\partial f}{\partial t} + \frac{d\overrightarrow{\textbf{r}}}{dt}\cdot \frac{\partial f}{\partial \overrightarrow{\textbf{r}}} + \frac{d \overrightarrow{\textbf{p}}}{dt}\cdot \frac{\partial f}{\partial \overrightarrow{\textbf{p}}}=0
+%\end{equation}
+%Para el caso electrostático de un plasma en tres dimensiones la ecuación de Vlasov tiene la forma:
+%\begin{equation}
+%\label{eq:vlasov-poisson_3D}
+%\frac{\partial f_{\sigma}}{\partial t} + \overrightarrow{\textbf{u}}_{\sigma} \cdot \nabla f_{\sigma} -\frac{q_{\sigma}}{m_{\sigma}}\nabla \Phi \cdot \frac{\partial f_{\sigma}}{\partial \overrightarrow{\textbf{u}}}=0
+%\end{equation}
+%El proposito de est trabajo es entonces es 
+%Se empieza con presentar la transferencia de la energía entre ondas y partículas despues se pasa a explicar o mas bien ilustar el fenómeno no colisional del amortiguamiento de Landau.
+%Probablemente relacionar ambos capítulos con la transferencia de energía a distintos modos.
+%Agregar los datos experimentales que ilustran la motivacion para estudiar el problema. O mejor dicho ayuda a mostrar que los cálculos aunque simples corresponden a un fenómeno físico de relevancia en la física de plasmas.
+%Y aunque normalmente se asocia a la física de plasmas con el proyecto de fusón nuclear este fenómeno tiene relevancia en otros tipos de plasmas, como por ejemplo los estudiados en astrofísica.
+%También el fenómeno presentado del amortiguamiento de Landau tiene relevancia no solo en la física de plasmas pero también en la física de latas energias en incluso en algunos sistemas biológicos.
+%El caso expuesto en este trabajo es el caso de ondas electrostáticas que aunque se trate de un problema básico ayuda a comprender casos más complejos cuando se trata de transferencia de energía entre ondas y particulas.
 \onlyinsubfile{\bibliographystyle{unsrt}}
 \onlyinsubfile{\bibliography{../referencias}}
 \end{document}

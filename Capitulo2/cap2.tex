@@ -5,43 +5,45 @@
 \onlyinsubfile{\setcounter{chapter}{1}}
 \onlyinsubfile{\chapter{Amortiguamiento de Landau}}
 \section{Introducción}
-El capítulo anterior expuso como surgen inestabilidades en la onda en la interacción distintas especies tanto en un plasma estacionario como en un haz incidente asi como también la transferencia de energía de la onda a las partículas.\\
-El proposito de este capítulo es entonces explicar de donde surgen las inestabilidades en estas interacciones asi como también encontrar una relación entre las inestabilidades y la transferencia de energía. \cite{bellan2008fundamentals}.
-\section{Amortiguamiento de Landau}
-En el capítulo anterior se estudiaron diferentes casos particulares para la relación de dispersión. Recordando que la forma general está dada por la ecuación \ref{eq_dispersion} que describe un plasma compuesto por distintas especies con velocidades $\overrightarrow{\textbf{u}}_{\sigma 0}$ y frecuencia de plasma $\omega^2_{p \sigma}$.\\
-Ahora bien, haciendo la suposición de que se tienen iones en reposo como fondo, la densidad de cada especie se puede escribir entonces como $n_{\sigma 0} = f_{\sigma}n_0$ donde $n_0$ es la densidad de los iones de fondo y $f_{\sigma}$ es la densidad parcial de la especie $\sigma$. De tal manera que la suma de las $f_{\sigma}$ da la unidad. Por lo que la ecuación \ref{eq_dispersion} se puede reescribir como:
-\begin{equation}
-\label{eq:dispersion_general_1}
-1 =\omega^2_{p0}\sum_{\sigma}\frac{f_{\sigma}}{(\omega - \overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}}_{\sigma 0})^2}
-\end{equation}
-Donde $\omega^2_{p0}$ es la frecuencia de plasma asociada a la densidad $n_0$. Esta manera alternativa de escribir la relación de dispersión fue simplemente para facilitar la presentación de otra generalización en donde las especies tienen asociadas todas las velocidades y la densidad correspondiente está determinada por una función de distribución $f(u)$, donde el número total de partículas en el intervalo $(u,u+du)$ está dado por $n_0f(u)du$. La densidad $f_{\sigma}$ es entonces sustituida por $f(u)du$ y la suma por una integral de $-\infty$ a $\infty$.
-\begin{equation}
-\label{eq:dispersion_general_2}
-1= \omega^2_{p0}\int^{\infty}_{-\infty}\frac{f(u)}{(\omega-k u)^2}du
-\end{equation}
-Al integrar por partes:
-\begin{equation}
-1=\omega^2_{p0}\left(\frac{f(u)}{(\omega - ku)k}- \int^{\infty}_{-\infty}\frac{df/du}{(\omega -k u)k}du \right)
-\end{equation}
-Si se asume que $f$ se desvanece en el infinito se tiene entonces:
-\begin{equation}
-1=-\frac{\omega^2_{p0}}{k}\int^{\infty}_{-\infty}\frac{df/du}{\omega -k u}du
-\end{equation}
-Esta forma generalizada presenta un problema ya que hay una singularidad para cuando el valor de $v$ se aproxima al valor de la velocidad de fase de la onda ($\omega/k$).\\
-El uso de funciones de distribución del plasma, el cual consiste en particulas cargadas con interacciones a larga distancia, indica que es necesaria una ecuación que describa la evolución temporal de estas. Dicha ecuación es conocida como la ecuación de Vlasov.\cite{bellan2008fundamentals}\\
+El capítulo anterior expuso como surgen inestabilidades en la onda en la interacción distintas especies tanto en un plasma estacionario como en un haz incidente así como también la transferencia de energía de la onda a las partículas.\\
+El proposito de este capítulo es entonces explicar de donde surgen las inestabilidades en estas interacciones asi como también encontrar una relación entre las inestabilidades y la transferencia de energía. \cite{bellan2008fundamentals}.\\
+%\section{Amortiguamiento de Landau}
+%En el capítulo anterior se estudiaron diferentes casos particulares para la relación de dispersión. Recordando que la forma general está dada por la ecuación \ref{eq_dispersion} que describe un plasma compuesto por distintas especies con velocidades $\overrightarrow{\textbf{u}}_{\sigma 0}$ y frecuencia de plasma $\omega^2_{p \sigma}$.\\
+%Ahora bien, haciendo la suposición de que se tienen iones en reposo como fondo, la densidad de cada especie se puede escribir entonces como $n_{\sigma 0} = f_{\sigma}n_0$ donde $n_0$ es la densidad de los iones de fondo y $f_{\sigma}$ es la densidad parcial de la especie $\sigma$. De tal manera que la suma de las $f_{\sigma}$ da la unidad. Por lo que la ecuación \ref{eq_dispersion} se puede reescribir como:
+%\begin{equation}
+%\label{eq:dispersion_general_1}
+%1 =\omega^2_{p0}\sum_{\sigma}\frac{f_{\sigma}}{(\omega - \overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}}_{\sigma 0})^2}
+%\end{equation}
+%Donde $\omega^2_{p0}$ es la frecuencia de plasma asociada a la densidad $n_0$. Esta manera alternativa de escribir la relación de dispersión fue simplemente para facilitar la presentación de otra generalización en donde las especies tienen asociadas todas las velocidades y la densidad correspondiente está determinada por una función de distribución $f(u)$, donde el número total de partículas en el intervalo $(u,u+du)$ está dado por $n_0f(u)du$. La densidad $f_{\sigma}$ es entonces sustituida por $f(u)du$ y la suma por una integral de $-\infty$ a $\infty$.
+%\begin{equation}
+%\label{eq:dispersion_general_2}
+%1= \omega^2_{p0}\int^{\infty}_{-\infty}\frac{f(u)}{(\omega-k u)^2}du
+%\end{equation}
+%Al integrar por partes:
+%\begin{equation}
+%1=\omega^2_{p0}\left(\frac{f(u)}{(\omega - ku)k}- \int^{\infty}_{-\infty}\frac{df/du}{(\omega -k u)k}du \right)
+%\end{equation}
+%Si se asume que $f$ se desvanece en el infinito se tiene entonces:
+%\begin{equation}
+%1=-\frac{\omega^2_{p0}}{k}\int^{\infty}_{-\infty}\frac{df/du}{\omega -k u}du
+%\end{equation}
+%Esta forma generalizada presenta un problema ya que hay una singularidad para cuando el valor de $v$ se aproxima al valor de la velocidad de fase de la onda ($\omega/k$).\\
+%En el siguiente capítulo se expondrá con mayor detalle el problema de la singularidad y como lidiar con ella. 
+Como se vio al final de capítulo anterior la generalización de la relación de dispersión para distintas especies conlleva hacer un tratamiento para una función de distribución de velocidades. 
+Al tratar con funciones de distribución del plasma, el cual consiste en partículas cargadas con interacciones a larga distancia, es necesaria una ecuación que describa la evolución temporal de estas funciones. Esta ecuación viene a ser la ecuación de Boltzmann sin el término colisional. \cite{bellan2008fundamentals}\\
 \begin{equation}
 \label{eq:vlasov_def}
 \frac{\partial f}{\partial t} + \frac{d\overrightarrow{\textbf{r}}}{dt}\cdot \frac{\partial f}{\partial \overrightarrow{\textbf{r}}} + \frac{d \overrightarrow{\textbf{p}}}{dt}\cdot \frac{\partial f}{\partial \overrightarrow{\textbf{p}}}=0
 \end{equation}
-Para el caso electrostático de un plasma en tres dimensiones la ecuación de Vlasov tiene la forma:
+Para el caso electrostático de un plasma en tres dimensiones a la ecuación \ref{eq:vlasov_def} se le agregan los términos de la fuerza de Lorentz y el potencial electrostático. Esta forma es comúnmente conocida como la ecuación de Vlasov.
 \begin{equation}
 \label{eq:vlasov-poisson_3D}
 \frac{\partial f_{\sigma}}{\partial t} + \overrightarrow{\textbf{u}}_{\sigma} \cdot \nabla f_{\sigma} -\frac{q_{\sigma}}{m_{\sigma}}\nabla \Phi \cdot \frac{\partial f_{\sigma}}{\partial \overrightarrow{\textbf{u}}}=0
 \end{equation}
 Sería entonces lógico pensar que para estudiar las ondas desde el punto de vista de Vlasov basta con realizar un proceso de linealización para obtener la relación de dispersión del plasma. Sin embargo resulta que el método de Fourier arroja una singularidad en el integrando, de la misma manera en la que aparece una singularidad al insertar una función de distribución en la relación de dispersión.\\
 %%%%%Poner fallo de Fourier%%%%%%%
-\section{Fallo de Fourier}
-Para ilustar como falla el análisis de Fourier para tratar al problema desde el punto de vista de Vlasov se tomará el caso de un plasma sin magnetizar en equilibrio estacionario y con comportamiento Maxwelliano. Donde también se asumirá que los iones no se mueven, esto es $m_i \to \infty$, y que la densidad de los iones es igual a la densidad de los electrones en equlibrio $n_e =n_i$. El campo electrostático es entonces cero en el equlibrio debido a que hay neutralidad de carga en el equlibrio. Además como los iones son imóviles, todo el estudio de la dinámica será de los electrones.Falta entonces plantear al problema de tal manera que este bien definido y tenga relevancia física. Para ello se asume la distribución en equilibrio de velocidades de los electrones como una distribución Maxwelliana.
+\section{Tratamiento de Vlasov}
+Para ilustar como el análisis de Fourier arroja una singularidad al momento de tratar el problema se tomará el caso de un plasma sin magnetizar en equilibrio estacionario y con comportamiento Maxwelliano. Donde también se asumirá que los iones no se mueven, esto es $m_i \to \infty$, y que la densidad de los iones es igual a la densidad de los electrones en equlibrio $n_e =n_i$. El campo electrostático es entonces cero en el equlibrio debido a que hay neutralidad de carga en el equlibrio. Además como los iones son inmóviles, todo el estudio de la dinámica será de los electrones.Falta entonces plantear al problema de tal manera que este bien definido y tenga relevancia física. Para ello se asume la distribución en equilibrio de velocidades de los electrones como una distribución Maxwelliana.
 \begin{equation}
 \label{eq:fourier_distribucion_maxwelliana}
 f_0(u)=n_0\frac{1}{\pi^{1/2}V_T}e^{-u^2/V_T^2}
@@ -100,7 +102,7 @@ Por lo que se podría expresar la susceptibilidad de los electrones como:
 \end{equation}
 A diferencia del tratamiento de fluidos en donde se partían  de las ecuaciones de continuidad, de movimiento y de estado, que no son otra cosa que los momentos de la ecuación de Vlasov, aquí se tiene que solo la ecuación de Vlasov está involucrada. Con esto se puede inferir que Vlasov contiene ya toda la información de esas ecuaciones. Sería lógico pensar que este método es un método más simple y directo para encontrar las suscepibilidades que el tratamiento de fluidos. Sin embargo, de este surge una dificultad matemática.\\
 Dicha dificultad se presenta debido a que el denominador del integrando de la ecuación \ref{eq:susceptibilidad_Vlasov_fourier} que define a la susceptibilidad se desvanece cuando $\xi=\alpha$, es decir cuando $\omega = kV_T$. Debido a que no hay manera clara de como lidiar con esa singularidad, la integral sobre $\xi$ no puede ser evaluada y el método de Fourier falla.
-\section{Método de Landau}
+\section{Tratamiento de Landau}
 Para lidiar con esa singularidad se hace uso de la transformada de Laplace, cuyos detalles se pueden revisar en el apéndice \notinsubfile{\ref{Ap:Laplace}}.\\
 Con el fin de tener una imagen clara se asume el caso de ondas electrostáticas en un plasma en tres dimensiones, estacionario en el equilibrio, neutral, sin magnetizar, espacialmente uniforme y en donde los iones pueden moverse.\\
 Se asume entonces que la distribución de velocidades en equilibrio de cada especie es una función de distribución Maxwelliana en tres dimensiones.

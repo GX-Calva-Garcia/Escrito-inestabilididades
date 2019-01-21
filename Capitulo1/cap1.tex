@@ -745,6 +745,28 @@ De lo anterior queda claro que se pueden identificar las ondas con energías pos
 %-\overrightarrow{\nabla} \cdot \overrightarrow{\textbf{S}}= \frac{1}{4 \pi}\left(\frac{\partial}{\partial t}\left(\frac{E^2}{2} + \frac{B^2}{2}\right) + \overrightarrow{\textbf{E}}\cdot \overrightarrow{\textbf{J}} \right)
 %\end{equation}
 %Se definen entonces las cantidades $W_E=E^2/2$ y $W_M=B^2/2$ como las densidades de energía eléctrica y magnética respectivamente.
+\section{La relación de dispersión para distribuciones de velocidades}
+En las secciones anteriores se estudiaron diferentes casos particulares para la relación de dispersión. Recordando que la forma general está dada por la ecuación \ref{eq_dispersion} que describe un plasma compuesto por distintas especies con velocidades $\overrightarrow{\textbf{u}}_{\sigma 0}$, y frecuencia de plasma $\omega^2_{p \sigma}$.
+Y con la suposición de que se tienen iones en reposo como fondo, la densidad de cada especie se puede escribir entonces como $n_{\sigma 0} = f_{\sigma}n_0$, donde $n_0$ es la densidad de los iones de fondo y $f_{\sigma}$ es la densidad parcial de la especie $\sigma$. De tal manera que la suma de las $f_{\sigma}$ da la unidad. Por lo que la ecuación \ref{eq_dispersion} se puede reescribir como:
+\begin{equation}
+\label{eq:dispersion_general_1}
+1 =\omega^2_{p0}\sum_{\sigma}\frac{f_{\sigma}}{(\omega - \overrightarrow{\textbf{k}}\cdot \overrightarrow{\textbf{u}}_{\sigma 0})^2}
+\end{equation}
+Donde $\omega^2_{p0}$ es la frecuencia de plasma asociada a la densidad $n_0$. Esta manera alternativa de escribir la relación de dispersión fue simplemente para facilitar la presentación de otra generalización en donde las especies tienen asociadas todas las velocidades y la densidad correspondiente está determinada por una función de distribución $f(u)$, donde el número total de partículas en el intervalo $(u,u+du)$ está dado por $n_0f(u)du$. La densidad $f_{\sigma}$ es entonces sustituida por $f(u)du$ y la suma por una integral de $-\infty$ a $\infty$.
+\begin{equation}
+\label{eq:dispersion_general_2}
+1= \omega^2_{p0}\int^{\infty}_{-\infty}\frac{f(u)}{(\omega-k u)^2}du
+\end{equation}
+Al integrar por partes:
+\begin{equation}
+1=\omega^2_{p0}\left(\frac{f(u)}{(\omega - ku)k}- \int^{\infty}_{-\infty}\frac{df/du}{(\omega -k u)k}du \right)
+\end{equation}
+Si se asume que $f$ se desvanece en el infinito se tiene entonces:
+\begin{equation}
+1=-\frac{\omega^2_{p0}}{k}\int^{\infty}_{-\infty}\frac{df/du}{\omega -k u}du
+\end{equation}
+Esta forma generalizada presenta un problema ya que hay una singularidad para cuando el valor de $v$ se aproxima al valor de la velocidad de fase de la onda ($\omega/k$).\\
+En el siguiente capítulo se expondrá con mayor detalle el problema de la singularidad y como lidiar con ella. 
 \onlyinsubfile{\bibliographystyle{unsrt}}
 \onlyinsubfile{\bibliography{../referencias}}
 \end{document}
