@@ -35,44 +35,45 @@ Si bien este análisis es una versión simplificada del problema real ayuda a il
 \section{Definición de un plasma}
 En física se habla de plasmas para referirse a un gas ionizado que poseé ciertas propiedades las cuales dependen de la interacción entre partículas cuya dinámica está dominada por efectos de fuerzas electromagnéticas provenientes de campos internos y externos por lo que la mayoría de las interacciones son de carácter electromagnético.
 Esto no quiere decir que solo hay un tipo de interacción entre partículas de un plasma puesto que también hay interacciones de naturaleza colisional pero las propiedades que definen a un plasma son predominantemente de origen electromagnético. 
-\subsection{Neutralidad macroscópica}
-La primera de las propiedades que son propias de un plasma se refiere a que bajo condiciones de equilibrio y en ausencia de fuerzas externas se tiene que dentro de un volumen lo suficientemente pequeño para que los parámetros macroscópicos, como son la densidad y temperatura, no varíen pero lo suficientemente grande para contener un gran número de partículas la carga eléctrica neta es cero.
-En otras palabras, dentro de esta región microscópica los campos eléctricos se cancelan entre sí y en consecuencia la carga neta en la región macroscópica se hace cero.  
-\subsection{Longitud de Debye}
-La neutralidad macroscópica puede dejar de cumplirse cuando la energía térmica de la partícula puede compensar el potencial electrostático proveniente de la separación de partículas cargadas lo cual solo llega a ocurrir, en ausencia de fuerzas externas, cuando se encuentra dentro de cierta distancia que es del orden de una longitud característica del plasma llamada longitud de Debye.
-Esta longitud se refiere a la distancia en la que el campo eléctrico de una partícula cargada dentro del plasma afecta a otras partículas vecinas.
-O dicho de otro modo, es la distancia dentro de la cual las cargas se acomodan alrededor de la que está generando el campo para así formar una especie de escudo que protege a la partícula cargada de campos electrostáticos externos.
-La forma explícita de la longitud de Debye es:
-\begin{equation}
-\lambda_D = \left( \frac{\epsilon_0 k T}{n_p q^2} \right)^{1/2}
-\end{equation}
-Donde $k$, es la constante de Boltzmann, $T$ la temperatura, $\epsilon_0$ la permitividad del vacío, $q$ la carga de la partícula y $n_p$ la densidad numérica de la partícula.
-Se define entonces una esfera de Debye cuyo radio es $\lambda_D$ en donde el campo electrostático localizado en el centro de la esfera no es afectado por campo externos que se encuentran fuera de la esta.
-Como consecuencia, todas las partículas cargadas dentro del plasma solo interactúan con cargas que se encuentran dentro de su esfera de Debye.
-De lo anterior se puede concluir que para que un plasma conserve la propiedad de neutralidad la longitud característica del sistema debe de ser mucho mayor que la longitud de Debye. Es decir:
-\begin{equation}
-L \gg \lambda_D
-\end{equation}
-Para que las cargas puedan proveer de una protección efectiva de otros campos externos se necesita que el número de cargas dentro de la esfera sea lo suficientemente grande lo cual queda expresado con:
-\begin{equation}
-n_p \lambda_D^3 \gg 1
-\end{equation}
-Lo que quiere decir que la distancia entre cargas es significativamente menor en comparación con $\lambda_D$. De la relación anterior también se puede definir una cantidad que se le denominará como el parámetro del plasma
-\begin{equation}
-g= \frac{1}{n_p \lambda_D^3}
-\end{equation}
-Y la condición $g \ll 1$ se le conoce como la aproximación del plasma.
+%\subsection{Neutralidad macroscópica}
+%La primera de las propiedades que son propias de un plasma se refiere a que bajo condiciones de equilibrio y en ausencia de fuerzas externas se tiene que dentro de un volumen lo suficientemente pequeño para que los parámetros macroscópicos, como son la densidad y temperatura, no varíen pero lo suficientemente grande para contener un gran número de partículas la carga eléctrica neta es cero.
+%En otras palabras, dentro de esta región microscópica los campos eléctricos se cancelan entre sí y en consecuencia la carga neta en la región macroscópica se hace cero.  
+%\subsection{Longitud de Debye}
+%La neutralidad macroscópica puede dejar de cumplirse cuando la energía térmica de la partícula puede compensar el potencial electrostático proveniente de la separación de partículas cargadas lo cual solo llega a ocurrir, en ausencia de fuerzas externas, cuando se encuentra dentro de cierta distancia que es del orden de una longitud característica del plasma llamada longitud de Debye.
+%Esta longitud se refiere a la distancia en la que el campo eléctrico de una partícula cargada dentro del plasma afecta a otras partículas vecinas.
+%O dicho de otro modo, es la distancia dentro de la cual las cargas se acomodan alrededor de la que está generando el campo para así formar una especie de escudo que protege a la partícula cargada de campos electrostáticos externos.
+%La forma explícita de la longitud de Debye es:
+%\begin{equation}
+%\lambda_D = \left( \frac{\epsilon_0 k T}{n_p q^2} \right)^{1/2}
+%\end{equation}
+%Donde $k$, es la constante de Boltzmann, $T$ la temperatura, $\epsilon_0$ la permitividad del vacío, $q$ la carga de la partícula y $n_p$ la densidad numérica de la partícula.
+%Se define entonces una esfera de Debye cuyo radio es $\lambda_D$ en donde el campo electrostático localizado en el centro de la esfera no es afectado por campo externos que se encuentran fuera de la esta.
+%Como consecuencia, todas las partículas cargadas dentro del plasma solo interactúan con cargas que se encuentran dentro de su esfera de Debye.
+%De lo anterior se puede concluir que para que un plasma conserve la propiedad de neutralidad la longitud característica del sistema debe de ser mucho mayor que la longitud de Debye. Es decir:
+%\begin{equation}
+%L \gg \lambda_D
+%\end{equation}
+%Para que las cargas puedan proveer de una protección efectiva de otros campos externos se necesita que el número de cargas dentro de la esfera sea lo suficientemente grande lo cual queda expresado con:
+%\begin{equation}
+%n_p \lambda_D^3 \gg 1
+%\end{equation}
+%Lo que quiere decir que la distancia entre cargas es significativamente menor en comparación con $\lambda_D$. De la relación anterior también se puede definir una cantidad que se le denominará como el parámetro del plasma
+%\begin{equation}
+%g= \frac{1}{n_p \lambda_D^3}
+%\end{equation}
+%Y la condición $g \ll 1$ se le conoce como la aproximación del plasma.
 %\subsection{Frecuencia del plasma}
 
 \section{Derivación de las ecuaciones de fluidos a partir de la teoría cinética}
-Se tiene que un plasma es un sistema compuesto por un gran número de partículas cargadas que interactúan entre sí, por eso mismo es a menudo conveniente hacer un estudio desde un enfoque estadístico \cite{bittencourt2013fundamentals}.
-Es en este análisis que toda la información física de interés se encuentra contenida en la función de distribución $f(\textbf{x},\textbf{v},t)$ la cual reside en el espacio fase posición-velocidad.\\
-Determinar entonces una expresión para $f(\textbf{x},\textbf{v},t)$, es el problema a tratar cuando se trabaja con el modelo cinético. La ecuación diferencial más básica que describe la variación temporal y espacial de una función de distribución de una cierta especie $j$ de partículas cargadas es la llamada ecuación de Boltzmann \cite{jardin2010computational}.
+Un plasma es un sistema compuesto por un gran número de partículas cargadas que interactúan entre sí y debido al número de partículas presentes en el sistema resulta conveniente hacer un análisis con enfoque estadístico.  \cite{bittencourt2013fundamentals}.
+Es bajo este análisis que la información física de interés se encuentra contenida en la función de distribución $f(\textbf{x},\textbf{v},t)$, la cual reside en el espacio fase posición-velocidad. por lo cual para poder estudiar el sistema es necesario encontrar una expresión para $f(\textbf{x},\textbf{v},t)$.\\
+Para esto, se considera una ecuación diferencial que describa la evolución de $f$ asociada a una especie $j$ de partículas cragadas en el espacio fase.
+ Dicha ecuación es conocida como la ecuación de Boltzmann \cite{jardin2010computational} .
 \begin{equation}
 \label{eq:boltzmann-intro}
 \frac{\partial f_j}{\partial t}+ \textbf{v}\cdot \nabla f_j + \textbf{a}\cdot \nabla _v f_j=\left(\frac{\partial f_j}{\partial t}\right)_{col}
 \end{equation}
-El lado derecho proviene de las interacciones entre partículas y se le conoce como el término colisional.\\
+Al lado derecho  de \ref{eq:boltzmann-intro} se le conoce como el término colisionaly proviene de las interacciones entre partículas.\\
 Para propositos de este trabajo se utilizará un caso partícular de la ecuación de Boltzmann en donde el término colisional se hace cero y lo que se quiere estudiar es la función de distribución de partículas cargadas por lo que la aceleración viene dada por la aceleración de Lorentz. A este caso partícular se le conoce como la ecuación de Vlasov.
 \begin{equation}
 \label{eq:boltzmann-vlasov-intro}
