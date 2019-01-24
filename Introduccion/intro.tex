@@ -73,15 +73,16 @@ Para esto, se considera una ecuación diferencial que describa la evolución de 
 \label{eq:boltzmann-intro}
 \frac{\partial f_j}{\partial t}+ \textbf{v}\cdot \nabla f_j + \textbf{a}\cdot \nabla _v f_j=\left(\frac{\partial f_j}{\partial t}\right)_{col}
 \end{equation}
-Al lado derecho  de \ref{eq:boltzmann-intro} se le conoce como el término colisionaly proviene de las interacciones entre partículas.\\
-Para propositos de este trabajo se utilizará un caso partícular de la ecuación de Boltzmann en donde el término colisional se hace cero y lo que se quiere estudiar es la función de distribución de partículas cargadas por lo que la aceleración viene dada por la aceleración de Lorentz. A este caso partícular se le conoce como la ecuación de Vlasov.
+Al lado derecho  de la ecuación \ref{eq:boltzmann-intro} se le conoce como el término colisionaly proviene de las interacciones entre partículas.\\
+Al tratarse de un sistema compuesto por partículas cargadas el término referente a la aceleración puede ser sustituido por una aceleración de Lorentz y si se quiere estudiar el caso donde los efectos electromagnéticos dominan sobre los efectos colisionales es decir donde la interacción onda-partícula es el mecanismo prevalente en la dinámica del sistema el término del lado derecho de la ecuación \ref{eq:boltzmann-intro} se hace cero.
+ A este caso partícular se le conoce como la ecuación de Vlasov.
 \begin{equation}
 \label{eq:boltzmann-vlasov-intro}
 \frac{\partial f_j}{\partial t}+ \textbf{v}\cdot \nabla f_j + \frac{q_j}{m_j}\left( \textbf{E} + \textbf{v} \times \textbf{B}\right)\cdot \nabla _v f_j=0
 \end{equation}
 %A esta forma, que incluye la fuerza de Lorentz y la exclusión de términos colisionales se le conoce también como la ecuación de Vlasov \cite{bittencourt2013fundamentals,nicholson1983introduction}. 
-Donde $q_j$ representa la carga, $m_j$ la masa, $\textbf{v}$ la velocidad de la especie, mientras que $\nabla _v$ se refiere a que el operador esta actuando solo sobre el espacio de velocidades. Por último $\textbf{E}$ y $\textbf{B}$ son el campo eléctrico y magnético respectivamente.\\
-Los campos de la ecuación \ref{eq:boltzmann-vlasov-intro} se obtienen a partir de las ecuaciones de Maxwell:
+En donde $q_j$ representa la carga, $m_j$ la masa, $\textbf{v}$ la velocidad de la especie, mientras que $\nabla _v$ se refiere a que el operador esta actuando solo sobre el espacio de velocidades. Por último $\textbf{E}$ y $\textbf{B}$ se refieren al campo eléctrico y magnético respectivamente.\\
+Los campos de la ecuación \ref{eq:boltzmann-vlasov-intro} se determinan a partir de las ecuaciones de Maxwell:
 \begin{equation}
 \nabla \cdot \textbf{E}=\frac{\rho_q}{\epsilon _0}
 \end{equation}
@@ -94,15 +95,16 @@ Los campos de la ecuación \ref{eq:boltzmann-vlasov-intro} se obtienen a partir 
 \begin{equation}
 \nabla \times \textbf{E} = \mu _0 \left(\textbf{J}+\epsilon_0\frac{\partial \textbf{E}}{\partial t} \right)
 \end{equation}
-Con las densidades de carga y energía dadas por
+Con las densidades de carga y corriente dadas por
 \begin{equation}
 \rho_q = \sum_j q_j \int_v f_j(\textbf{x},\textbf{v},t) d^3 \textbf{v}
 \end{equation}
 \begin{equation}
 \textbf{J}= \sum_j q_j \int_v \textbf{v}f_j(\textbf{x},\textbf{v},t) d^3 \textbf{v}
 \end{equation}
-Las ecuaciones del modelo de dos fluidos se derivan del modelo cinético al calcular los momentos de velocidades de la ecuación de Boltzmann.\\
-El momento cero se obtiene de integrar la ecuación \ref{eq:boltzmann-vlasov-intro} sobre el espacio de velocidades es decir $\int d^3 \textbf{v}$.
+Aunque la ecuación \ref{eq:boltzmann-vlasov-intro} describe la evolución de $f_j$ en el espacio fase no es muy clara en cuanto a la evolución de las cantidades macroscópicas tales como la masa, el momento y la energía.
+Esta información se puede recuperar al calcular los momentos de la ecuación \ref{eq:boltzmann-vlasov-intro} pues cada momento tendrá una cantidad macroscópica asociada .\\
+El llamado momento cero se obtiene de integrar la ecuación \ref{eq:boltzmann-vlasov-intro} sobre el espacio de velocidades es decir $\int d^3 \textbf{v}$.
 \begin{equation}
  \int \frac{\partial f_j}{\partial t}d^3 \textbf{v}+ \int \textbf{v}\cdot \nabla f_j d^3 \textbf{v} + \int \frac{q_j}{m_j}\left( \textbf{E} + \textbf{v} \times \textbf{B}\right)\cdot \nabla _v f_j d^3 \textbf{v}=0
 \end{equation}
