@@ -4,25 +4,25 @@
 \onlyinsubfile{\pagenumbering{arabic}}
 \onlyinsubfile{\chapter{Inestabilidad de dos corrientes.}}
 \section{Introducción}
-En este capítulo hablará de las interacciones entre haces, en particular el surgimiento de inestabilidades en la onda a partir de la interacción de diversas especies asi como también el intercambio de energía entre la onda y las partículas.\\
+En este capítulo se hablará de las interacciones entre haces, en particular el surgimiento de inestabilidades en la onda a partir de la interacción de diversas especies asi como también el intercambio de energía entre la onda y las partículas.\\
 %Para la interacción entre diversas especies se presentan diversos casos particulares.
 %Este capítulo habla de las interacciones entre un conjunto de partículas y una onda. En partícular, el intercambio de energía que ocurre durante la interacción.\\
 %Para tratar el tema de inestabilidades se mostrará primero que frecuencias complejas pueden aparecer en el plasma si se tiene un arreglo de haces de partículas adecuado \cite{bellan2008fundamentals}.
 \section{Relación de dispersión}
-El tratamiento inicial se hará desde la perspectiva de fluidos. Se parte entonces de las siguientes ecuaciones:
+El tratamiento inicial se hará desde la perspectiva de fluidos por lo que se parte de las ecuaciones \ref{eq:m0_cont_n} y \ref{eq:movimiento_reducida}, ecuaciones de continuidad y movimiento respectivamente, obtenidas en el capítulo anterior además de la ecuación de Poisson para un potencial eléctrico $\Phi$.
 \begin{equation}
 \label{cont_nl}
 \frac{\partial n_{\sigma}}{\partial t} + \overrightarrow{\nabla} \cdot n_{\sigma}\overrightarrow{\textbf{u}}_{\sigma}=0
 \end{equation}
 \begin{equation}
 \label{eq_movimiento_nl}
-n_{\sigma}m_{\sigma}\frac{d\overrightarrow{\textbf{u}}_{\sigma}}{dt}= n_{\sigma}q_{\sigma}(\overrightarrow{\textbf{E}} + \overrightarrow{\textbf{u}}_{\sigma} \times \overrightarrow{\textbf{B}}) - \nabla P_{\sigma} - \textbf{R}_{\sigma \alpha}
+n_{\sigma}m_{\sigma}\frac{d\overrightarrow{\textbf{u}}_{\sigma}}{dt}= n_{\sigma}q_{\sigma}(\overrightarrow{\textbf{E}} + \overrightarrow{\textbf{u}}_{\sigma} \times \overrightarrow{\textbf{B}}) - \nabla P_{\sigma}
 \end{equation}
 \begin{equation}
 \label{poisson_nl}
 \nabla ^2 \Phi = -\frac{1}{\epsilon_0}\sum _{\sigma}q_{\sigma} n_{\sigma}
 \end{equation}
-Las cuales son respectivamente la ecuación de continuidad, movimiento y Poisson para cada especie. Al tratarse del caso electróstatico la ecuación \ref{eq_movimiento_nl} se puede reducir a la siguiente forma:
+Al tratarse del caso electróstatico la ecuación \ref{eq_movimiento_nl} se puede reducir a la siguiente forma:
 \begin{equation}
 \label{eq_mov_simpl_nl}
 n_{\sigma}m_{\sigma}\frac{d\overrightarrow{\textbf{u}}_{\sigma}}{dt}= n_{\sigma}q_{\sigma} \overrightarrow{\textbf{E}}
