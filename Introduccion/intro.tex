@@ -65,7 +65,7 @@ Esto no quiere decir que solo hay un tipo de interacción entre partículas de u
 %\subsection{Frecuencia del plasma}
 
 \section{Derivación de las ecuaciones de fluidos a partir de la teoría cinética}
-Un plasma es un sistema compuesto por un gran número de partículas cargadas que interactúan entre sí y debido al número de partículas presentes en el sistema resulta conveniente hacer un análisis con enfoque estadístico.  \cite{bittencourt2013fundamentals}.
+Al ser el plasma un sistema compuesto por un gran número de partículas cargadas que interactúan entre sí resulta conveniente hacer un análisis con enfoque estadístico.  \cite{bittencourt2013fundamentals}.
 Es bajo este análisis que la información física de interés se encuentra contenida en la función de distribución $f(\textbf{x},\textbf{v},t)$, la cual reside en el espacio fase posición-velocidad. por lo cual para poder estudiar el sistema es necesario encontrar una expresión para $f(\textbf{x},\textbf{v},t)$.\\
 Para esto, se considera una ecuación diferencial que describa la evolución de $f$ asociada a una especie $j$ de partículas cragadas en el espacio fase.
  Dicha ecuación es conocida como la ecuación de Boltzmann \cite{jardin2010computational} .
@@ -73,8 +73,8 @@ Para esto, se considera una ecuación diferencial que describa la evolución de 
 \label{eq:boltzmann-intro}
 \frac{\partial f_j}{\partial t}+ \textbf{v}\cdot \nabla f_j + \textbf{a}\cdot \nabla _v f_j=\left(\frac{\partial f_j}{\partial t}\right)_{col}
 \end{equation}
-Al lado derecho  de la ecuación \ref{eq:boltzmann-intro} se le conoce como el término colisionaly proviene de las interacciones entre partículas.\\
-Al tratarse de un sistema compuesto por partículas cargadas el término referente a la aceleración puede ser sustituido por una aceleración de Lorentz y si se quiere estudiar el caso donde los efectos electromagnéticos dominan sobre los efectos colisionales es decir donde la interacción onda-partícula es el mecanismo prevalente en la dinámica del sistema el término del lado derecho de la ecuación \ref{eq:boltzmann-intro} se hace cero.
+Al lado derecho  de la ecuación \ref{eq:boltzmann-intro} se le conoce como el término colisional el cual proviene de las interacciones entre partículas.
+Y recordando que el sistema está compuesto por partículas cargadas el término referente a la aceleración puede ser sustituido por una aceleración de Lorentz y si se quiere estudiar el caso donde los efectos electromagnéticos dominan sobre los efectos colisionales es decir donde la interacción onda-partícula es el mecanismo prevalente en la dinámica del sistema el término del lado derecho de la ecuación \ref{eq:boltzmann-intro} se hace cero.
  A este caso partícular se le conoce como la ecuación de Vlasov.
 \begin{equation}
 \label{eq:boltzmann-vlasov-intro}
@@ -104,57 +104,66 @@ Con las densidades de carga y corriente dadas por
 \end{equation}
 Aunque la ecuación \ref{eq:boltzmann-vlasov-intro} describe la evolución de $f_j$ en el espacio fase no es muy clara en cuanto a la evolución de las cantidades macroscópicas tales como la masa, el momento y la energía.
 Esta información se puede recuperar al calcular los momentos de la ecuación \ref{eq:boltzmann-vlasov-intro} pues cada momento tendrá una cantidad macroscópica asociada .\\
-El llamado momento cero se obtiene de integrar la ecuación \ref{eq:boltzmann-vlasov-intro} sobre el espacio de velocidades es decir $\int d^3 \textbf{v}$.
+El llamado momento cero se obtiene de integrar la ecuación \ref{eq:boltzmann-vlasov-intro} sobre $\int d^3 \textbf{v}$.
 \begin{equation}
  \int \frac{\partial f_j}{\partial t}d^3 \textbf{v}+ \int \textbf{v}\cdot \nabla f_j d^3 \textbf{v} + \int \frac{q_j}{m_j}\left( \textbf{E} + \textbf{v} \times \textbf{B}\right)\cdot \nabla _v f_j d^3 \textbf{v}=0
 \end{equation}
-Es conveninete entonces apoyarse en la definición del promedio sobre las velocidades:
+Ahora bien, para facilitar el manejo de las integrales sobre el espacio de velocidades resulta conveniente apoyarse en la definición de promedio:
 \begin{equation}
 \langle g(\textbf{v}) \rangle _j = \frac{\int g(\textbf{v})f_j(\textbf{x},\textbf{v},t)d^3\textbf{v}}{n_j(\textbf{x},t)}
 \end{equation}
-Donde $n_j(\textbf{x},t)=\int f_j(\textbf{x},\textbf{v},t) d^3\textbf{v}$ y $g$ una función de la velocidad. Es más facil ver su utilidad si se expresa como:
+En este caso el promedio es con respecto a las velocidades y donde $n_j(\textbf{x},t)=\int f_j(\textbf{x},\textbf{v},t) d^3\textbf{v}$, con $g$ una función de la velocidad. Su utilidad resulta más evidente si se reescribe como:
 \begin{equation}
+\label{eq:promedio_def_2}
 \int g(\textbf{v})f_j(\textbf{x},\textbf{v},t)d^3\textbf{v}= n_j(\textbf{x},t)\langle g(\textbf{v}) \rangle _j
 \end{equation}
-Pues si a la ecuación \ref{eq:boltzmann-vlasov-intro} se le multiplica por la función $g$ y se integra sobre el espacio de velocidades se tiene:
+De tal manera que si a la ecuación \ref{eq:boltzmann-vlasov-intro} se le multiplica por la función $g$ y se integra sobre el espacio de velocidades se obtiene:
 \begin{equation}
 \label{eq:Boltzmann-g}
  \int g\frac{\partial f_j}{\partial t}d^3 \textbf{v}+ \int g\textbf{v}\cdot \nabla f_j d^3 \textbf{v} + \int g\frac{q_j}{m_j}\left( \textbf{E} + \textbf{v} \times \textbf{B}\right)\cdot \nabla _v f_j d^3 \textbf{v}=0
 \end{equation}
-De donde 
+Lo que prosigue entonces es reescribir las integrales del lado izquierdo de la ecuación \ref{eq:Boltzmann-g} en función de promedios de velocidad.
+Para el primer término se hace uso de la regla de la cadena y de la ecuación \ref{eq:promedio_def_2} como se muestra a continuación.
 \begin{equation}
 \int g\frac{\partial f_j}{\partial t}d^3 \textbf{v}=\frac{\partial}{\partial t}\int gf_jd^3\textbf{v}-\int f\frac{\partial g}{\partial t}d^3\textbf{v}=\frac{\partial n_j \langle g\rangle_j}{\partial t}
 \end{equation}
-La derivada parcial temportal de $g$ se desvanece pues $g$ solo es función de $\textbf{v}$.
-Mientras que para el segundo término: 
+Se tiene que $g$ es una función dependiente solo de $\textbf{v}$ por lo que su derivada temporal se desvanece.
+Reescribir el segundo  y tercer términos  sigue un proceso similar. Por ejemplo para el segundo término se tiene:
 \begin{equation}
 \int g\textbf{v}\cdot \nabla f_j d^3 \textbf{v}= \nabla \cdot \int g\textbf{v}f_j d^3\textbf{v}=\nabla \cdot \left(n_j \langle g\textbf{v} \rangle_j \right)
 \end{equation}
-En este caso, debido a que el operador $\nabla$ actua solo sobre las posiciones el término $f_j \nabla \cdot (g\textbf{v})$ que proveniente de $\nabla \cdot (g\textbf{v}f_j)$ se desvanece.
-Por último, para el tercer término se tiene
+En este caso, debido a que el operador $\nabla$ actua solo sobre las posiciones el término $f_j \nabla \cdot (g\textbf{v})$, que proviene de $\nabla \cdot (g\textbf{v}f_j)$, se desvanece.
+Por último, para el tercer término el proceso es el siguiente:
 \begin{equation}
+\label{eq:3er_term_momento-g}
 \int g\frac{q_j}{m_j}\left( \textbf{E} + \textbf{v} \times \textbf{B}\right)\cdot \nabla _v f_j d^3 \textbf{v}= \int \nabla_v\cdot (g\textbf{a}f)d^3\textbf{v}- \int f_j \nabla_v\cdot (g\textbf{a})d^3\textbf{v}=-n_j\langle \textbf{a}\cdot \nabla_v g\rangle_j
 \end{equation}
-Por simplicidad se ha hecho $\frac{q_j}{m_j}\left( \textbf{E} + \textbf{v} \times \textbf{B}\right)=\textbf{a}$ y la integral de $\nabla_v\cdot (g\textbf{a}f)$ se desvance pues se tiene que es una integral de superficie $\int gf\textbf{a}\cdot d\textbf{s}$ la cual tiende a cero. Finalmente, la integral  del término $f_jg\nabla_v \cdot \textbf{a}$ proveniente de $\int f_j\nabla _v \cdot (g\textbf{a})d^3\textbf{v} = \int (f\textbf{a} \cdot \nabla_v g + fg\nabla_v \cdot \textbf{a})d^3\textbf{v}$ se hace cero pues $\textbf{a}$ es perpendicular a $\nabla_v$. Con esto, la ecuación \ref{eq:Boltzmann-g} puede ser expresada como:
+Donde por simplicidad la aceleración de Lorentz se expresa simplemente como $\textbf{a}$ y se hace uso de la identidad $\int \nabla_v\cdot (g\textbf{a}f)d^3\textbf{v}=\int gf\textbf{a}\cdot d\textbf{s}$, para ver que el primer término de la ecuación \ref{eq:3er_term_momento-g} se desvance pues la integral de superficie tiende a cero. 
+Finalmente, la integral del segundo término se puede descomponer en: $\int f_j\nabla _v \cdot (g\textbf{a})d^3\textbf{v} = \int (f\textbf{a} \cdot \nabla_v g + fg\nabla_v \cdot \textbf{a})d^3\textbf{v}$, donde $f_jg\nabla_v \cdot \textbf{a}$, se hace cero pues $\textbf{a}$ es perpendicular a $\nabla_v$. Con esto, la ecuación \ref{eq:Boltzmann-g} puede ser expresada para una $g$ arbitraria como:
 \begin{equation}
 \label{eq:Boltzmann-Vlasov-promedios}
 \frac{\partial n_j \langle g \rangle_j}{\partial t}+\nabla \cdot (n_j \langle g \textbf{v} \rangle_j)-n_j \langle \textbf{a}\cdot \nabla_v g \rangle_j=0
 \end{equation}
-Para una $g$ arbitraria. Se tiene entonces que encontrar el momento cero de la ecuación \ref{eq:boltzmann-vlasov-intro} es equivalente a hacer $g=v^0=1$ en la ecuación \ref{eq:Boltzmann-g} que a su vez puede reescribirse como la ecuación \ref{eq:Boltzmann-Vlasov-promedios}, por lo que el momento cero resulta ser:
+Se tiene entonces que encontrar el momento cero de la ecuación \ref{eq:boltzmann-vlasov-intro} es equivalente a hacer $g=v^0=1$ en la ecuación \ref{eq:Boltzmann-Vlasov-promedios} lo que resulta en la siguiente expresión:
 \begin{equation}
+\label{eq:m0_cont_n}
 \frac{\partial n_j}{\partial t}+\nabla \cdot (n_j \textbf{u}_j)=0
 \end{equation}
-Que es la ecuación de continuidad, donde $\textbf{u}_j$ es la velocidad promedio.\\
-De manera análoga al momento cero, para encontrar el primer momento se toma $\textbf{g}=m\textbf{v}$ en la ecuación \ref{eq:Boltzmann-Vlasov-promedios}. Lo que da:
+Que describe la evolución de la densidad númerica $n(\textbf{x},t)$, y en donde se ha introducido a $\textbf{u}_j$ como la velocidad promedio de la especie $j$. De la ecuación \ref{eq:m0_cont_n} se pueden recuperar las ecuaciones de continuidad para la masa y la carga.\\
+Para encontrar el primer momento se sigue un proceso similar al sustituir $\textbf{g}=m\textbf{v}$ en la ecuación \ref{eq:Boltzmann-Vlasov-promedios}.
 \begin{equation}
+\label{eq:m1_g-mv_no_sus}
 \frac{\partial (m_jn_j\textbf{u}_j)}{\partial t}+\nabla \cdot (m_jn_j\langle \textbf{v}\textbf{v} \rangle_j)-m_jn_j\frac{q_j}{m_j}\langle (\textbf{E}+\textbf{v}\times \textbf{B})\cdot \nabla_v\textbf{v}\rangle=0
 \end{equation}
-El primer término es simplemente:
+Ya que el significado físico de la ecuación \ref{eq:m1_g-mv_no_sus} no es del todo claro se prosigue a analizar cada término de manera individual.
+Al ser el primer término una derivada temporal simplemente se hace uso de la regla de la cadena.
 \begin{equation}
+\label{eq:m1_primer_termino}
 \frac{\partial (m_jn_j\textbf{u}_j)}{\partial t}= m_jn_j\frac{\partial \textbf{u}_j}{\partial t}+ \textbf{u}_j\frac{\partial (m_jn_j)}{\partial t}
 \end{equation}
-Para el segundo término se hace uso de $\textbf{v}=\textbf{u}_j+(\textbf{v}-\textbf{u}_j)=\textbf{u}_j+\textbf{v}_c$ donde a $\textbf{v}_c$ se le denomina como la velocidad aleatoria, la cual tiene la propiedad de que $\langle \textbf{v}_c \rangle=0$.
-Por lo que el producto en el segundo término se puede obtener mediante:
+En cuanto al segundo término el producto $\langle \textbf{v} \textbf{v} \rangle $ presenta una complicación al querer aplicar la regla de la cadena para la divergencia. Afortunadamente, ese producto se puede descomponer mediante la identidad
+$\textbf{v}=\textbf{u}_j+(\textbf{v}-\textbf{u}_j)=\textbf{u}_j+\textbf{v}_c$, donde a $\textbf{v}_c$ se le denomina como la velocidad aleatoria, la cual tiene la propiedad de que $\langle \textbf{v}_c \rangle=0$.
+De esta manera el producto $\textbf{v}\textbf{v}$ se puede ver como un producto de binomios.
 \begin{equation}
 \textbf{v}\textbf{v}=\textbf{u}_j \textbf{u}_j + 2\textbf{u}_j \textbf{v}_c + \textbf{v}_c \textbf{v}_c
 \end{equation}
@@ -163,53 +172,57 @@ Por lo que el producto en el segundo término se puede obtener mediante:
 \end{equation}
 Por lo que la divergencia se puede expresar como:
 \begin{equation}
+\label{eq:m1_segundo_termino}
 \nabla \cdot (m_jn_j\langle \textbf{v}\textbf{v} \rangle_j)=m_j \textbf{u}_j\nabla \cdot n_j \textbf{u}_j+m_jn_j\textbf{u}_j\cdot \nabla \textbf{u}_j+\nabla \cdot \langle m_jn_j \textbf{v}_c \textbf{v}_c \rangle
 \end{equation}
-Sumando entonces el primer y segundo término se obtiene:
+Sumando entonces las ecuaciones \ref{eq:m1_primer_termino} y \ref{eq:m1_segundo_termino} se llega a:
 \begin{equation}
 \frac{\partial (m_jn_j\textbf{u}_j)}{\partial t}+\nabla \cdot (m_jn_j\langle \textbf{v}\textbf{v} \rangle_j)=m_jn_j \left( \frac{\partial \textbf{u}_j}{\partial t}+\textbf{u}_j\cdot \nabla \textbf{u}_j \right)+ \nabla \cdot \langle m_jn_j \textbf{v}_c \textbf{v}_c \rangle
 \end{equation}
-De donde $\partial_t n_j$ y $\nabla \cdot n_j \textbf{u}_j$ se desvanecen pues sumados dan cero por la ecuación de continuidad.\\
-En el tercer término se tiene $\nabla _v \textbf{v}=\textbf{I}$ por lo que se puede escribir
+Donde $\partial_t n_j+\nabla \cdot n_j \textbf{u}_j=0$ pues se trata de la ecuación de la continuidad.\\
+En cuanto al tercer término se tiene $\nabla _v \textbf{v}=\textbf{I}$ de tal manera que se puede escribir:
 \begin{equation}
 \langle (\textbf{E}+\textbf{v}\times \textbf{B})\cdot \nabla_v\textbf{v}\rangle = \textbf{E}+\textbf{u}_j\times \textbf{B}
 \end{equation}
-Reacomodando términos se tiene entonces:
+Lo que permite reacomodar los términos y así obtener:
 \begin{equation}
 \label{eq:momento_fluidos}
 m_jn_j \left( \frac{\partial \textbf{u}_j}{\partial t}+\textbf{u}_j\cdot \nabla \textbf{u}_j \right)= n_jq_j(\textbf{E}+\textbf{u}_j\times \textbf{B})- \nabla \cdot \langle m_jn_j \textbf{v}_c \textbf{v}_c \rangle
 \end{equation}
-En el tercer término se tiene un tensor cuya naturaleza física puede ser no muy evidente. Se puede enclarecer un poco si se separa en dos términos, uno para los términos diagonales y el otro para los no diagonales. De esta manera se tiene:
+Por último, se busca una manera de desaperecer el promedio del segundo término del lado izquierdo de la ecuación \ref{eq:momento_fluidos} para ello es importante notar que la cantidad promediada es un término tensorial por lo que se puede descomponer en su parte diagonal y no diagonal. De la siguiente manera:
 \begin{equation}
 \langle m_j n_j \textbf{v}_c \textbf{v}_c \rangle _{ik}=\langle m_j n_jv_{ci}v_{ci}\rangle+ \langle m_j n_jv_{ci}v_{ck}\rangle
 \end{equation}
-Por el momento, conviene analizar las componentes de la matriz diagonal. Las cuales contienen velocidades aleatorias al cuadrado, o para ser más exactos se tratan de valores promedios de los cuadrados. Esto evoca a la expresión proveniente de la teoría termodiámica que relaciona la energía cinética con la temperatura.
+Se empieza entonces por analizar las componentes de la matriz diagonal.
+Las cuales contienen velocidades aleatorias al cuadrado, o para ser más exactos se tratan de valores promedios de los cuadrados. Esto evoca a la expresión proveniente de la teoría termodiámica que relaciona la energía cinética con la temperatura.
 \begin{equation}
 \frac{1}{2}mv_t^2 =\frac{3}{2}kT=\frac{N}{2}kT
 \end{equation}
-Donde $N$ se refiere a los grados de libertad del sistema y de donde se puede despejar para $v_t^2$ y obtener $v_t^2=NkT/m$, y si además se hace uso de la ecuación de estado del gas ideal $p=nkT$, $v^2_t$ se puede expresar como:
+Donde $N$ se refiere a los grados de libertad del sistema y de donde se puede despejar $v_t^2$ y obtener $v_t^2=NkT/m$, y si además se hace uso de la ecuación de estado del gas ideal $p=nkT$, $v^2_t$ se puede expresar como:
 \begin{equation}
 v_t^2=\frac{NkT}{m}=\frac{Np}{nm}
 \end{equation}
-Regresando entonces a las componentes de la matriz diagonal se tiene que $\langle v_c^2\rangle=v_t^2$, lo que permite escribir una expresión para la energía cinética en términos de los promedios pero a su vez permite sustituir $\langle v_c^2\rangle$ por $NkT/m$ teniendo así la siguiente expresión:
+Regresando entonces a las componentes de la matriz diagonal se tiene que $\langle v_c^2\rangle=v_t^2$, lo que permite escribir una expresión para la energía cinética en términos de los promedios pero también permite sustituir $\langle v_c^2\rangle$ por $NkT/m$ teniendo así la siguiente expresión:
 \begin{equation}
 \frac{1}{2}mn \langle v_c^2\rangle = \frac{1}{2}NnkT
 \end{equation}
-Es evidente que la presión puede sustituirse en la ecuación anterior pero si se recuerda que lo que se quiere calcular son las componentes de $v_a$ se necesita el paso adicional de hacer $N=1$ y así conseguir:
+Es evidente que la presión puede sustituirse en la ecuación anterior pero si se recuerda que lo que se quiere calcular son las componentes diagonales de $v_c$ se necesita el paso adicional de hacer $N=1$ y así conseguir:
 \begin{equation}
 mn \langle v_{ci}^2\rangle = p_i
 \end{equation} 
-Con esto se ha conseguido la información de que la matriz diagonal se refiere al tensor de presión \textbf{P}. Por otro lado en la matriz de términos cruzados lo que se tiene son presiones provenientes de fuerzas de corte \cite{bittencourt2013fundamentals} y recibe el nombre de tensor de viscosidad \textbf{$\Pi$}.De esta manera se ha aclarado el significado físico del tercer término de la ecuación \ref{eq:momento_fluidos} el cual es:
+De tal manera que los términos de la matriz diagonal hacen referencia a una presión escalar y en consequencia esta matriz hace referencia al tensor de presión $\textbf{P}$.
+Por otro lado en la matriz de términos cruzados lo que se tiene son presiones provenientes de fuerzas de corte \cite{bittencourt2013fundamentals} y recibe el nombre de tensor de viscosidad \textbf{$\Pi$}. Por lo que le promedio que se encuentra en la ecuación \ref{eq:momento_fluidos} se trata de un tensor que a su vez se puede separar en dos tensores.
 \begin{equation}
 \label{eq:tensor_p_vis}
 \nabla \cdot \langle m_jn_j \textbf{v}_c \textbf{v}_c \rangle= \nabla \cdot (\textbf{P}+ \Pi)
 \end{equation}
-Si además se considera el caso anisotrópico, el tensor $\Pi$ se desvanece y $\nabla \cdot \textbf{P}=\nabla p$, donde $p$ es la presión escalar y entonces la ecuación \ref{eq:momento_fluidos} queda expresada de la suguiente manera:
+Si además se considera el caso anisotrópico, el tensor $\Pi$ se desvanece y $\nabla \cdot \textbf{P}=\nabla p$, donde $p$ es la presión escalar y entonces la ecuación \ref{eq:momento_fluidos} queda expresada de la siguiente manera:
 \begin{equation}
 \label{eq:movimiento_reducida}
 m_jn_j \left( \frac{\partial \textbf{u}_j}{\partial t}+\textbf{u}_j\cdot \nabla \textbf{u}_j \right)= n_jq_j(\textbf{E}+\textbf{u}_j\times \textbf{B})- \nabla p
 \end{equation}
-Que es la ecuación de movimiento de la teoría de fluidos.
+En el lado izquierdo de la ecuación \ref{eq:movimiento_reducida} se tiene una derivada convectiva de $\textbf{u}_j$ mientras que el primer término del lado derecho se refiere a la fuerza surgida de los campos electromagnéticos y por último el segundo término se refiere a la fuerza originada por la presión de las partículas.
+Por lo que la ecuación \ref{eq:movimiento_reducida} es la ecuación de movimiento de un fluido que junto con la ecuación \ref{eq:m0_Cont_n} constituyen las ecuaciones de fluidos para un plasma.
 %\begin{equation}
 %m \int \textbf{v} \frac{\partial f_j}{\partial t}d^3\textbf{v}=m \frac{\partial}{\partial t}(n_j \textbf{u})
 %\end{equation}
