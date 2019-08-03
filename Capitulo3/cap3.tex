@@ -4,8 +4,60 @@
 \onlyinsubfile{\pagenumbering{arabic}}
 \onlyinsubfile{\setcounter{chapter}{1}}
 \onlyinsubfile{\chapter{Relaciones de conservación de partículas, momento y energía}}
+\section{No linealidad}
+Los modelos lineales que describen la dinámica de las ondas en un plasma son ciertamente concisos y de gran capacidad descriptiva esto es debido a que la teoría lineal parte del principio de superposición el cual encapsula  los conceptos de eigenmodos, eigenvalores, eigenvectores, ortogonalidad y el método de transformadas integrales. Sin embargo, al romperse le principio de superposición lo hace también el modelo lineal. Es en estos casos cuando generalmente el fenómeno pasa a ser dependiente de la amplitud tras sobrepasar el valor de esta cierto límite haciendo que la no linealidad cobre importancia.\\
+El rompimiento de la superposición generalmente significa que modos con diferentes eigenvalores, en la medida que estos sigan existiendo, empiezan a interactuar entre sí. Estas interacciones son resultado de cuando los productos de variables dependientes se vuelven importantes para el sistema de ecuaciones.
+Debido a la gran variedad de posibles efectos no lineales existen diferentes maneras de clasificar los comportamientos no lineales. Una de ellas es considerando si la no linealidad esta relacionada con el espacio de velocidades o de posiciones y se les denomina como no linealidades de Vlasov y de fluidos respectivamente. Las no linealidades de Vlasov están a su vez caracterizadas por el intercambio de energía entre campos eléctricos de la onda, partículas resonantes y no resonantes. Por otra parte las inestabilidades de fluidos conllevan la unión de dos o más modos de fluídos que se puede interpretar como una onda modulando el equilibrio que percibe otra onda.\\
+Otro criterio para clasificar la no linealidad es tomando en cuenta si el acoplamiento no lineal es débil o fuerte. Cuando es débil se puede hacer uso de la teoría lineal como una primera aproximación y después tomarse como base para desarrollar el modelo no lineal. En cambio, cuando es fuerte se debe atacar el problema de manera directa sin asistencia de la teoría lineal.
 \section{Tratamiento cuasilineal}
-El tratamiento consiste en...
+En esencia, la teoría cuasilineal ayuda a ilustrar  como las ondas en el plasma pueden alterar la distribución en equilibrio de las velocidades y como se mencionó antes cuando la no linealidad es débil se puede hacer uso de la teoría lineal como una primera aproximación. Además si lo que se quiere estudiar es la interacción entre ondas y partículas en el espacio de velocidades resulta lógico trabajar con la descripción de Vlasov.
+\subsection{Derivación de la ecuación cuasi lineal de difusión}
+Por simplicidad se trabajará con un plasma unidimensional, uniforme y sin magnetizar, donde además solo se considerarán modos electrostáticos e iones masivos, es decir inmóviles. Se tendría entonces un plasma caracterizado por las ecuaciones de Vlasov y Poisson para los electrones pues los iones al ser inmóviles solo fungen como un fondo neutralizador uniforme. Se asume además que la función de distribución de los electrones puede ser descompuesta en un término independiente de la posición, el cual tiene una evolución temporal lenta, y una pequeña perturbación que depende de la posición y del tiempo como resultado de un espectro de ondas lineales en el plasma. Por lo tanto se asume que la función de distribución es de la forma:
+\begin{equation}
+f(x,v,t)=f_0(v,t)+f_1(x,v,t)+f_2(x,v,t)+\dots
+\end{equation}
+donde se considera que la magnitud de los términos con el subíndice $n$ es de orden $\epsilon ^n$, donde $\epsilon \ll 1$. En $t=0$ los términos $f_n$ con $n \geq 2$ se desvancecen pues $f_1$ es asumida como la única perturbación presente en $t=0$.\\
+En el caso del campo eléctrico este tiene una dependencia no lineal sobre la función de distrución por lo que se puede expresar como:
+\begin{equation}
+E=E_0+E_1+E2+\dots
+\end{equation} 
+donde una vez mas el n-ésimo término es de orden $n$.\\
+Ya que por suposición $f_0(v,t)$ no depende de la posicón resulta conveniente definir una funcón de distribución de orden cero normalizada en la velocidad.
+\begin{equation}
+\label{eq:definicion_de_f0_normalizada}
+f_0(v,t)=n_0\overline{f_0}(v,t)
+\end{equation} 
+De manera que:
+\begin{equation}
+\int \overline{f_0}(v,t)dv=1
+\end{equation}
+Utilizar $\overline{f_0}$ resulta en la aparición explícita de $n_0$ lo que permite escribir $\omega_p^2$ en términos como $(e^2/m\epsilon_0) \partial f_0 / \partial x$, al sustituir $f_0$ por $\overline{f_0}$.\\
+Otra herramienta de gran utilidad es el promedio en el espacio de posiciones pues permite deshacerse de algunos términos mientras conserva otros. Se recuerda que el promedio quedaba definido como:
+\begin{equation}
+\langle f_1(x,v,t)\rangle =\frac{1}{L}\int f_1(x,v,t)dx
+\end{equation}
+donde $L$ es la longitud del sistema, que se recuerda es unidimensional. De la definición se puede ver que el promedio de una cantidad es independiente de la posición y además se tiene que $\langle f_0 \rangle =f_0$.\\
+Tomando entonces la ecuación unidimensional de Vlasov:
+\begin{equation}
+\frac{\partial}{\partial t}\left(f_0+f_1+f_2+\dots \right)+v\frac{\partial}{\partial x}\left(f_1+f_2+\dots \right)-\frac{e}{m}\left(E_1+E_2+\dots \right)\frac{\partial}{\partial v}\left(f_0+f_1+f_2+\dots \right)=0
+\end{equation}
+y recordando que $f_0$ no tiene dependencia en $x$ y $E_0=0$, pues se asumió un sistema neutral en el equilibrio, al restar la parte lineal:
+\begin{equation}
+\frac{\partial f_1}{\partial t}+v\frac{\partial f_1}{\partial x}-\frac{e}{m}E1\frac{\partial f_0}{\partial v}=0
+\end{equation}
+quedan solo los términos:
+\begin{equation}
+\frac{\partial}{\partial t}\left(f_0+f_2+\dots \right)+v\frac{\partial}{\partial x}\left(f_2+\dots \right)-\frac{e}{m}\left(E_2+\dots \right)\frac{\partial}{\partial v}\left(f_0+f_1+f_2+\dots \right)-\frac{e}{m}E_1\frac{\partial}{\partial v}\left(f_0+f_1+f_2+\dots \right)=0
+\end{equation}
+asumiendo que los términos de orden $n\geq1$ se tratan de ondas sus promedios espaciales se desvanecen y al ser $f_0$ independiente de $x$ los términos como $\langle e_2 f_0 \rangle =f_0 \langle E_2 \rangle$ se desvanecen también. Esto hace que al promediar la ecuación anterior sobre las posiciones solo sobrevivan los términos:
+\begin{equation}
+\frac{\partial f_0}{\partial t}-\frac{e}{m}\frac{\partial}{\partial v} \left[ \langle E_1 f_1 \rangle +\langle E_2 f_1 \rangle + \dots\right]=0
+\end{equation}
+se observa admeás que los términos $ \langle E_1 f_1 \rangle $ y $ \langle E_2 f_1 \rangle $ son de orden 2 y 3 respectivamente. Esto es importante ya que el postulado escencial de la teoría cuasilineal es que todos los términos de orden mayor o igual a 3 son considerados demasiado pequeños y por lo tanto son despreciables. Por lo que al aplicar este principio en los términos restantes resulta en lo que se conoce como la ecuación cuasilineal de difusión en el espacio de velocidades.
+\begin{equation}
+\label{eq:ec_cuasilienal_difusion}
+\frac{\partial f_0}{\partial t}=\frac{e}{m}\frac{\partial}{\partial v}\langle E_1 f_1 \rangle
+\end{equation}
 \onlyinsubfile{\bibliographystyle{unsrt}}
 \onlyinsubfile{\bibliography{../referencias}}
 \end{document}
