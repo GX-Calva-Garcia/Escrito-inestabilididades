@@ -4,17 +4,17 @@
 \onlyinsubfile{\pagenumbering{arabic}}
 \onlyinsubfile{\chapter{Introducción.}}
 
-Considerando que la mayoría de la materia visible se encuentra en estado de plasma \cite{bittencourt2013fundamentals} no es de extrañar que se encuentren varios ejemplos de plasmas en la naturaleza los cuales van desde la ionosfera hasta los plasmas interestelares como los encontrados en las estrellas.\\
+Considerando que la mayor parte de la materia visible se encuentra en estado de plasma \cite{bittencourt2013fundamentals} no es de extrañar que se encuentren numerosos ejemplos de plasmas en la naturaleza, los cuales van desde la ionosfera hasta los plasmas interestelares, y los encontrados en las estrellas.\\
 El estudio continuo de la física de plasmas ha derivado en diferentes aplicaciones de las cuales las más notables son la búsqueda de obtención de energía mediante procesos de fusión nuclear confinados en un plasma y propulsión de vehículos espaciales.\\
-Al igual que los otros estados de la materia el plasma presenta diversos fenómenos de interes como es la interacción entre ondas y partículas en un plasma. 
+Al igual que los otros estados de la materia el plasma presenta diversos fenómenos de interés como es la interacción entre ondas y partículas en un plasma. 
 Dicha interacción, o mejor dicho su estudio, es la motivación detrás de este trabajo donde se abordará el caso de ondas electrostáticas.\\
 Su importancia reside en que se trata de un fenómeno no colisional donde hay intercambio de energía y momento. 
 Interacciones entre ondas y partículas se pueden observar en diversos plasmas espaciales e incluso en la magnetosfera terrestre \cite{kitamura2018direct},
 lo cual ayuda a ilustrar el alcance que tiene su estudio.\\
-Otro proceso no colisional encontrado en los plasmas es el llamado amortiguamiento de Landau cuya aparición se puede ver como consecuencia de la transferencia de energía entre la onda y las partículas. \cite{bellan2008fundamentals}.
+El proceso no colisional encontrado en los plasmas es el llamado amortiguamiento de Landau \cite{malmberg1964collisionless,wong1964landau} cuya aparición se puede ver como consecuencia de la transferencia de energía entre la onda y las partículas. \cite{bellan2008fundamentals}.
 El amortiguamineto de Landau a su vez aparece en distintos sistemas que van desde la física de altas energías hasta sistemas biológicos \cite{sagan1994physics}.\\
-Una consecuencia más de esta transferencia de energía es la aparición de inestabilidades en las ondas a partir de la interacción de distintas especies en un plasma. Por especie se entiende partículas que tienen una frecuencia de plasma característica.\\
-El siguiente trabajo presenta entonces un estudio de esta interacción onda-partícula en un plasma, en el caso electrostático. Haciendo énfasis en el crecimiento de inestabilidades debido a la interacción de distintas especies en un plasma y el amortiguamiento de Landau que se presenta en el plasma.\\
+Una consecuencia más de esta transferencia de energía es la aparición de inestabilidades en las ondas a partir de la interacción de distintas especies en un plasma. Por especie, se entiende en este trabajo a poblaciones de partículas que tienen una frecuencia de plasma característica, de acuerdo a su masa y densidad.\\
+El siguiente trabajo presenta entonces un estudio de esta interacción onda-partícula en un plasma, en el caso electrostático. Haciendo énfasis en el crecimiento de inestabilidades debido a la interacción de distintas especies en un plasma y el amortiguamiento de Landau.\\
 Si bien este análisis es una versión simplificada del problema real ayuda a ilustrar el fenómeno y facilita el estudio de casos más cercanos a la realidad.\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Un problema de gran interés, tanto en plasmas espaciales como en experimentos de confinamiento magnético de fusión nuclear controlada, es el de la interacción entre haces de partículas cargadas y un plasma.  En el primer caso, que es por naturaleza no colisional, son de interés para comprender cómo las partículas son aceleradas por ondas, así como el proceso contrario, de la generación espontánea de ondas por una distribución de partículas. Estos procesos han sido medidos por la misión espacial MMS (Magnetospheric Multiscale) \cite{kitamura2018direct}. En fusión nuclear, es importante comprender cómo las partículas energéticas pueden  provocar inestabilidades como los llamados modos de Alfvén toroidales \cite{heidbrink2008basic,pinches2015energetic}. Landau en 1936 \cite{landau1936kinetische,landau1946vibrations} estudió una versión simplificada, en la que se consideran únicamente ondas electrostáticas (modelo de Vlasov-Poisson), mostrando el mecanismo mediante el cual puede haber conservación de energía en la interacción no colisional entre ondas y partículas en la aproximación lineal. El amortiguamiento de Landau fue demostrado experimentalmente en 1964 tanto para electrones \cite{malmberg1964collisionless}, como para iones \cite{wong1964landau}. Recientemente se ha seguido estudiando el sistema de Vlasov-Poisson en el régimen no lineal \cite{mouhot2011landau,hou2011trapped}, y Cedric Villani obtuvo la medalla Fields en 2010 por su trabajo en esta área.
@@ -33,35 +33,39 @@ Si bien este análisis es una versión simplificada del problema real ayuda a il
 %	\item Conclusiones 
 %\end{enumerate}
 \section{Definición de un plasma}
-En física se habla de plasmas para referirse a un gas ionizado que poseé ciertas propiedades las cuales dependen de la interacción entre partículas cuya dinámica está dominada por efectos de fuerzas electromagnéticas provenientes de campos internos y externos.
+En física se habla de plasmas para referirse a un gas compuesto de partículas cargadas cuya energía cinética es mucho mayor que la energía potencial entre ellas \cite{nicholson1983introduction} que además poseé ciertas propiedades, las cuales dependen de la interacción entre partículas cuya dinámica está dominada por efectos de fuerzas electromagnéticas provenientes de campos internos y externos.
 Si bien, dependiendo de la densidad, las colisiones en un plasma pueden ser o no relevantes, en este trabajo nos limitaremos a estudiar el caso de plasmas no colisionales.\\
-Antes de porseguir es importante que se especifiquen cuales son las propiedades por las que se define un plasma.
+Antes de proseguir es importante que se especifiquen cuales son esas propiedades que caracterizan un plasma.
 %siendo una de ellas es que la energía cinética es mucho mayor que la energía potencial.
-\subsection{Neutralidad macroscópica}
-La primera de las propiedades que son propias de un plasma se refiere a que bajo condiciones de equilibrio y en ausencia de fuerzas externas se tiene que dentro de un volumen lo suficientemente pequeño para que los parámetros macroscópicos, como son la densidad y temperatura, no varíen pero lo suficientemente grande para contener un gran número de partículas la carga eléctrica neta es cero.
-En otras palabras, dentro de esta región microscópica los campos eléctricos se cancelan entre sí y en consecuencia la carga neta en la región macroscópica se hace cero.  
+\subsection{Cuasineutralidad}
+La primera de las propiedades de un plasma se refiere a que bajo condiciones de equilibrio y en ausencia de fuerzas externas se tiene que dentro de un volumen lo suficientemente pequeño para que los parámetros macroscópicos, como son la densidad y temperatura, no varíen pero lo suficientemente grande para contener un gran número de partículas la carga eléctrica neta es cero \cite{bittencourt2013fundamentals}.
+%En otras palabras, dentro de esta región microscópica los campos eléctricos se cancelan entre sí y en consecuencia la carga neta en la región macroscópica se hace cero.  
 \subsection{Longitud de Debye}
-La neutralidad macroscópica puede dejar de cumplirse cuando la energía térmica de la partícula puede compensar el potencial electrostático proveniente de la separación de partículas cargadas lo cual solo llega a ocurrir, en ausencia de fuerzas externas, cuando se encuentra dentro de cierta distancia que es del orden de una longitud característica del plasma llamada longitud de Debye.
-Esta longitud se refiere a la distancia en la que el campo eléctrico de una partícula cargada dentro del plasma afecta a otras partículas vecinas.
-O dicho de otro modo, es la distancia dentro de la cual las cargas se acomodan alrededor de la que está generando el campo para así formar una especie de escudo que protege a la partícula cargada de campos electrostáticos externos.
-La forma explícita de la longitud de Debye es:
+La cuasineutralidad puede dejar de cumplirse cuando la energía térmica de la partícula puede compensar el potencial electrostático proveniente de la separación de partículas cargadas lo cual solo llega a ocurrir, en ausencia de fuerzas externas, cuando se encuentra dentro de cierta distancia que es del orden de una longitud característica del plasma llamada longitud de Debye \cite{bittencourt2013fundamentals}.
+Esta longitud se refiere a la distancia a la que el campo eléctrico de una partícula cargada dentro del plasma afecta a otras partículas vecinas.
+Dicho de otro modo, es la distancia dentro de la cual las cargas se acomodan alrededor de la que está generando el campo para así formar una suerte de escudo que protege a la partícula cargada de campos electrostáticos externos.
+La forma explícita de la longitud de Debye para una especie es:
 \begin{equation}
-\lambda_D = \left( \frac{\epsilon_0 k T}{n_p q^2} \right)^{1/2}
+\lambda_{Dp} = \left( \frac{\epsilon_0 k T}{n_p q^2} \right)^{1/2},
 \end{equation}
-Donde $k$, es la constante de Boltzmann, $T$ la temperatura, $\epsilon_0$ la permitividad del vacío, $q$ la carga de la partícula y $n_p$ la densidad numérica de la partícula.
-Se define entonces una esfera de Debye cuyo radio es $\lambda_D$ en donde el campo electrostático localizado en el centro de la esfera no es afectado por campo externos que se encuentran fuera de la esta.
+donde $k$, es la constante de Boltzmann, $T$ la temperatura, $\epsilon_0$ la permitividad del vacío, $q$ la carga de la partícula y $n_p$ la densidad numérica de la población de una misma especie.
+Se define entonces una esfera de Debye cuyo radio es $\lambda_{Dp}$ en donde el campo electrostático localizado en el centro de la esfera no es afectado por campo externos que se encuentran fuera de la esta.
 Como consecuencia, todas las partículas cargadas dentro del plasma solo interactúan con cargas que se encuentran dentro de su esfera de Debye.
-De lo anterior se puede concluir que para que un plasma conserve la propiedad de neutralidad la longitud característica del sistema debe de ser mucho mayor que la longitud de Debye. Es decir:
+En el contexto de un plasma compuesto de diferentes especies, digase por ejemplo electrones e iones, la longitud de Debye total se expresa como \cite{nicholson1983introduction}:
 \begin{equation}
-L \gg \lambda_D
+    \frac{1}{\lambda_D^2}=\sum_p \frac{1}{\lambda_{Dp}^2}
+\end{equation}
+De lo anterior se puede concluir que para que un plasma conserve la propiedad de cuasineutralidad la longitud característica del sistema debe de ser mucho mayor que la longitud de Debye; es decir:
+\begin{equation}
+L \gg \lambda_{Dp}.
 \end{equation}
 Para que las cargas puedan proveer de una protección efectiva de otros campos externos se necesita que el número de cargas dentro de la esfera sea lo suficientemente grande lo cual queda expresado con:
 \begin{equation}
-n_p \lambda_D^3 \gg 1
+n_p \lambda_{Dp}^3 \gg 1,
 \end{equation}
-Lo que quiere decir que la distancia entre cargas es significativamente menor en comparación con $\lambda_D$. De la relación anterior también se puede definir una cantidad que se le denominará como el parámetro del plasma
+lo que quiere decir que la distancia entre cargas es significativamente menor que $\lambda_{Dp}$. De la relación anterior también se puede definir una cantidad que se le denominará como el parámetro del plasma:
 \begin{equation}
-g= \frac{1}{n_p \lambda_D^3}
+g= \frac{1}{n_p \lambda_{Dp}^3}.
 \end{equation}
 Y la condición $g \ll 1$ se le conoce como la aproximación del plasma.
 %\subsection{Frecuencia del plasma}
